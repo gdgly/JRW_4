@@ -1,0 +1,5 @@
+-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc
+-I d:\Keil_v5\ARM\RV31\INC
+-I d:\Keil_v5\ARM\CMSIS\Include
+
+-o .\obj\fmc.o --list_dir ".\\lst\\" --list --omf_browse .\obj\fmc.crf --depend .\obj\fmc.d --feedback ".\obj\template.fed" "..\Library\StdDriver\src\fmc.c"
