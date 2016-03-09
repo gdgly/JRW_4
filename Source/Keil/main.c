@@ -8,6 +8,7 @@
  * @note
  * Copyright (C) 
 *****************************************************************************/
+
 #include <stdio.h>
 #include "Mini51Series.h"
 
@@ -17,8 +18,9 @@
 #include "Motor.h"
 #include "Battery.h"
 #include "UartCtrl.h"
-
-
+#include "FlashCtrl.h"
+#include "RC.h"
+#include "Control.h"
 
 void setupSystemClock(void)
 {
@@ -55,6 +57,7 @@ void setup()
 	//初始化IIC
 	
 	//初始化FLASH
+	FlashInit();
 	
 	//初始化BATTERY_DETECT
 	BatteryCheckInit();
@@ -96,7 +99,10 @@ void loop()
 			//读取欧拉角
 			
 			//PID二环角速度
+			CtrlAttiRate();
+			
 			//输出电机控制
+			MotorCtrl();
 		}
 
 		//每50HZ，20ms一次
@@ -104,11 +110,12 @@ void loop()
 		{
 			//处理遥控数据
 			//PID一环角度控制
+			CtrlAttiAng();
 		}
 		
   
 		//每10HZ，100ms
-		if(getTickCount()%500 == 0)
+		if(getTickCount()%100 == 0)
 		{
 			//检查电池电量
 			BatteryCheck();
@@ -130,4 +137,4 @@ int main()
 	while(TRUE) loop();
 }
 
-/*** (C) COPYRIGHT 2013 Nuvoton Technology Corp. ***/
+/*** (C) COPYRIGHT ***/

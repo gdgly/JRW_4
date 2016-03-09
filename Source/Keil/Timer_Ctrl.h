@@ -1,5 +1,5 @@
-#ifndef _TIMER_CTRL_H
-#define _TIMER_CTRL_H
+#ifndef TIMER_CTRL_H
+#define TIMER_CTRL_H
 #include <stdio.h>
 #include "Mini51Series.h"
 

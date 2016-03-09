@@ -2,6 +2,8 @@
 #include "mini51series.h"
 #include "Timer_Ctrl.h"
 
+uint8_t ledStatus = 0;
+
 void LED_Init(void)
 {
 		GPIO_SetMode(P3, BIT6, GPIO_PMD_OUTPUT);        // For NuTiny-SDK-Mini51L
@@ -10,7 +12,7 @@ void LED_Init(void)
 
 void UpdateLED()
 {
-	static int STATUS = 0;
-		STATUS = !STATUS;
-		P36 = STATUS;	
+		//ledStatus = !ledStatus;
+		//P36 = ledStatus;	
+		P36 = 0;
 }

@@ -1,5 +1,5 @@
-#ifndef _BATTERY_H
-#define _BATTERY_H
+#ifndef BATTERY_H
+#define BATTERY_H
 
 
 void BatteryCheckInit(void);

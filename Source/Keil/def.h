@@ -16,4 +16,6 @@
 
 #define SYSTEM_TICK_FREQ 1000 /*1K*/
 
+#define DATA_FLASH_TEST_BASE        0x3000
+
 #endif //DEF_H
