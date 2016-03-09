@@ -5,6 +5,12 @@
 
 extern volatile uint32_t tick_counter;
 
-extern void setup_system_tick(uint32_t sampleRate);
+void setup_system_tick(uint32_t sampleRate);
+
+int getTickCount(void);
+
+uint32_t GetFrameCount(void);
+
+void IncFrameCount(int inc);
 
 #endif

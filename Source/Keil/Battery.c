@@ -4,13 +4,19 @@
 #include "mini51series.h"
  
 
-//void Motor_Init(void)
-//{
-//		
-//}
+void BatteryCheckInit(void)
+{
 
+}
 
-//void Motor_Start()
-//{
-//		
-//}
+//检测电池电压
+void BatteryCheck(void)
+{
+
+}
+
+//返回电池AD值
+int GetBatteryAD(void)
+{
+	return 0;
+}

@@ -1,8 +1,6 @@
-//#include <stdio.h>
-//#include "Def.h"
 #include "LED.h"
 #include "mini51series.h"
- 
+#include "Timer_Ctrl.h"
 
 void LED_Init(void)
 {
@@ -12,5 +10,7 @@ void LED_Init(void)
 
 void UpdateLED()
 {
-		P36 = 0;
+	static int STATUS = 0;
+		STATUS = !STATUS;
+		P36 = STATUS;	
 }

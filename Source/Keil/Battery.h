@@ -3,7 +3,6 @@
 
 
 void BatteryCheckInit(void);
-//void Motor_Start(void);
 //检测电池电压
 void BatteryCheck(void);
 //返回电池AD值

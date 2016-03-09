@@ -1,8 +1,9 @@
 #include "Timer_Ctrl.h"
 
 volatile uint32_t tick_counter = 0;
+uint32_t frame_counter = 0;
 
-void SysTick_Handler(void)
+void SysTick_Handler(void)	//√ø1ms“ª¥Œ
 {
 	tick_counter++;
 //	if(tick_counter % 1000 == 0) get = 1;
@@ -20,5 +21,20 @@ void setup_system_tick(uint32_t sampleRate)
 	printf("SystemCoreClock:%d\n",SystemCoreClock);
 	printf("Tick Time: %d us\n",1000000/sampleRate);
 
+}
+
+int getTickCount(void)
+{
+	return tick_counter;
+}
+
+void IncFrameCount(int inc)
+{
+	frame_counter+=inc;
+}
+
+uint32_t GetFrameCount(void)
+{
+	return frame_counter;
 }
 

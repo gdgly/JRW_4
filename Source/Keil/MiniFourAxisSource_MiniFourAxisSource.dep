@@ -1,344 +1,0 @@
-Dependencies for Project 'MiniFourAxisSource', Target 'MiniFourAxisSource': (DO NOT MODIFY !)
-F (..\Library\Device\Nuvoton\Mini51Series\Source\system_Mini51Series.c)(0x561C5595)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\system_mini51series.o --list_dir ".\\lst\\" --list --omf_browse .\obj\system_mini51series.crf --depend .\obj\system_mini51series.d)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\Device\Nuvoton\Mini51Series\Source\ARM\startup_Mini51Series.s)(0x561BA006)(--cpu Cortex-M0 -g --16 --apcs=interwork -I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include--list .\lst\startup_mini51series.lst --xref -o .\obj\startup_mini51series.o --depend .\obj\startup_mini51series.d)
-F (..\Library\StdDriver\src\sys.c)(0x561C5596)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\sys.o --list_dir ".\\lst\\" --list --omf_browse .\obj\sys.crf --depend .\obj\sys.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\uart.c)(0x561C5596)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\uart.o --list_dir ".\\lst\\" --list --omf_browse .\obj\uart.crf --depend .\obj\uart.d)
-I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x51C7C554)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\retarget.c)(0x561BA008)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\retarget.o --list_dir ".\\lst\\" --list --omf_browse .\obj\retarget.crf --depend .\obj\retarget.d)
-I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x51C7C554)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\adc.c)(0x561C5595)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\adc.o --list_dir ".\\lst\\" --list --omf_browse .\obj\adc.crf --depend .\obj\adc.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\clk.c)(0x561BA008)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\clk.o --list_dir ".\\lst\\" --list --omf_browse .\obj\clk.crf --depend .\obj\clk.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\fmc.c)(0x561BA008)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\fmc.o --list_dir ".\\lst\\" --list --omf_browse .\obj\fmc.crf --depend .\obj\fmc.d)
-I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x51C7C554)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\gpio.c)(0x561BA008)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\gpio.o --list_dir ".\\lst\\" --list --omf_browse .\obj\gpio.crf --depend .\obj\gpio.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\i2c.c)(0x561C5595)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\i2c.o --list_dir ".\\lst\\" --list --omf_browse .\obj\i2c.crf --depend .\obj\i2c.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\pwm.c)(0x561C5596)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\pwm.o --list_dir ".\\lst\\" --list --omf_browse .\obj\pwm.crf --depend .\obj\pwm.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\spi.c)(0x561C5596)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\spi.o --list_dir ".\\lst\\" --list --omf_browse .\obj\spi.crf --depend .\obj\spi.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (..\Library\StdDriver\src\timer.c)(0x561BA008)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\timer.o --list_dir ".\\lst\\" --list --omf_browse .\obj\timer.crf --depend .\obj\timer.d)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\main.c)(0x56DF85CF)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\main.o --list_dir ".\\lst\\" --list --omf_browse .\obj\main.crf --depend .\obj\main.d)
-I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x51C7C554)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-I (def.h)(0x56DE9F11)
-I (led.h)(0x56DE9F11)
-I (Timer_Ctrl.h)(0x56DE9F11)
-I (Motor.h)(0x56DF852A)
-I (Battery.h)(0x56DF864F)
-F (.\LED.c)(0x56DE9F11)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\led.o --list_dir ".\\lst\\" --list --omf_browse .\obj\led.crf --depend .\obj\led.d)
-I (LED.h)(0x56DE9F11)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\Timer_Ctrl.c)(0x56DE9F11)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\timer_ctrl.o --list_dir ".\\lst\\" --list --omf_browse .\obj\timer_ctrl.crf --depend .\obj\timer_ctrl.d)
-I (Timer_Ctrl.h)(0x56DE9F11)
-I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x51C7C554)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\Motor.c)(0x56DF8535)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\motor.o --list_dir ".\\lst\\" --list --omf_browse .\obj\motor.crf --depend .\obj\motor.d)
-I (Motor.h)(0x56DF852A)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\Battery.c)(0x56DF85B8)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\battery.o --list_dir ".\\lst\\" --list --omf_browse .\obj\battery.crf --depend .\obj\battery.d)
-I (Motor.h)(0x56DF852A)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
-I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
-I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
-I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
-I (..\Library\CMSIS\Include\core_cmFunc.h)(0x561BA005)
-I (..\Library\Device\Nuvoton\Mini51Series\Include\system_Mini51Series.h)(0x561C5595)
-I (..\Library\StdDriver\inc\sys.h)(0x561BA008)
-I (..\Library\StdDriver\inc\clk.h)(0x561BA007)
-I (..\Library\StdDriver\inc\acmp.h)(0x561BA007)
-I (..\Library\StdDriver\inc\adc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\fmc.h)(0x561BA007)
-I (..\Library\StdDriver\inc\gpio.h)(0x561BA007)
-I (..\Library\StdDriver\inc\i2c.h)(0x561BA007)
-I (..\Library\StdDriver\inc\pwm.h)(0x561BA007)
-I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
-I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
-I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
-I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\def.h)(0x56DE9F11)()
-F (.\led.h)(0x56DE9F11)()
-F (.\Timer_Ctrl.h)(0x56DE9F11)()
-F (.\Motor.h)(0x56DF852A)()
-F (.\Battery.h)(0x56DF864F)()

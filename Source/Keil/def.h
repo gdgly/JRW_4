@@ -12,6 +12,8 @@
 #define NULL        0
 #endif
 
+#define TICK_FRAME_PERIOD 1
+
 #define SYSTEM_TICK_FREQ 1000 /*1K*/
 
 #endif //DEF_H
