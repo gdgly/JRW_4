@@ -14,8 +14,8 @@
 #include "def.h"
 #include "led.h"
 #include "Timer_Ctrl.h"
-
-
+#include "Motor.h"
+#include "Battery.h"
 
 #define RXBUFSIZE 1024
 /*---------------------------------------------------------------------------------------------------------*/
@@ -166,7 +166,8 @@ void loop()
 		//遥控通信丢失处理
 		//更新LED灯状态
 		UpdateLED();
-		//其它安全处理
+	
+	//故障保护
 }
 
 
