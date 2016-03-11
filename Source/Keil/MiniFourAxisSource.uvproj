@@ -505,6 +505,36 @@
               <FileType>1</FileType>
               <FilePath>.\Battery.c</FilePath>
             </File>
+            <File>
+              <FileName>UartCtrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UartCtrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>FlashCtrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FlashCtrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>RC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RC.c</FilePath>
+            </File>
+            <File>
+              <FileName>FailSafe.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FailSafe.c</FilePath>
+            </File>
+            <File>
+              <FileName>PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PID.c</FilePath>
+            </File>
+            <File>
+              <FileName>Control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Control.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -534,6 +564,36 @@
               <FileName>Battery.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Battery.h</FilePath>
+            </File>
+            <File>
+              <FileName>UartCtrl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\UartCtrl.h</FilePath>
+            </File>
+            <File>
+              <FileName>FlashCtrl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\FlashCtrl.h</FilePath>
+            </File>
+            <File>
+              <FileName>RC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\RC.h</FilePath>
+            </File>
+            <File>
+              <FileName>FailSafe.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\FailSafe.h</FilePath>
+            </File>
+            <File>
+              <FileName>PID.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PID.h</FilePath>
+            </File>
+            <File>
+              <FileName>Control.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Control.h</FilePath>
             </File>
           </Files>
         </Group>

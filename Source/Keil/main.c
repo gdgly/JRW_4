@@ -21,6 +21,7 @@
 #include "FlashCtrl.h"
 #include "RC.h"
 #include "Control.h"
+#include "ConfigTable.h"
 
 void setupSystemClock(void)
 {
@@ -58,6 +59,7 @@ void setup()
 	
 	//初始化FLASH
 	FlashInit();
+	LoadParamsFromFlash();
 	
 	//初始化BATTERY_DETECT
 	BatteryCheckInit();

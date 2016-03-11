@@ -1,12 +1,12 @@
 #ifndef DEF_H
 #define DEF_H
 
-#ifndef TRUE
-# define TRUE 1
-#endif
-#ifndef FALSE
-# define FALSE 0
-#endif
+//#ifndef TRUE
+//# define TRUE 1
+//#endif
+//#ifndef FALSE
+//# define FALSE 0
+//#endif
 
 #ifndef NULL
 #define NULL        0
@@ -16,6 +16,6 @@
 
 #define SYSTEM_TICK_FREQ 1000 /*1K*/
 
-#define DATA_FLASH_TEST_BASE        0x3000
+#define DATA_Flash_Start_ADD        0x3000
 
 #endif //DEF_H
