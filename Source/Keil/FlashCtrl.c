@@ -41,9 +41,9 @@ void FlashInit()
 {
 	SYS_UnlockReg();
 	FMC_Open();
-	set_data_flash_base(DATA_Flash_Start_ADD);
+	//set_data_flash_base(DATA_Flash_Start_ADD);
 	data_flash_Start_address = FMC_ReadDataFlashBaseAddr();
-	//printf("\nDATA_Flash_Start_ADD 0x%x.\n", data_flash_Start_address);
+	printf("\nDATA_Flash_Start_ADD 0x%x.\n", data_flash_Start_address);
 	FMC_Close();
 	SYS_LockReg();
 
@@ -51,43 +51,53 @@ void FlashInit()
 }
 
 
-void DATA_FLASH_Write(uint32_t WriteAddr,uint32_t *pBuffer,uint8_t NumToWrite)	
+void DATA_FLASH_Write(uint32_t WriteAddr,int32_t *pBuffer,uint8_t NumToWrite)	
 { 			 		 
 	uint8_t i;
 	//uint32_t data_buff[PAGE_SIZE];
-	__set_PRIMASK(1);//Avoid interrupt
+	//__set_PRIMASK(1);//Avoid interrupt
 
 	SYS_UnlockReg();
 	FMC_Open();
 	
 	for(i=0; i<NumToWrite;i++)
-		FMC_Write(i*4+WriteAddr/PAGE_SIZE*512, pBuffer[i]);
+	{
+		FMC_Write(WriteAddr + i*4, pBuffer[i]);
+	}
 
-//	DrvFMC_DisableISP();
 	FMC_Close();
 	SYS_LockReg();
-	__set_PRIMASK(0);
+	//__set_PRIMASK(0);
 } 
 
-void DATA_FLASH_Read(uint32_t ReadAddr,uint32_t *pBuffer,uint8_t NumToRead)
+void FlashErase(uint32_t Addr)
+{
+	SYS_UnlockReg();
+	FMC_Open();
+	
+	FMC_Erase(Addr);
+
+	FMC_Close();
+	SYS_LockReg();
+}
+
+void DATA_FLASH_Read(uint32_t ReadAddr,int32_t *pBuffer,uint8_t NumToRead)
 {
 		uint8_t i;
 	//uint32_t data_buff[PAGE_SIZE];
-	__set_PRIMASK(1);//Avoid interrupt
+//	__set_PRIMASK(1);//Avoid interrupt
 
 	SYS_UnlockReg();
 	FMC_Open();
-//	DrvFMC_EnableISP();
 
-		for(i=0;i<NumToRead*4;i++)
+		for(i=0;i<NumToRead;i++)
 		{
-			pBuffer[i] = FMC_Read(ReadAddr+DATA_Flash_Start_ADD+NumToRead + i*4);
+			pBuffer[i] = FMC_Read(ReadAddr + i*4);
 		}
 
-//	DrvFMC_DisableISP();
 	FMC_Close();
 	SYS_LockReg();
-	__set_PRIMASK(0);
+//	__set_PRIMASK(0);
 	
 }
 

@@ -252,15 +252,15 @@ I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (def.h)(0x56E28E8C)
-I (ConfigTable.h)(0x56E3AC9B)
+I (ConfigTable.h)(0x56E3CF12)
 I (led.h)(0x56DFC9F2)
 I (Timer_Ctrl.h)(0x56DFC9F2)
 I (Motor.h)(0x56DFDEC0)
 I (Battery.h)(0x56DFC9F3)
 I (UartCtrl.h)(0x56DFC9F3)
-I (FlashCtrl.h)(0x56E2927C)
+I (FlashCtrl.h)(0x56E3E5AF)
 I (RC.h)(0x56DFDCFB)
-I (Control.h)(0x56E3B17F)
+I (Control.h)(0x56E3B860)
 I (PID.h)(0x56E3B651)
 F (.\LED.c)(0x56E38BD2)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\led.o --list_dir ".\\lst\\" --list --omf_browse .\obj\led.crf --depend .\obj\led.d)
 I (LED.h)(0x56DFC9F2)
@@ -366,8 +366,8 @@ I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
 I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\FlashCtrl.c)(0x56E386C3)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\flashctrl.o --list_dir ".\\lst\\" --list --omf_browse .\obj\flashctrl.crf --depend .\obj\flashctrl.d)
-I (FlashCtrl.h)(0x56E2927C)
+F (.\FlashCtrl.c)(0x56E3E5CA)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\flashctrl.o --list_dir ".\\lst\\" --list --omf_browse .\obj\flashctrl.crf --depend .\obj\flashctrl.d)
+I (FlashCtrl.h)(0x56E3E5AF)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
@@ -430,9 +430,9 @@ I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
 I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\Control.c)(0x56E3B5A1)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\control.o --list_dir ".\\lst\\" --list --omf_browse .\obj\control.crf --depend .\obj\control.d)
-I (Control.h)(0x56E3B17F)
-I (ConfigTable.h)(0x56E3AC9B)
+F (.\Control.c)(0x56E3B860)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\control.o --list_dir ".\\lst\\" --list --omf_browse .\obj\control.crf --depend .\obj\control.d)
+I (Control.h)(0x56E3B860)
+I (ConfigTable.h)(0x56E3CF12)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
@@ -455,9 +455,9 @@ I (PID.h)(0x56E3B651)
 I (Timer_Ctrl.h)(0x56DFC9F2)
 I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x51C7C554)
 I (RC.h)(0x56DFDCFB)
-F (.\ConfigTable.c)(0x56E3B673)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\configtable.o --list_dir ".\\lst\\" --list --omf_browse .\obj\configtable.crf --depend .\obj\configtable.d)
+F (.\ConfigTable.c)(0x56E3E6A9)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil_v5\ARM\RV31\INC-I d:\Keil_v5\ARM\CMSIS\Include-o .\obj\configtable.o --list_dir ".\\lst\\" --list --omf_browse .\obj\configtable.crf --depend .\obj\configtable.d)
 I (def.h)(0x56E28E8C)
-I (ConfigTable.h)(0x56E3AC9B)
+I (ConfigTable.h)(0x56E3CF12)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
 I (d:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x51C7C554)
@@ -476,7 +476,7 @@ I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
 I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-I (FlashCtrl.h)(0x56E2927C)
+I (FlashCtrl.h)(0x56E3E5AF)
 I (d:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x51C7C554)
 I (PID.h)(0x56E3B651)
 F (.\def.h)(0x56E28E8C)()
@@ -485,9 +485,9 @@ F (.\Timer_Ctrl.h)(0x56DFC9F2)()
 F (.\Motor.h)(0x56DFDEC0)()
 F (.\Battery.h)(0x56DFC9F3)()
 F (.\UartCtrl.h)(0x56DFC9F3)()
-F (.\FlashCtrl.h)(0x56E2927C)()
+F (.\FlashCtrl.h)(0x56E3E5AF)()
 F (.\RC.h)(0x56DFDCFB)()
 F (.\FailSafe.h)(0x55B35EBD)()
 F (.\PID.h)(0x56E3B651)()
-F (.\Control.h)(0x56E3B17F)()
-F (.\ConfigTable.h)(0x56E3AC9B)()
+F (.\Control.h)(0x56E3B860)()
+F (.\ConfigTable.h)(0x56E3CF12)()

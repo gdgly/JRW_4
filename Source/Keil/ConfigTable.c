@@ -5,7 +5,12 @@
 #include "stdio.h"
 #include "PID.h"
 
+#define TABLE_ADDRESS DATA_Flash_Start_ADD
+//用来存放Flash列表上的存放的参数变量的信息
+config_table_t table;	
 
+
+#define Flash_DEFAULT_VERSION 2
 
 //all default value 
  void ParamSetDefault(void)
@@ -65,17 +70,13 @@
 }
 
 //
-#define TABLE_ADDRESS DATA_Flash_Start_ADD
-//用来存放Flash列表上的存放的参数变量的信息
-config_table_t table;	
 
-
-#define Flash_DEFAULT_VERSION 1
 
 uint8_t  isFlashValid(void)
 {
-	DATA_FLASH_Read(TABLE_ADDRESS,(uint32_t*)(&table),2);
-	if((int16_t)table.version==Flash_DEFAULT_VERSION)
+	DATA_FLASH_Read(TABLE_ADDRESS,(int32_t*)(&table),1);
+	printf("table.version = %f\n",table.version);
+	if(table.version==Flash_DEFAULT_VERSION)
 			return 1;
 	else
 			return 0;
@@ -84,7 +85,8 @@ uint8_t  isFlashValid(void)
 //table defalat . if 
 void TableResetDefault(void)
 {		
-		DATA_FLASH_Write(TABLE_ADDRESS,(uint32_t *)(&(table.version)),2);
+		uint8_t paramNums=sizeof(table)/sizeof(float);
+		DATA_FLASH_Write(TABLE_ADDRESS,(int32_t *)(&(table)),paramNums);
 }
 
 //load params for Flash
@@ -92,14 +94,19 @@ void TableReadFlash(void)
 {
 		uint8_t paramNums=sizeof(table)/sizeof(float);
 		
-		DATA_FLASH_Read(TABLE_ADDRESS,(uint32_t *)(&table),paramNums * 2);
+		DATA_FLASH_Read(TABLE_ADDRESS,(int32_t *)(&table),paramNums);
 }
 
 void TableWriteFlash(void)
 {
 		uint8_t paramNums=sizeof(table)/sizeof(float);
+	//	printf("paramNums = %d \n",paramNums);
+		DATA_FLASH_Write(TABLE_ADDRESS,(int32_t *)(&table),paramNums);
+}
 
-		DATA_FLASH_Write(TABLE_ADDRESS,(uint32_t *)(&table),paramNums * 2);
+void WriteVersionToFlash(void)
+{
+		DATA_FLASH_Write(TABLE_ADDRESS,(int32_t *)(&table),1);
 }
 
 
@@ -114,17 +121,17 @@ void TableToParam(void)
 		uint8_t i=0;
 		for(i=0;i<3;i++)
 		{
-//			((float *)(&pitch_angle_PID))[i]=((float *)(&table.pidPitch))[i];
-//			((float *)(&roll_angle_PID))[i]=((float *)(&table.pidRoll))[i];
-//			((float *)(&yaw_angle_PID))[i]=((float *)(&table.pidYaw))[i];
-//			
-//			((float *)(&pitch_rate_PID))[i]=((float *)(&table.pidPitchRate))[i];
-//			((float *)(&roll_rate_PID))[i]=((float *)(&table.pidRollRate))[i];
-//			((float *)(&yaw_rate_PID))[i]=((float *)(&table.pidYawRate))[i];
+			((float *)(&pitch_angle_PID))[i]=((float *)(&table.pidPitch))[i];
+			((float *)(&roll_angle_PID))[i]=((float *)(&table.pidRoll))[i];
+			((float *)(&yaw_angle_PID))[i]=((float *)(&table.pidYaw))[i];
+			
+			((float *)(&pitch_rate_PID))[i]=((float *)(&table.pidPitchRate))[i];
+			((float *)(&roll_rate_PID))[i]=((float *)(&table.pidRollRate))[i];
+			((float *)(&yaw_rate_PID))[i]=((float *)(&table.pidYawRate))[i];
 			
 //			((float *)(&alt_PID))[i]=((float *)(&table.pidAlt))[i];
 //			((float *)(&alt_vel_PID))[i]=((float *)(&table.pidAltVel))[i];
-//			
+			
 //			imu.accOffset[i]=table.accOffset[i];
 //			imu.gyroOffset[i]=table.gyroOffset[i];
 //			
@@ -151,15 +158,15 @@ void ParamToTable(void)
 		float temp = 0.0;
 		for(i=0;i<3;i++)
 		{
-//			((float *)(&table.pidPitch))[i]=((float *)(&pitch_angle_PID))[i];
-//				temp=((float *)(&roll_angle_PID))[i];
-//				*((float *)(&table.pidRoll) + i) =  ((float *)(&roll_angle_PID))[i];
-//			((float *)(&table.pidRoll))[i]=((float *)(&roll_angle_PID))[i];
-//			((float *)(&table.pidYaw))[i]=((float *)(&yaw_angle_PID))[i];
-//			
-//			((float *)(&table.pidPitchRate))[i]=((float *)(&pitch_rate_PID))[i];
-//			((float *)(&table.pidRollRate))[i]=((float *)(&roll_rate_PID))[i];
-//			((float *)(&table.pidYawRate))[i]=((float *)(&yaw_rate_PID))[i];
+			((float *)(&table.pidPitch))[i]=((float *)(&pitch_angle_PID))[i];
+				temp=((float *)(&roll_angle_PID))[i];
+				*((float *)(&table.pidRoll) + i) =  ((float *)(&roll_angle_PID))[i];
+			((float *)(&table.pidRoll))[i]=((float *)(&roll_angle_PID))[i];
+			((float *)(&table.pidYaw))[i]=((float *)(&yaw_angle_PID))[i];
+			
+			((float *)(&table.pidPitchRate))[i]=((float *)(&pitch_rate_PID))[i];
+			((float *)(&table.pidRollRate))[i]=((float *)(&roll_rate_PID))[i];
+			((float *)(&table.pidYawRate))[i]=((float *)(&yaw_rate_PID))[i];
 			
 //			((float *)(&table.pidAlt))[i]=((float *)(&alt_PID))[i];
 //			((float *)(&table.pidAltVel))[i]=((float *)(&alt_vel_PID))[i];
@@ -183,18 +190,22 @@ void LoadParamsFromFlash(void)
 {
 	if(isFlashValid())
 	{
-//			TableReadFlash();
-//			TableToParam();
+			TableReadFlash();
+			TableToParam();
 		
 	}
 	else
 	{
-			printf("load params from Flash failed,set default value\r\n");
+			//printf("load params from Flash failed,set default value\r\n");
 		
 			ParamSetDefault();//版本检测不对，各项参数设为默认值
-		//	ParamToTable();
-	//		table.version=Flash_DEFAULT_VERSION;
-	//		TableWriteFlash();
+			ParamToTable();
+			table.version = Flash_DEFAULT_VERSION;
+		
+			//printf("table.version = %f\n",table.version);
+			FlashErase(TABLE_ADDRESS);	//必须先擦除，才能成功写入
+			TableWriteFlash();
+			//WriteVersionToFlash();
 	}
 }
 
