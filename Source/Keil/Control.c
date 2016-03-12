@@ -3,7 +3,17 @@
 #include "Timer_Ctrl.h"
 #include "RC.h"
 
+
 float Thro=0,Roll=0,Pitch=0,Yaw=0;
+
+//PID_Typedef pitch_angle_PID;	  //pitch角度环PID
+//PID_Typedef pitch_rate_PID;		//pitch角速率环PID
+
+//PID_Typedef roll_angle_PID;    //roll角度环PID
+//PID_Typedef roll_rate_PID;     //roll角速率环PID
+
+//PID_Typedef yaw_angle_PID;     //yaw角度环PID  
+//PID_Typedef yaw_rate_PID;      //yaw角速率环PID
 
 //-----------位置式PID-----------
 void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
@@ -100,9 +110,9 @@ void CtrlAttiRate(void)
 //		PID_Postion_Cal(&yaw_rate_PID,yawRateTarget,imu.gyro[YAW]*180.0f/M_PI_F,dt);//DMP_DATA.GYROz
 
 		
-		Pitch = pitch_rate_PID.Output;
-    Roll  = roll_rate_PID.Output;
-    Yaw   = yaw_rate_PID.Output; 
+//		Pitch = pitch_rate_PID.Output;
+//    Roll  = roll_rate_PID.Output;
+//    Yaw   = yaw_rate_PID.Output; 
 }
 
 void CtrlMotor(void)

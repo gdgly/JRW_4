@@ -1,9 +1,69 @@
 #include "def.h"
 #include "ConfigTable.h"
-#include "Control.h"
 #include "uart.h"
 #include "FlashCtrl.h"
 #include "stdio.h"
+#include "PID.h"
+
+
+
+//all default value 
+ void ParamSetDefault(void)
+{
+		 
+     pitch_angle_PID.P = 3.5;
+     pitch_angle_PID.I = 0;//1.0;		//0
+     pitch_angle_PID.D = 0;
+		 
+	   pitch_angle_PID.iLimit = 300;	//or 1000
+		 
+     pitch_rate_PID.P  = 0.7; 
+     pitch_rate_PID.I  = 0.5; 		//0.5
+     pitch_rate_PID.D  = 0.03; 		 
+
+		 pitch_rate_PID.iLimit = 300;
+//////////////////////////////////////////////
+     roll_angle_PID.P = 3.5;
+     roll_angle_PID.I = 0;//1.0;
+     roll_angle_PID.D = 0;
+		 roll_angle_PID.iLimit = 300;	//or 1000
+
+     roll_rate_PID.P  = 0.7;
+     roll_rate_PID.I  = 0.5; 	//0.5
+     roll_rate_PID.D  = 0.03; 
+		 roll_rate_PID.iLimit = 300;
+  
+     yaw_rate_PID.P  = 20;
+     yaw_rate_PID.I  = 0; 
+     yaw_rate_PID.D  = 0; 
+		 
+		 yaw_angle_PID.P = 1.0;
+     yaw_angle_PID.I = 0.2;
+     yaw_angle_PID.D = 0;
+
+//
+//			alt_PID.P=1.0;
+//			alt_PID.I=0;
+//			alt_PID.D=0;
+//			
+//			alt_vel_PID.P=0.1f;
+//			alt_vel_PID.I=0.02f;
+//			alt_vel_PID.D=0;
+//			
+//			 //should chango to read Flash cfg. should be 0.
+//			imu.accOffset[0]=-0.1620515;
+//			imu.accOffset[1]=0.07422026;	
+//			imu.accOffset[2]=0.7743073;
+
+//			imu.gyroOffset[0]=-0.06097556;
+//			imu.gyroOffset[1]=-0.03780485;
+//			imu.gyroOffset[2]=0;
+			
+		
+//		AttiCtrlParamsFromPIDTable();
+
+}
+
 //
 #define TABLE_ADDRESS DATA_Flash_Start_ADD
 //用来存放Flash列表上的存放的参数变量的信息
@@ -12,7 +72,7 @@ config_table_t table;
 
 #define Flash_DEFAULT_VERSION 1
 
-static uint8_t  isFlashValid(void)
+uint8_t  isFlashValid(void)
 {
 	DATA_FLASH_Read(TABLE_ADDRESS,(uint32_t*)(&table),2);
 	if((int16_t)table.version==Flash_DEFAULT_VERSION)
@@ -54,13 +114,13 @@ void TableToParam(void)
 		uint8_t i=0;
 		for(i=0;i<3;i++)
 		{
-			((float *)(&pitch_angle_PID))[i]=((float *)(&table.pidPitch))[i];
-			((float *)(&roll_angle_PID))[i]=((float *)(&table.pidRoll))[i];
-			((float *)(&yaw_angle_PID))[i]=((float *)(&table.pidYaw))[i];
-			
-			((float *)(&pitch_rate_PID))[i]=((float *)(&table.pidPitchRate))[i];
-			((float *)(&roll_rate_PID))[i]=((float *)(&table.pidRollRate))[i];
-			((float *)(&yaw_rate_PID))[i]=((float *)(&table.pidYawRate))[i];
+//			((float *)(&pitch_angle_PID))[i]=((float *)(&table.pidPitch))[i];
+//			((float *)(&roll_angle_PID))[i]=((float *)(&table.pidRoll))[i];
+//			((float *)(&yaw_angle_PID))[i]=((float *)(&table.pidYaw))[i];
+//			
+//			((float *)(&pitch_rate_PID))[i]=((float *)(&table.pidPitchRate))[i];
+//			((float *)(&roll_rate_PID))[i]=((float *)(&table.pidRollRate))[i];
+//			((float *)(&yaw_rate_PID))[i]=((float *)(&table.pidYawRate))[i];
 			
 //			((float *)(&alt_PID))[i]=((float *)(&table.pidAlt))[i];
 //			((float *)(&alt_vel_PID))[i]=((float *)(&table.pidAltVel))[i];
@@ -88,18 +148,18 @@ void TableToParam(void)
 void ParamToTable(void)
 {
 		uint8_t i=0;
-		float temp;
+		float temp = 0.0;
 		for(i=0;i<3;i++)
 		{
-			((float *)(&table.pidPitch))[i]=((float *)(&pitch_angle_PID))[i];
-				temp=((float *)(&roll_angle_PID))[i];
-				*((float *)(&table.pidRoll) + i) =  ((float *)(&roll_angle_PID))[i];
-			((float *)(&table.pidRoll))[i]=((float *)(&roll_angle_PID))[i];
-			((float *)(&table.pidYaw))[i]=((float *)(&yaw_angle_PID))[i];
-			
-			((float *)(&table.pidPitchRate))[i]=((float *)(&pitch_rate_PID))[i];
-			((float *)(&table.pidRollRate))[i]=((float *)(&roll_rate_PID))[i];
-			((float *)(&table.pidYawRate))[i]=((float *)(&yaw_rate_PID))[i];
+//			((float *)(&table.pidPitch))[i]=((float *)(&pitch_angle_PID))[i];
+//				temp=((float *)(&roll_angle_PID))[i];
+//				*((float *)(&table.pidRoll) + i) =  ((float *)(&roll_angle_PID))[i];
+//			((float *)(&table.pidRoll))[i]=((float *)(&roll_angle_PID))[i];
+//			((float *)(&table.pidYaw))[i]=((float *)(&yaw_angle_PID))[i];
+//			
+//			((float *)(&table.pidPitchRate))[i]=((float *)(&pitch_rate_PID))[i];
+//			((float *)(&table.pidRollRate))[i]=((float *)(&roll_rate_PID))[i];
+//			((float *)(&table.pidYawRate))[i]=((float *)(&yaw_rate_PID))[i];
 			
 //			((float *)(&table.pidAlt))[i]=((float *)(&alt_PID))[i];
 //			((float *)(&table.pidAltVel))[i]=((float *)(&alt_vel_PID))[i];
@@ -123,8 +183,8 @@ void LoadParamsFromFlash(void)
 {
 	if(isFlashValid())
 	{
-			TableReadFlash();
-			TableToParam();
+//			TableReadFlash();
+//			TableToParam();
 		
 	}
 	else
@@ -132,9 +192,9 @@ void LoadParamsFromFlash(void)
 			printf("load params from Flash failed,set default value\r\n");
 		
 			ParamSetDefault();//版本检测不对，各项参数设为默认值
-			ParamToTable();
-			table.version=Flash_DEFAULT_VERSION;
-			TableWriteFlash();
+		//	ParamToTable();
+	//		table.version=Flash_DEFAULT_VERSION;
+	//		TableWriteFlash();
 	}
 }
 
@@ -142,61 +202,4 @@ void SaveParamsToFlash(void)
 {
 		ParamToTable();
 		TableWriteFlash();
-}
-
-//all default value 
-void ParamSetDefault(void) 
-{
-		 
-     pitch_angle_PID.P = 3.5;
-     pitch_angle_PID.I = 0;//1.0;		//0
-     pitch_angle_PID.D = 0;
-		 
-	   pitch_angle_PID.iLimit = 300;	//or 1000
-		 
-     pitch_rate_PID.P  = 0.7; 
-     pitch_rate_PID.I  = 0.5; 		//0.5
-     pitch_rate_PID.D  = 0.03; 		 
-	
-		 pitch_rate_PID.iLimit = 300;
-////////////////////////////////////////////
-     roll_angle_PID.P = 3.5;
-     roll_angle_PID.I = 0;//1.0;
-     roll_angle_PID.D = 0;
-		 roll_angle_PID.iLimit = 300;	//or 1000
-
-     roll_rate_PID.P  = 0.7;
-     roll_rate_PID.I  = 0.5;; 	//0.5
-     roll_rate_PID.D  = 0.03; 
-		 roll_rate_PID.iLimit = 300;
-///////////////////////////////////////////
-     yaw_angle_PID.P = 1;
-     yaw_angle_PID.I = 0.2;
-     yaw_angle_PID.D = 0;
-  
-     yaw_rate_PID.P  = 20;
-     yaw_rate_PID.I  = 0; 
-     yaw_rate_PID.D  = 0; 
-
-//
-//			alt_PID.P=1.0;
-//			alt_PID.I=0;
-//			alt_PID.D=0;
-//			
-//			alt_vel_PID.P=0.1f;
-//			alt_vel_PID.I=0.02f;
-//			alt_vel_PID.D=0;
-//			
-//			 //should chango to read Flash cfg. should be 0.
-//			imu.accOffset[0]=-0.1620515;
-//			imu.accOffset[1]=0.07422026;	
-//			imu.accOffset[2]=0.7743073;
-
-//			imu.gyroOffset[0]=-0.06097556;
-//			imu.gyroOffset[1]=-0.03780485;
-//			imu.gyroOffset[2]=0;
-			
-		
-//		AttiCtrlParamsFromPIDTable();
-
 }

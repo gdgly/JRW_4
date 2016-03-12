@@ -12,7 +12,7 @@ void LED_Init(void)
 
 void UpdateLED()
 {
-		//ledStatus = !ledStatus;
-		//P36 = ledStatus;	
-		P36 = 0;
+		ledStatus = !ledStatus;
+		P36 = ledStatus;	
+	//	P36 = 0;
 }

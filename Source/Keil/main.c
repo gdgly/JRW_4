@@ -8,11 +8,11 @@
  * @note
  * Copyright (C) 
 *****************************************************************************/
-
 #include <stdio.h>
 #include "Mini51Series.h"
 
 #include "def.h"
+#include "ConfigTable.h"
 #include "led.h"
 #include "Timer_Ctrl.h"
 #include "Motor.h"
@@ -21,7 +21,8 @@
 #include "FlashCtrl.h"
 #include "RC.h"
 #include "Control.h"
-#include "ConfigTable.h"
+
+
 
 void setupSystemClock(void)
 {
@@ -116,7 +117,7 @@ void loop()
 		}
 		
   
-		//每10HZ，100ms
+		//每10HZ，500ms
 		if(getTickCount()%100 == 0)
 		{
 			//检查电池电量

@@ -128,6 +128,7 @@
             <RestoreFunctions>1</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <LimitSpeedToRealTime>1</LimitSpeedToRealTime>
+            <RestoreSysVw>1</RestoreSysVw>
           </Simulator>
           <Target>
             <UseTarget>1</UseTarget>
@@ -139,11 +140,11 @@
             <RestoreFunctions>0</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <RestoreTracepoints>0</RestoreTracepoints>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreSysVw>1</RestoreSysVw>
+            <UsePdscDebugDescription>1</UsePdscDebugDescription>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>9</TargetSelection>
+          <TargetSelection>15</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -157,7 +158,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>NULink\Nu_Link.dll</Driver>
+            <Driver>Bin\Nu_Link.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -525,6 +526,11 @@
               <FilePath>.\FailSafe.c</FilePath>
             </File>
             <File>
+              <FileName>PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PID.c</FilePath>
+            </File>
+            <File>
               <FileName>Control.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Control.c</FilePath>
@@ -583,6 +589,11 @@
               <FileName>FailSafe.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\FailSafe.h</FilePath>
+            </File>
+            <File>
+              <FileName>PID.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PID.h</FilePath>
             </File>
             <File>
               <FileName>Control.h</FileName>

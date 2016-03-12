@@ -3,6 +3,8 @@
 
 #include "Mini51Series.h"
 #include "stdint.h"
+
+
 typedef struct config_table_tt
 {
 float version;
@@ -20,7 +22,7 @@ float pidYawRate[3];
 extern config_table_t table;	
 
 void LoadParamsFromFlash(void);
-void ParamSetDefault(void) ;
+void ParamSetDefault(void);
 void ParamToTable(void);
 void TableToParam(void);
 void TableWriteFlash(void);

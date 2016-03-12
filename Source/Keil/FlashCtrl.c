@@ -58,11 +58,13 @@ void DATA_FLASH_Write(uint32_t WriteAddr,uint32_t *pBuffer,uint8_t NumToWrite)
 	__set_PRIMASK(1);//Avoid interrupt
 
 	SYS_UnlockReg();
-//	DrvFMC_EnableISP();
+	FMC_Open();
+	
 	for(i=0; i<NumToWrite;i++)
 		FMC_Write(i*4+WriteAddr/PAGE_SIZE*512, pBuffer[i]);
 
 //	DrvFMC_DisableISP();
+	FMC_Close();
 	SYS_LockReg();
 	__set_PRIMASK(0);
 } 
@@ -74,6 +76,7 @@ void DATA_FLASH_Read(uint32_t ReadAddr,uint32_t *pBuffer,uint8_t NumToRead)
 	__set_PRIMASK(1);//Avoid interrupt
 
 	SYS_UnlockReg();
+	FMC_Open();
 //	DrvFMC_EnableISP();
 
 		for(i=0;i<NumToRead*4;i++)
@@ -82,6 +85,7 @@ void DATA_FLASH_Read(uint32_t ReadAddr,uint32_t *pBuffer,uint8_t NumToRead)
 		}
 
 //	DrvFMC_DisableISP();
+	FMC_Close();
 	SYS_LockReg();
 	__set_PRIMASK(0);
 	
