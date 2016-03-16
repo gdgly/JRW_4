@@ -105,7 +105,9 @@ void loop()
 			CtrlAttiRate();
 			
 			//输出电机控制
-			MotorCtrl();
+			//MotorCtrl();
+			MotorPwmOutput(0,0,0,0);
+			
 		}
 
 		//每50HZ，20ms一次
@@ -117,8 +119,10 @@ void loop()
 		}
 		
   
-		//每10HZ，500ms
-		if(getTickCount()%100 == 0)
+		//10HZ，100ms一次
+		//if(getTickCount()%100 == 0)
+		//2HZ，100ms一次
+		if(getTickCount()%500 == 0)
 		{
 			//检查电池电量
 			BatteryCheck();
@@ -127,6 +131,7 @@ void loop()
 			
 			//更新LED灯状态
 			UpdateLED();
+			//printf("\n uart test\n");
 			
 			//故障保护
 		}

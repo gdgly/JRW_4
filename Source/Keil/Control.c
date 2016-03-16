@@ -7,34 +7,7 @@
 float Thro=0,Roll=0,Pitch=0,Yaw=0;
 
 
-//-----------位置式PID-----------
-void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
-{
- float termI=0;
- float dt= dertT/1000000.0;
-	//-----------位置式PID-----------
-	//误差=期望值-测量值
-	PID->Error=target-measure;
-	
-	PID->Deriv= (PID->Error-PID->PreError)/dt;
-	
-	PID->Output=(PID->P * PID->Error) + (PID->I * PID->Integ) + (PID->D * PID->Deriv);    //PID:????+????+????
-	
-	PID->PreError=PID->Error;
-	//仅用于角度环和角速度环的
 
-	//if(FLY_ENABLE && offLandFlag)
-	{
-			//if(fabs(PID->Output) < Thro )		              //比油门还大时不积分
-			{
-				termI=(PID->Integ) + (PID->Error) * dt;     //积分环节
-				if(termI > - PID->iLimit && termI < PID->iLimit && PID->Output > - PID->iLimit && PID->Output < PID->iLimit)       //?-300~300????????
-						PID->Integ=termI;
-			}
-	}
-	//else
-	//		PID->Integ= 0;
-}
 
 
 void CtrlAttiAng(void)

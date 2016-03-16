@@ -1,5 +1,6 @@
 #ifndef PID_H
 #define PID_H
+#include "stdint.h"
 
 // PID结构
 typedef struct
@@ -30,5 +31,7 @@ extern PID_Typedef roll_rate_PID;     //roll角速率环PID
 extern PID_Typedef yaw_angle_PID;     //yaw角度环PID
 extern PID_Typedef yaw_rate_PID;      //yaw角速率环PID  
 
+//-----------位置式PID-----------
+void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT);
  
 #endif

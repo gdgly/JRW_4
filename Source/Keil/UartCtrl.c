@@ -5,9 +5,10 @@
 #include "mini51series.h"
 #include "uart.h"
 
-#include "stdint.h"
+
+#include "PID.h"
  
-#define RXBUFSIZE 1024
+
 
 uint8_t getUartData = FALSE;
 
@@ -140,7 +141,7 @@ void CommandProcess(void)
 				//FlashControl();
 			}
 			else if (command == 'p') {// Set 'p'id command
-				//SetPID();
+			//	SetPID();
 			}
 //			else if (command == 'm') {// Set report 'm'ode
 //				char mode = GetChar();
