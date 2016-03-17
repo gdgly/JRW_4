@@ -41,7 +41,7 @@ void FlashInit()
 {
 	SYS_UnlockReg();
 	FMC_Open();
-	//set_data_flash_base(DATA_Flash_Start_ADD);
+	set_data_flash_base(DATA_Flash_Start_ADD);
 	data_flash_Start_address = FMC_ReadDataFlashBaseAddr();
 	printf("\nDATA_Flash_Start_ADD 0x%x.\n", data_flash_Start_address);
 	FMC_Close();

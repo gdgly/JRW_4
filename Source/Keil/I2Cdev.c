@@ -41,7 +41,7 @@
 
 void I2C_Init()
 {
-	//NVT_I2C_Init();
+	NVT_I2C_Init();
 }
 
 int8_t I2C_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t *data, uint16_t timeout) 

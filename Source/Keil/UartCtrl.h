@@ -2,7 +2,7 @@
 #define UARTCTRL_H
 #include "stdint.h"
 
-#define RXBUFSIZE 1024
+#define RXBUFSIZE 15
 
 extern uint8_t g_u8RecData[RXBUFSIZE];
 

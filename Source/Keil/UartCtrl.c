@@ -12,7 +12,6 @@
 
 uint8_t getUartData = FALSE;
 
-uint8_t g_u8SendData[12] = {0};
 uint8_t g_u8RecData[RXBUFSIZE]  = {0};
 
 //volatile uint32_t g_u32comRbytes = 0;

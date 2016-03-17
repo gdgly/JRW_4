@@ -168,7 +168,7 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4107</DriverSelection>
+            <DriverSelection>4106</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>Bin\Nu_Link.dll</Flash2>
@@ -475,11 +475,6 @@
               <FileType>1</FileType>
               <FilePath>..\Library\StdDriver\src\timer.c</FilePath>
             </File>
-            <File>
-              <FileName>NVT_I2C.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\NVT_I2C.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -546,14 +541,19 @@
               <FilePath>.\ConfigTable.c</FilePath>
             </File>
             <File>
-              <FileName>MPU6050.c</FileName>
+              <FileName>NVT_I2C.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MPU6050.c</FilePath>
+              <FilePath>.\NVT_I2C.c</FilePath>
             </File>
             <File>
               <FileName>I2Cdev.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\I2Cdev.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MPU6050.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -621,9 +621,9 @@
               <FilePath>.\ConfigTable.h</FilePath>
             </File>
             <File>
-              <FileName>MPU6050.h</FileName>
+              <FileName>NVT_I2C.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\MPU6050.h</FilePath>
+              <FilePath>.\NVT_I2C.h</FilePath>
             </File>
             <File>
               <FileName>I2CDev.h</FileName>
@@ -631,9 +631,9 @@
               <FilePath>.\I2CDev.h</FilePath>
             </File>
             <File>
-              <FileName>NVT_I2C.h</FileName>
+              <FileName>MPU6050.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\NVT_I2C.h</FilePath>
+              <FilePath>.\MPU6050.h</FilePath>
             </File>
           </Files>
         </Group>
