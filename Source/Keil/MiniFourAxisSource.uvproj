@@ -540,6 +540,21 @@
               <FileType>1</FileType>
               <FilePath>.\ConfigTable.c</FilePath>
             </File>
+            <File>
+              <FileName>MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2Cdev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\I2Cdev.c</FilePath>
+            </File>
+            <File>
+              <FileName>NVT_I2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\NVT_I2C.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -604,6 +619,21 @@
               <FileName>ConfigTable.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\ConfigTable.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MPU6050.h</FilePath>
+            </File>
+            <File>
+              <FileName>I2CDev.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\I2CDev.h</FilePath>
+            </File>
+            <File>
+              <FileName>NVT_I2C.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\NVT_I2C.h</FilePath>
             </File>
           </Files>
         </Group>

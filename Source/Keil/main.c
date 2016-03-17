@@ -21,6 +21,8 @@
 #include "FlashCtrl.h"
 #include "RC.h"
 #include "Control.h"
+#include "I2Cdev.h"
+//#include "mpu6050.h"
 
 
 
@@ -48,6 +50,11 @@ void setup()
 {
 	//初始化系统时钟
 	setupSystemClock();
+	CLK_SetModuleClock(I2C_MODULE, 0, 0);
+		CLK_EnableModuleClock(I2C_MODULE);
+	
+//	/* Set P3.4 and P3.5 for I2C SDA and SCL */
+    SYS->P3_MFP = SYS_MFP_P34_SDA | SYS_MFP_P35_SCL;
 		
 	//初始化串口
 	setupUART();
@@ -57,6 +64,7 @@ void setup()
 	setup_system_tick(SYSTEM_TICK_FREQ);
 	
 	//初始化IIC
+	I2C_Init();
 	
 	//初始化FLASH
 	FlashInit();
@@ -75,6 +83,7 @@ void setup()
 	//初始化AHRS算法
 	
 	//初始化SENSOR
+//	MPU6050_initialize();
 	
 	//初始化电机
 	Motor_Init();
