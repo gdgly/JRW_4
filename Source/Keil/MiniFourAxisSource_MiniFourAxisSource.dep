@@ -262,8 +262,8 @@ I (FlashCtrl.h)(0x56E3E5AF)
 I (RC.h)(0x56DFDCFB)
 I (Control.h)(0x56E61983)
 I (PID.h)(0x56E619AC)
-I (I2Cdev.h)(0x56EA70A4)
-I (MPU6050.h)(0x56EA70A4)
+I (I2CDev.h)(0x56EA70A4)
+I (MPU6050.h)(0x56EA7A1E)
 I (d:\Keil5\ARM\ARMCC\include\stdbool.h)(0x52FDD27E)
 F (.\LED.c)(0x56EA48A5)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\led.o --list_dir ".\\lst\\" --list --omf_browse .\obj\led.crf --depend .\obj\led.d)
 I (LED.h)(0x56DFC9F2)
@@ -484,14 +484,14 @@ I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (FlashCtrl.h)(0x56E3E5AF)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (PID.h)(0x56E619AC)
-F (.\MPU6050.c)(0x56EA70A4)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\mpu6050.o --list_dir ".\\lst\\" --list --omf_browse .\obj\mpu6050.crf --depend .\obj\mpu6050.d)
+F (.\MPU6050.c)(0x56EA7C12)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\mpu6050.o --list_dir ".\\lst\\" --list --omf_browse .\obj\mpu6050.crf --depend .\obj\mpu6050.d)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (d:\Keil5\ARM\ARMCC\include\stdlib.h)(0x52FDD27E)
 I (d:\Keil5\ARM\ARMCC\include\string.h)(0x52FDD27E)
 I (I2CDev.h)(0x56EA70A4)
 I (def.h)(0x56EA3DC9)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
-I (MPU6050.h)(0x56EA70A4)
+I (MPU6050.h)(0x56EA7A1E)
 I (d:\Keil5\ARM\ARMCC\include\stdbool.h)(0x52FDD27E)
 I (Timer_Ctrl.h)(0x56DFC9F2)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
@@ -511,7 +511,7 @@ I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
 I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\NVT_I2C.c)(0x56EA70A4)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\nvt_i2c.o --list_dir ".\\lst\\" --list --omf_browse .\obj\nvt_i2c.crf --depend .\obj\nvt_i2c.d)
+F (.\NVT_I2C.c)(0x56EA7983)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\nvt_i2c.o --list_dir ".\\lst\\" --list --omf_browse .\obj\nvt_i2c.crf --depend .\obj\nvt_i2c.d)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
@@ -533,7 +533,7 @@ I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (Def.h)(0x56EA3DC9)
 I (NVT_I2C.h)(0x56EA70A4)
-F (.\I2Cdev.c)(0x56EA718C)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\i2cdev.o --list_dir ".\\lst\\" --list --omf_browse .\obj\i2cdev.crf --depend .\obj\i2cdev.d)
+F (.\I2Cdev.c)(0x56EA771F)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork --asm --interleave --asm_dir ".\\lst\\" -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\i2cdev.o --list_dir ".\\lst\\" --list --omf_browse .\obj\i2cdev.crf --depend .\obj\i2cdev.d)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -568,6 +568,6 @@ F (.\FailSafe.h)(0x55B35EBD)()
 F (.\PID.h)(0x56E619AC)()
 F (.\Control.h)(0x56E61983)()
 F (.\ConfigTable.h)(0x56E3CF12)()
-F (.\MPU6050.h)(0x56EA70A4)()
+F (.\MPU6050.h)(0x56EA7A1E)()
 F (.\NVT_I2C.h)(0x56EA70A4)()
 F (.\I2CDev.h)(0x56EA70A4)()

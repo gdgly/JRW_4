@@ -46,17 +46,17 @@ extern void DelayMsec(unsigned int usec);
 
 typedef void (*I2C_FUNC)(uint32_t u32Status);
 static volatile I2C_FUNC s_I2C0HandlerFn = NULL;
-static volatile I2C_FUNC s_I2C1HandlerFn = NULL;
 void I2CX_IRQHandler(uint8_t id)
 {
 	uint32_t u32Status;
 
 	u32Status = I2C_GET_STATUS(I2C);
 
-	if(I2C_GET_TIMEOUT_FLAG(I2C)) {
-	ErrorFlag = 1;
+	if(I2C_GET_TIMEOUT_FLAG(I2C)) 
+	{
+		ErrorFlag = 1;
 	/* Clear I2C0 Timeout Flag */
-	I2C_ClearTimeoutFlag(I2C);
+		I2C_ClearTimeoutFlag(I2C);
 	}
 	else {
 		switch (u32Status) {	
@@ -76,28 +76,21 @@ void I2CX_IRQHandler(uint8_t id)
 				//printf("I2C bus error\n");
 				break;
 			}
-			default: {
-				if(id==0) {
-				if(s_I2C0HandlerFn != NULL)
-					s_I2C0HandlerFn(u32Status);
-			}	
-				else if(id==1) {
-					if(s_I2C1HandlerFn != NULL)
-						s_I2C1HandlerFn(u32Status);
+			default: 
+				{
+				if(id==0) 
+				{
+					if(s_I2C0HandlerFn != NULL)
+						s_I2C0HandlerFn(u32Status);
+				}	
+			}
 		}
 	}
 }
-	}
-}
-void I2C0_IRQHandler(void)
+void I2C_IRQHandler(void)
 {
 	I2CX_IRQHandler(0);
 }
-void I2C1_IRQHandler(void)
-{
-	I2CX_IRQHandler(1);
-}
-
 
 /*---------------------------------------------------------------------------------------------------------*/
 /*  I2C0 (Master) Rx Callback Function                                                                     */
@@ -179,7 +172,7 @@ void I2C_Callback_Rx(uint32_t status)
 #else
       //Rx_Data0[0] = DrvI2C_ReadData(I2C_PORT);
       //DrvI2C_Ctrl(I2C_PORT, 0, 1, 1, 0);
-      //EndFlag0 = 1;
+      EndFlag0 = 1;
 			Rx_Data0[RxLen0++] = I2C_GET_DATA(I2C);
       I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
       //g_u8EndFlag = 1;
@@ -386,7 +379,6 @@ uint8_t NVT_WriteByteContinue_addr8(uint8_t address,uint8_t* data, uint8_t len)
 	ContinueLen=len+1;
 
 	s_I2C0HandlerFn = (I2C_FUNC)I2C_Callback_Tx_Continue;
-	s_I2C1HandlerFn = (I2C_FUNC)I2C_Callback_Tx_Continue;
 	while(I2C->I2CON & I2C_I2CON_STO_Msk);
 	I2C_SET_CONTROL_REG(I2C, I2C_STA);
 	WaitEndFlag0(1);
@@ -407,7 +399,6 @@ uint8_t NVT_ReadByteContinue_addr8(uint8_t address,uint8_t* data, uint8_t len, u
 	Tx_Data0[0] = address;
 
 	s_I2C0HandlerFn = (I2C_FUNC)I2C_Callback_Rx_Continue;
-	s_I2C1HandlerFn = (I2C_FUNC)I2C_Callback_Rx_Continue;
 	while(I2C->I2CON & I2C_I2CON_STO_Msk);
 	I2C_SET_CONTROL_REG(I2C, I2C_STA);
 
@@ -423,18 +414,18 @@ uint8_t NVT_ReadByteContinue_addr8(uint8_t address,uint8_t* data, uint8_t len, u
 void NVT_I2C_Init()
 {
 	
-//	CLK_SetModuleClock(I2C_MODULE, 0, 0);
-//		CLK_EnableModuleClock(I2C_MODULE);
-//	
-////	/* Set P3.4 and P3.5 for I2C SDA and SCL */
-//    SYS->P3_MFP = SYS_MFP_P34_SDA | SYS_MFP_P35_SCL;
+	CLK_SetModuleClock(I2C_MODULE, 0, 0);
+		CLK_EnableModuleClock(I2C_MODULE);
+	
+	/* Set P3.4 and P3.5 for I2C SDA and SCL */
+    SYS->P3_MFP = SYS_MFP_P34_SDA | SYS_MFP_P35_SCL;
 
-//	
-//	/* Open I2C and set clock to 400k */
-//    I2C_Open(I2C, 400000);
+	
+	/* Open I2C and set clock to 400k */
+    I2C_Open(I2C, 400000);
 
 //    /* Get I2C Bus Clock */
-//    printf("I2C clock %d Hz\n", I2C_GetBusClockFreq(I2C));
+    printf("I2C clock %d Hz\n", I2C_GetBusClockFreq(I2C));
 
     /* Set I2C 4 Slave Addresses */
 //    I2C_SetSlaveAddr(I2C, 0, 0x15, 0);   /* Slave Address : 0x15 */
@@ -442,8 +433,8 @@ void NVT_I2C_Init()
 //    I2C_SetSlaveAddr(I2C, 2, 0x55, 0);   /* Slave Address : 0x55 */
 //    I2C_SetSlaveAddr(I2C, 3, 0x75, 0);   /* Slave Address : 0x75 */
 
-   // I2C_EnableInt(I2C);
-   // NVIC_EnableIRQ(I2C_IRQn);
+    I2C_EnableInt(I2C);
+    NVIC_EnableIRQ(I2C_IRQn);
 }
 
 void NVT_SetDeviceAddress(uint8_t devAddr)

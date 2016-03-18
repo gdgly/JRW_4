@@ -30,12 +30,8 @@
 #include <stdio.h>
 #include "I2Cdev.h"
 #include "nvt_i2c.h"
-//#include "GPIO.h"
 #include "I2C.h"
-//#include "Driver\DrvSYS.h"
-//#include "Driver\DrvUART.h"
 
-//#include "Def.h"
 
 
 
@@ -51,11 +47,11 @@ int8_t I2C_readBytes(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint8_t *
 	NVT_SetDeviceAddress(devAddr);
 	ErrorFlag = NVT_ReadByteContinue_addr8(regAddr,data, length, timeout);
 
-#ifdef I2CDEV_SERIAL_DEBUG
-	Serial.print(". Done (");
-	Serial.print(count, DEC);
-	Serial.println(" read).");
-	#endif
+//#ifdef I2CDEV_SERIAL_DEBUG
+//	Serial.print(". Done (");
+//	Serial.print(count, DEC);
+//	Serial.println(" read).");
+//	#endif
 	if(ErrorFlag)
 		return 0;
 	else

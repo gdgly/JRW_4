@@ -264,33 +264,34 @@ bool MPU6050_initialize() {
 	bool connect;
 	MPU6050_ADDR(MPU6050_DEFAULT_ADDRESS);
 	connect = MPU6050_testConnection();
-
-//	if(connect) {
-//		MPU6050_reset();
-//		DelayMsec(4);
-//		MPU6050_setSleepEnabled(false); 
-//		MPU6050_setClockSource(MPU6050_CLOCK_PLL_XGYRO);
-//		MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_2000);
-//		MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_8);
-//		MPU6050_setRate(1);
-//		MPU6050_setDLPFMode(MPU6050_DLPF_BW_42);
-//#if defined(MPU6050_I2C_AUX_MASTER)
-//		I2C_writeByte(devAddr, 0x37, 0x02); 
-//		I2C_writeByte(devAddr, 0x6A, 0x20);             //USER_CTRL     -- DMP_EN=0 ; FIFO_EN=0 ; I2C_MST_EN=1 (I2C master mode) ; I2C_IF_DIS=0 ; FIFO_RESET=0 ; I2C_MST_RESET=0 ; SIG_COND_RESET=0
-//		I2C_writeByte(devAddr, 0x37, 0x00);             //INT_PIN_CFG   -- INT_LEVEL=0 ; INT_OPEN=0 ; LATCH_INT_EN=0 ; INT_RD_CLEAR=0 ; FSYNC_INT_LEVEL=0 ; FSYNC_INT_EN=0 ; I2C_BYPASS_EN=0 ; CLKOUT_EN=0
-//		I2C_writeByte(devAddr, 0x24, 0x0D);             //I2C_MST_CTRL  -- MULT_MST_EN=0 ; WAIT_FOR_ES=0 ; SLV_3_FIFO_EN=0 ; I2C_MST_P_NSR=0 ; I2C_MST_CLK=13 (I2C slave speed bus = 400kHz)
-//		I2C_writeByte(devAddr, 0x25, 0x80|MAG_ADDRESS); //I2C_SLV0_ADDR -- I2C_SLV4_RW=1 (read operation) ; I2C_SLV4_ADDR=MAG_ADDRESS
-//		I2C_writeByte(devAddr, 0x26, MAG_DATA_REGISTER);//I2C_SLV0_REG  -- 6 data bytes of MAG are stored in 6 registers. First register address is MAG_DATA_REGISTER
-//		I2C_writeByte(devAddr, 0x27, 0x86);             //I2C_SLV0_CTRL -- I2C_SLV0_EN=1 ; I2C_SLV0_BYTE_SW=0 ; I2C_SLV0_REG_DIS=0 ; I2C_SLV0_GRP=0 ; I2C_SLV0_LEN=3 (3x2 bytes)
-//#else
-//		MPU6050_setI2CBypassEnabled(true);
-//		MPU6050_setI2CMasterModeEnabled(false);
-//#endif
-//	}
+	printf("mpu6050 connect result = %d \n", connect);
+	
+	if(connect) {
+		MPU6050_reset();
+		//DelayMsec(4);
+		MPU6050_setSleepEnabled(false); 
+		MPU6050_setClockSource(MPU6050_CLOCK_PLL_XGYRO);
+		MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_2000);
+		MPU6050_setFullScaleAccelRange(MPU6050_ACCEL_FS_8);
+		MPU6050_setRate(1);
+		MPU6050_setDLPFMode(MPU6050_DLPF_BW_42);
+#if defined(MPU6050_I2C_AUX_MASTER)
+		I2C_writeByte(devAddr, 0x37, 0x02); 
+		I2C_writeByte(devAddr, 0x6A, 0x20);             //USER_CTRL     -- DMP_EN=0 ; FIFO_EN=0 ; I2C_MST_EN=1 (I2C master mode) ; I2C_IF_DIS=0 ; FIFO_RESET=0 ; I2C_MST_RESET=0 ; SIG_COND_RESET=0
+		I2C_writeByte(devAddr, 0x37, 0x00);             //INT_PIN_CFG   -- INT_LEVEL=0 ; INT_OPEN=0 ; LATCH_INT_EN=0 ; INT_RD_CLEAR=0 ; FSYNC_INT_LEVEL=0 ; FSYNC_INT_EN=0 ; I2C_BYPASS_EN=0 ; CLKOUT_EN=0
+		I2C_writeByte(devAddr, 0x24, 0x0D);             //I2C_MST_CTRL  -- MULT_MST_EN=0 ; WAIT_FOR_ES=0 ; SLV_3_FIFO_EN=0 ; I2C_MST_P_NSR=0 ; I2C_MST_CLK=13 (I2C slave speed bus = 400kHz)
+		I2C_writeByte(devAddr, 0x25, 0x80|MAG_ADDRESS); //I2C_SLV0_ADDR -- I2C_SLV4_RW=1 (read operation) ; I2C_SLV4_ADDR=MAG_ADDRESS
+		I2C_writeByte(devAddr, 0x26, MAG_DATA_REGISTER);//I2C_SLV0_REG  -- 6 data bytes of MAG are stored in 6 registers. First register address is MAG_DATA_REGISTER
+		I2C_writeByte(devAddr, 0x27, 0x86);             //I2C_SLV0_CTRL -- I2C_SLV0_EN=1 ; I2C_SLV0_BYTE_SW=0 ; I2C_SLV0_REG_DIS=0 ; I2C_SLV0_GRP=0 ; I2C_SLV0_LEN=3 (3x2 bytes)
+#else
+		MPU6050_setI2CBypassEnabled(true);
+		MPU6050_setI2CMasterModeEnabled(false);
+#endif
+	}
 
 	return connect;
 }
 bool MPU6050_testConnection() 
 {
-	return MPU6050_getDeviceID() == 0x34;
+	return MPU6050_getDeviceID() == 0x3c;
 }
