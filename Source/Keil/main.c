@@ -86,8 +86,8 @@ void setup()
 //	printf("\n\nCPU @ %dHz\n", SystemCoreClock);
 	
 }
-
-
+int16_t AccX = 0, AccY = 0, AccZ = 0;
+int16_t RotationX = 0, RotationY = 0, RotationZ = 0;
 void loop()
 {
 		static uint32_t nextTick = 0;
@@ -103,6 +103,11 @@ void loop()
 		if(getTickCount()%10 == 0)
 		{
 			//读取姿态传感器数据
+			MPU6050_getAcceleration(&AccX, &AccY, &AccZ);
+			MPU6050_getRotation(&RotationX, &RotationY, &RotationZ);
+			
+			
+			
 			//读取欧拉角
 			
 			//PID二环角速度
@@ -139,6 +144,15 @@ void loop()
 			
 			//故障保护
 		}
+		
+		//1HZ
+		if(getTickCount()%1000 == 0)
+		{
+			printf("MPU6050_getAcceleration  x=%d, y=%d, z=%d \n",AccX, AccY, AccZ);
+			printf("MPU6050_getRotation  x=%d, y=%d, z=%d \n",RotationX, RotationY, RotationZ);
+			printf("\n");
+		}
+
 	
 }
 

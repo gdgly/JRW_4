@@ -260,6 +260,11 @@ void MPU6050_ADDR(uint8_t address) {
     devAddr = address;
 }
 
+bool MPU6050_testConnection() 
+{
+	return MPU6050_getDeviceID() == (MPU6880_ID>>1);
+}
+
 bool MPU6050_initialize() {
 	bool connect;
 	MPU6050_ADDR(MPU6050_DEFAULT_ADDRESS);
@@ -292,7 +297,4 @@ bool MPU6050_initialize() {
 
 	return connect;
 }
-bool MPU6050_testConnection() 
-{
-	return MPU6050_getDeviceID() == 0x3c;
-}
+

@@ -45,6 +45,8 @@ THE SOFTWARE.
 #define MPU6050_ADDRESS_AD0_HIGH    0x69 // address pin high (VCC)
 #define MPU6050_DEFAULT_ADDRESS     MPU6050_ADDRESS_AD0_LOW
 
+#define MPU6880_ID 0x78
+
 #define MPU6050_RA_XG_OFFS_TC       0x00 //[7] PWR_MODE, [6:1] XG_OFFS_TC, [0] OTP_BNK_VLD
 #define MPU6050_RA_YG_OFFS_TC       0x01 //[7] PWR_MODE, [6:1] YG_OFFS_TC, [0] OTP_BNK_VLD
 #define MPU6050_RA_ZG_OFFS_TC       0x02 //[7] PWR_MODE, [6:1] ZG_OFFS_TC, [0] OTP_BNK_VLD
@@ -806,5 +808,4 @@ int16_t MPU6050_getTemperature(void);
 bool MPU6050_initialize(void);
 void MPU6050_getAcceleration(int16_t* x, int16_t* y, int16_t* z);
 void MPU6050_getRotation(int16_t* x, int16_t* y, int16_t* z);
-bool MPU6050_testConnection(void);
 #endif /* _MPU6050_H_ */

@@ -20,9 +20,9 @@
 #include "NVT_I2C.h"
 
 
-#define BusError    1
-#define ArbitLoss   2
-#define TimeOut     4
+//#define BusError    1
+//#define ArbitLoss   2
+//#define TimeOut     4
 /*---------------------------------------------------------------------------------------------------------*/
 /* Global variables                                                                                        */
 /*---------------------------------------------------------------------------------------------------------*/
@@ -37,12 +37,12 @@ uint8_t RxLen0;
 uint8_t ContinueLen;
 volatile uint8_t EndFlag0 = 0;
 volatile uint8_t ErrorFlag = 0;
-uint8_t  Addr1[3] = {0};
-uint8_t  DataLen1;
-uint8_t  Slave_Buff1[32] = {0};
-uint16_t Slave_Buff_Addr1;
-extern void DelayUsec(unsigned int usec);
-extern void DelayMsec(unsigned int usec);
+//uint8_t  Addr1[3] = {0};
+//uint8_t  DataLen1;
+//uint8_t  Slave_Buff1[32] = {0};
+//uint16_t Slave_Buff_Addr1;
+//extern void DelayUsec(unsigned int usec);
+//extern void DelayMsec(unsigned int usec);
 
 typedef void (*I2C_FUNC)(uint32_t u32Status);
 static volatile I2C_FUNC s_I2C0HandlerFn = NULL;
@@ -95,94 +95,94 @@ void I2C_IRQHandler(void)
 /*---------------------------------------------------------------------------------------------------------*/
 /*  I2C0 (Master) Rx Callback Function                                                                     */
 /*---------------------------------------------------------------------------------------------------------*/
-void I2C_Callback_Rx(uint32_t status)
-{
-    if (status == 0x08)                     /* START has been transmitted and prepare SLA+W */
-    {
-#ifdef M451
-        I2C_SET_DATA(I2C_PORT, Device_W_Addr << 1);    /* Write SLA+W to Register I2CDAT */
-        I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-        I2C_SET_DATA(I2C, Device_W_Addr << 1);     /* Write SLA+W to Register I2CDAT */
-        I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-    }   
-    else if (status == 0x18)                /* SLA+W has been transmitted and ACK has been received */
-    {
-#ifdef M451
-			I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-      I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
-      I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-    }
-    else if (status == 0x20)                /* SLA+W has been transmitted and NACK has been received */
-    {
-#ifdef M451
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STA_STO_SI);
-#else
-      I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
-#endif
-    }
-    else if (status == 0x28)                /* DATA has been transmitted and ACK has been received */
-    {
-        if (DataLen0 != 2)
-        {
-#ifdef M451
-          I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
-          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-          I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
-          I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-        }
-        else
-        {
-#ifdef M451
-          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STA_SI);
-#else
-          I2C_SET_CONTROL_REG(I2C, I2C_STA | I2C_SI);
-#endif
-        }
-    }
-    else if (status == 0x10)                /* Repeat START has been transmitted and prepare SLA+R */
-    {
-#ifdef M451
-      I2C_SET_DATA(I2C_PORT, ((Device_W_Addr << 1) | 0x01));   /* Write SLA+R to Register I2CDAT */
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-      I2C_SET_DATA(I2C, ((Device_W_Addr << 1) | 0x01));   /* Write SLA+R to Register I2CDAT */
-      I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-    }
-    else if (status == 0x40)                /* SLA+R has been transmitted and ACK has been received */
-    {
-#ifdef M451
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-      I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-    }
-    else if (status == 0x58)                /* DATA has been received and NACK has been returned */
-    {
-#ifdef M451
-      Rx_Data0[RxLen0++] = (unsigned char) I2C_GET_DATA(I2C_PORT);
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STO_SI);
-#else
-      //Rx_Data0[0] = DrvI2C_ReadData(I2C_PORT);
-      //DrvI2C_Ctrl(I2C_PORT, 0, 1, 1, 0);
-      EndFlag0 = 1;
-			Rx_Data0[RxLen0++] = I2C_GET_DATA(I2C);
-      I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
-      //g_u8EndFlag = 1;
-#endif 
-    }
-    else
-    {
-        printf("Status 0x%x is NOT processed\n", status);
-    }
-}
+//void I2C_Callback_Rx(uint32_t status)
+//{
+//    if (status == 0x08)                     /* START has been transmitted and prepare SLA+W */
+//    {
+//#ifdef M451
+//        I2C_SET_DATA(I2C_PORT, Device_W_Addr << 1);    /* Write SLA+W to Register I2CDAT */
+//        I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//        I2C_SET_DATA(I2C, Device_W_Addr << 1);     /* Write SLA+W to Register I2CDAT */
+//        I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//    }   
+//    else if (status == 0x18)                /* SLA+W has been transmitted and ACK has been received */
+//    {
+//#ifdef M451
+//			I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//      I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
+//      I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//    }
+//    else if (status == 0x20)                /* SLA+W has been transmitted and NACK has been received */
+//    {
+//#ifdef M451
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STA_STO_SI);
+//#else
+//      I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
+//#endif
+//    }
+//    else if (status == 0x28)                /* DATA has been transmitted and ACK has been received */
+//    {
+//        if (DataLen0 != 2)
+//        {
+//#ifdef M451
+//          I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
+//          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//          I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
+//          I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//        }
+//        else
+//        {
+//#ifdef M451
+//          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STA_SI);
+//#else
+//          I2C_SET_CONTROL_REG(I2C, I2C_STA | I2C_SI);
+//#endif
+//        }
+//    }
+//    else if (status == 0x10)                /* Repeat START has been transmitted and prepare SLA+R */
+//    {
+//#ifdef M451
+//      I2C_SET_DATA(I2C_PORT, ((Device_W_Addr << 1) | 0x01));   /* Write SLA+R to Register I2CDAT */
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//      I2C_SET_DATA(I2C, ((Device_W_Addr << 1) | 0x01));   /* Write SLA+R to Register I2CDAT */
+//      I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//    }
+//    else if (status == 0x40)                /* SLA+R has been transmitted and ACK has been received */
+//    {
+//#ifdef M451
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//      I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//    }
+//    else if (status == 0x58)                /* DATA has been received and NACK has been returned */
+//    {
+//#ifdef M451
+//      Rx_Data0[RxLen0++] = (unsigned char) I2C_GET_DATA(I2C_PORT);
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STO_SI);
+//#else
+//      //Rx_Data0[0] = DrvI2C_ReadData(I2C_PORT);
+//      //DrvI2C_Ctrl(I2C_PORT, 0, 1, 1, 0);
+//      EndFlag0 = 1;
+//			Rx_Data0[RxLen0++] = I2C_GET_DATA(I2C);
+//      I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
+//      //g_u8EndFlag = 1;
+//#endif 
+//    }
+//    else
+//    {
+//        printf("Status 0x%x is NOT processed\n", status);
+//    }
+//}
 
 void I2C_Callback_Rx_Continue(uint32_t status)
 {
@@ -249,64 +249,64 @@ void I2C_Callback_Rx_Continue(uint32_t status)
 /*---------------------------------------------------------------------------------------------------------*/
 /*  I2C0 (Master) Tx Callback Function                                                                     */
 /*---------------------------------------------------------------------------------------------------------*/
-void I2C_Callback_Tx(uint32_t status)
-{
-    if (status == 0x08)                     /* START has been transmitted */
-    {
-#ifdef M451
-      I2C_SET_DATA(I2C_PORT, Device_W_Addr << 1);    /* Write SLA+W to Register I2CDAT */
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-      I2C_SET_DATA(I2C, Device_W_Addr << 1);     /* Write SLA+W to Register I2CDAT */
-      I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-    }   
-    else if (status == 0x18)                /* SLA+W has been transmitted and ACK has been received */
-    {
-#ifdef M451
-      I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-      I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
-        I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-    }
-    else if (status == 0x20)                /* SLA+W has been transmitted and NACK has been received */
-    {
-#ifdef M451
-      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STA_STO_SI);
-#else
-      I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
-#endif
-    }   
-    else if (status == 0x28)                /* DATA has been transmitted and ACK has been received */
-    {
-        if (DataLen0 != 3)
-        {
-#ifdef M451
-          I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
-          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
-#else
-          I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
-          I2C_SET_CONTROL_REG(I2C, I2C_SI);
-#endif
-        }
-        else
-        {
-#ifdef M451
-          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STO_SI);
-#else
-          I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
-            //g_u8EndFlag = 1;
-#endif 
-          EndFlag0 = 1;
-        }       
-    }
-    else
-    {
-        printf("Status 0x%x is NOT processed\n", status);
-    }       
-}
+//void I2C_Callback_Tx(uint32_t status)
+//{
+//    if (status == 0x08)                     /* START has been transmitted */
+//    {
+//#ifdef M451
+//      I2C_SET_DATA(I2C_PORT, Device_W_Addr << 1);    /* Write SLA+W to Register I2CDAT */
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//      I2C_SET_DATA(I2C, Device_W_Addr << 1);     /* Write SLA+W to Register I2CDAT */
+//      I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//    }   
+//    else if (status == 0x18)                /* SLA+W has been transmitted and ACK has been received */
+//    {
+//#ifdef M451
+//      I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//      I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
+//        I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//    }
+//    else if (status == 0x20)                /* SLA+W has been transmitted and NACK has been received */
+//    {
+//#ifdef M451
+//      I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STA_STO_SI);
+//#else
+//      I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
+//#endif
+//    }   
+//    else if (status == 0x28)                /* DATA has been transmitted and ACK has been received */
+//    {
+//        if (DataLen0 != 3)
+//        {
+//#ifdef M451
+//          I2C_SET_DATA(I2C_PORT, Tx_Data0[DataLen0++]);
+//          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_SI);
+//#else
+//          I2C_SET_DATA(I2C, Tx_Data0[DataLen0++]);
+//          I2C_SET_CONTROL_REG(I2C, I2C_SI);
+//#endif
+//        }
+//        else
+//        {
+//#ifdef M451
+//          I2C_SET_CONTROL_REG(I2C_PORT, I2C_CTL_STO_SI);
+//#else
+//          I2C_SET_CONTROL_REG(I2C, I2C_STO | I2C_SI);
+//            //g_u8EndFlag = 1;
+//#endif 
+//          EndFlag0 = 1;
+//        }       
+//    }
+//    else
+//    {
+//        printf("Status 0x%x is NOT processed\n", status);
+//    }       
+//}
 
 void I2C_Callback_Tx_Continue(uint32_t status)
 {
@@ -413,8 +413,7 @@ uint8_t NVT_ReadByteContinue_addr8(uint8_t address,uint8_t* data, uint8_t len, u
 
 void NVT_I2C_Init()
 {
-	
-	CLK_SetModuleClock(I2C_MODULE, 0, 0);
+	  CLK_SetModuleClock(I2C_MODULE, 0, 0);
 		CLK_EnableModuleClock(I2C_MODULE);
 	
 	/* Set P3.4 and P3.5 for I2C SDA and SCL */
