@@ -427,11 +427,6 @@ void NVT_I2C_Init()
 //    /* Get I2C Bus Clock */
     printf("I2C clock %d Hz\n", I2C_GetBusClockFreq(I2C));
 
-    /* Set I2C 4 Slave Addresses */
-//    I2C_SetSlaveAddr(I2C, 0, 0x15, 0);   /* Slave Address : 0x15 */
-//    I2C_SetSlaveAddr(I2C, 1, 0x35, 0);   /* Slave Address : 0x35 */
-//    I2C_SetSlaveAddr(I2C, 2, 0x55, 0);   /* Slave Address : 0x55 */
-//    I2C_SetSlaveAddr(I2C, 3, 0x75, 0);   /* Slave Address : 0x75 */
 
     I2C_EnableInt(I2C);
     NVIC_EnableIRQ(I2C_IRQn);

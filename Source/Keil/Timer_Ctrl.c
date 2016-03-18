@@ -28,7 +28,15 @@ int getTickCount(void)
 	return tick_counter;
 }
 
-void IncFrameCount(int inc)
+void DelayMsec(uint8_t time)
+{
+	static uint8_t currentTime = 0;
+	currentTime = tick_counter;
+	while(tick_counter <= (currentTime + time));
+	
+}
+
+void IncFrameCount(uint8_t inc)
 {
 	frame_counter+=inc;
 }

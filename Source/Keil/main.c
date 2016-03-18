@@ -73,12 +73,12 @@ void setup()
 	//初始化LED
 	LED_Init();
 	
+	//初始化SENSOR
+	MPU6050_initialize();
+	
 	//初始化自稳定
 	
 	//初始化AHRS算法
-	
-	//初始化SENSOR
-	MPU6050_initialize();
 	
 	//初始化电机
 	Motor_Init();
@@ -99,7 +99,7 @@ void loop()
 			
 		//读取遥控数据
 	
-		//每100Hz，10ms一次
+		//100Hz，每10ms一次
 		if(getTickCount()%10 == 0)
 		{
 			//读取姿态传感器数据
@@ -114,7 +114,7 @@ void loop()
 			
 		}
 
-		//每50HZ，20ms一次
+		//每50HZ，每20ms一次
 		if(getTickCount()%20 == 0)
 		{
 			//处理遥控数据
@@ -123,9 +123,9 @@ void loop()
 		}
 		
   
-		//10HZ，100ms一次
+		//10HZ，每100ms一次
 		//if(getTickCount()%100 == 0)
-		//2HZ，100ms一次
+		//2HZ，每500ms一次
 		if(getTickCount()%500 == 0)
 		{
 			//检查电池电量

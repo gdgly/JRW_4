@@ -29,7 +29,7 @@ void UpdateLED()
 	#ifdef NuTiny
 		P36 = ledStatus;        // For NuTiny-SDK-Mini51L
 	#else
-		P26 = 0;
+		P26 = ledStatus;
 	#endif
 	
 //	PWM_ConfigOutputChannel(PWM, 0, 100, ledLightLevel);

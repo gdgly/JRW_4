@@ -266,9 +266,10 @@ bool MPU6050_initialize() {
 	connect = MPU6050_testConnection();
 	printf("mpu6050 connect result = %d \n", connect);
 	
-	if(connect) {
+	if(connect) 
+		{
 		MPU6050_reset();
-		//DelayMsec(4);
+		DelayMsec(4);
 		MPU6050_setSleepEnabled(false); 
 		MPU6050_setClockSource(MPU6050_CLOCK_PLL_XGYRO);
 		MPU6050_setFullScaleGyroRange(MPU6050_GYRO_FS_2000);

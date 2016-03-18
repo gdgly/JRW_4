@@ -11,6 +11,8 @@ int getTickCount(void);
 
 uint32_t GetFrameCount(void);
 
-void IncFrameCount(int inc);
+void IncFrameCount(uint8_t inc);
+
+void DelayMsec(uint8_t time);	//ÑÓ³Ù£¬µ¥Î»ms
 
 #endif
