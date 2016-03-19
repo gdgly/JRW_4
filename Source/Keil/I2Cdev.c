@@ -172,5 +172,5 @@ bool I2C_writeBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint16_t da
 
 bool I2C_writeBitsW(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint16_t data) 
 {
-	return FALSE;
+	return false;
 }

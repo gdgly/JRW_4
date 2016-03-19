@@ -25,6 +25,6 @@
 
 #define SYSTEM_TICK_FREQ 1000 /*1K*/
 
-#define DATA_Flash_Start_ADD        0x3000
+#define DATA_Flash_Start_ADD        0x3c00	//1K¿Õ¼ä
 
 #endif //DEF_H

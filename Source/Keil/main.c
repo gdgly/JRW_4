@@ -9,7 +9,9 @@
  * Copyright (C) 
 *****************************************************************************/
 #include <stdio.h>
+#ifdef M451
 #include "Mini51Series.h"
+#endif
 
 #include "def.h"
 #include "ConfigTable.h"
@@ -107,8 +109,8 @@ void loop()
 			MPU6050_getRotation(&RotationX, &RotationY, &RotationZ);
 			
 			
-			
 			//读取欧拉角
+			
 			
 			//PID二环角速度
 			CtrlAttiRate();
