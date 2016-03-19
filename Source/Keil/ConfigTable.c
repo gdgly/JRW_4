@@ -75,7 +75,7 @@ config_table_t table;
 uint8_t  isFlashValid(void)
 {
 	DATA_FLASH_Read(TABLE_ADDRESS,(int32_t*)(&table),1);
-	printf("table.version = %f\n",table.version);
+	//printf("table.version = %dw\n",table.version);
 	if(table.version==Flash_DEFAULT_VERSION)
 			return 1;
 	else
