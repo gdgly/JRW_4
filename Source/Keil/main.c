@@ -10,7 +10,7 @@
 *****************************************************************************/
 #include <stdio.h>
 #ifdef M451
-#include "Mini51Series.h"
+	#include "Mini51Series.h"
 #endif
 
 #include "def.h"
@@ -93,8 +93,8 @@ int16_t RotationX = 0, RotationY = 0, RotationZ = 0;
 void loop()
 {
 		static uint32_t nextTick = 0;
-		while(getTickCount()<nextTick){};
-		nextTick = getTickCount()+TICK_FRAME_PERIOD;	//循环间隔frame，每个frame耗时1ms
+		while(millis()<nextTick){};
+		nextTick = millis()+TICK_FRAME_PERIOD;	//循环间隔frame，每个frame耗时1ms
 	
 		//读取蓝牙数据
 		CommandProcess();
@@ -102,7 +102,7 @@ void loop()
 		//读取遥控数据
 	
 		//100Hz，每10ms一次
-		if(getTickCount()%10 == 0)
+		if(millis()%10 == 0)
 		{
 			//读取姿态传感器数据
 			MPU6050_getAcceleration(&AccX, &AccY, &AccZ);
@@ -122,7 +122,7 @@ void loop()
 		}
 
 		//每50HZ，每20ms一次
-		if(getTickCount()%20 == 0)
+		if(millis()%20 == 0)
 		{
 			//处理遥控数据
 			//PID一环角度控制
@@ -132,8 +132,9 @@ void loop()
   
 		//10HZ，每100ms一次
 		//if(getTickCount()%100 == 0)
+		
 		//2HZ，每500ms一次
-		if(getTickCount()%500 == 0)
+		if(millis()%500 == 0)
 		{
 			//检查电池电量
 			BatteryCheck();
@@ -148,7 +149,7 @@ void loop()
 		}
 		
 		//1HZ
-		if(getTickCount()%1000 == 0)
+		if(millis()%1000 == 0)
 		{
 			printf("MPU6050_getAcceleration  x=%d, y=%d, z=%d \n",AccX, AccY, AccZ);
 			printf("MPU6050_getRotation  x=%d, y=%d, z=%d \n",RotationX, RotationY, RotationZ);

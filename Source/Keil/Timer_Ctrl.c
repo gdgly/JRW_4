@@ -23,10 +23,11 @@ void setup_system_tick(uint32_t sampleRate)
 
 }
 
-int getTickCount(void)
+uint32_t millis(void)	//返回系统时间，单位 ：毫秒
 {
 	return tick_counter;
 }
+
 
 void DelayMsec(uint8_t time)
 {

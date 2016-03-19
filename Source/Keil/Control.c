@@ -17,8 +17,8 @@ void CtrlAttiAng(void)
 		float yawRateTarget=0;
 		float angTarget[3]={0};
 		float dt=0,t=0;
-		//t=micros();
-		t = getTickCount();
+//		t=micros();
+		//t = millis();
 		dt=(tPrev>0)?(t-tPrev):0;
 		tPrev=t;
 		
@@ -63,8 +63,8 @@ void CtrlAttiRate(void)
 	static uint32_t tPrev=0; 
 
 	float dt=0,t=0;
-	//t=micros();
-	t = getTickCount();
+//	t=micros();
+	//t = getTickCount();
 	dt=(tPrev>0)?(t-tPrev):0;
 	tPrev=t;
 		

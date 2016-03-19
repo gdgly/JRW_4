@@ -101,36 +101,36 @@ void DATA_FLASH_Read(uint32_t ReadAddr,int32_t *pBuffer,uint8_t NumToRead)
 	
 }
 
-int32_t float2dw(float f)
-{
-	int32_t* pdw;
+//int32_t float2dw(float f)
+//{
+//	int32_t* pdw;
 
-	pdw = (int32_t*)&f;
-	return *pdw;
-}
-float dw2float(int32_t dw)
-{
-	float* pf;
+//	pdw = (int32_t*)&f;
+//	return *pdw;
+//}
+//float dw2float(int32_t dw)
+//{
+//	float* pf;
 
-	pf = (float*)&dw;
-	return *pf;
-}
-int32_t i162dw(int16_t i16)
-{
-	int32_t* pdw;
-	int32_t i32;
-	i32 = i16;
+//	pf = (float*)&dw;
+//	return *pf;
+//}
+//int32_t i162dw(int16_t i16)
+//{
+//	int32_t* pdw;
+//	int32_t i32;
+//	i32 = i16;
 
-	pdw = (int32_t*)&i32;
-	return *pdw;
-}
-int16_t dw2i16(int32_t dw)
-{
-	int16_t* pi16;
-	int16_t i16;
-	
-	i16 = dw;
-	pi16 = (int16_t*)&i16;
-	return *pi16;
-}
+//	pdw = (int32_t*)&i32;
+//	return *pdw;
+//}
+//int16_t dw2i16(int32_t dw)
+//{
+//	int16_t* pi16;
+//	int16_t i16;
+//	
+//	i16 = dw;
+//	pi16 = (int16_t*)&i16;
+//	return *pi16;
+//}
 
