@@ -14,6 +14,6 @@ uint32_t GetFrameCount(void);
 
 void IncFrameCount(uint8_t inc);
 
-void DelayMsec(uint8_t time);	//ÑÓ³Ù£¬µ¥Î»ms
+void DelayMsec(uint16_t time);
 
 #endif

@@ -2,7 +2,7 @@
 #include "mini51series.h"
 #include "MPU6050.h"
 #include "filter.h"
-//#include "Timer_Ctrl.h"
+#include "Timer_Ctrl.h"
 
 
 #define CONSTANTS_ONE_G					9.80665f		/* m/s^2		*/
@@ -18,7 +18,7 @@ void ReadIMUSensorHandle(void)
 {
 	uint8_t i;
 		//read raw
-
+		
 		MPU6050_getAcceleration(&imu.accADC[0], &imu.accADC[1], &imu.accADC[2]);
 		MPU6050_getRotation(&imu.gyroADC[0], &imu.gyroADC[1], &imu.gyroADC[2]);
 	
@@ -32,15 +32,15 @@ void ReadIMUSensorHandle(void)
 		imu.accb[0]=LPF2pApply_1(imu.accRaw[0]-imu.accOffset[0]);
 		imu.accb[1]=LPF2pApply_2(imu.accRaw[1]-imu.accOffset[1]);
 		imu.accb[2]=LPF2pApply_3(imu.accRaw[2]-imu.accOffset[2]);
-//		#ifdef IMU_SW
+		#ifdef IMU_SW
 		imu.gyro[0]=LPF2pApply_4(imu.gyroRaw[0]);
 		imu.gyro[1]=LPF2pApply_5(imu.gyroRaw[1]);
 		imu.gyro[2]=LPF2pApply_6(imu.gyroRaw[2]); 
-//		#else
-//		imu.gyro[0]=LPF2pApply_4(imu.gyroRaw[0]-imu.gyroOffset[0]);
-//		imu.gyro[1]=LPF2pApply_5(imu.gyroRaw[1]-imu.gyroOffset[1]);
-//		imu.gyro[2]=LPF2pApply_6(imu.gyroRaw[2]-imu.gyroOffset[2]); 
-//		#endif
+		#else
+		imu.gyro[0]=LPF2pApply_4(imu.gyroRaw[0]-imu.gyroOffset[0]);
+		imu.gyro[1]=LPF2pApply_5(imu.gyroRaw[1]-imu.gyroOffset[1]);
+		imu.gyro[2]=LPF2pApply_6(imu.gyroRaw[2]-imu.gyroOffset[2]); 
+		#endif
 		//low pass filter.  inertial or digital . tobe tested
 		/*
 		for(i=0;i<2;i++)	//tobe fixed to digital filter

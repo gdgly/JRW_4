@@ -48,7 +48,7 @@
           <OutputName>MiniFourAxisSource</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\lst\</ListingPath>
@@ -128,7 +128,6 @@
             <RestoreFunctions>1</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <LimitSpeedToRealTime>1</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
           </Simulator>
           <Target>
             <UseTarget>1</UseTarget>
@@ -140,8 +139,8 @@
             <RestoreFunctions>0</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <RestoreTracepoints>0</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-            <UsePdscDebugDescription>1</UsePdscDebugDescription>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreTracepoints>1</RestoreTracepoints>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
           <TargetSelection>9</TargetSelection>
@@ -570,6 +569,11 @@
               <FileType>1</FileType>
               <FilePath>.\I2Cdev.c</FilePath>
             </File>
+            <File>
+              <FileName>DMP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DMP.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -664,6 +668,11 @@
               <FileName>IMUSO3.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\IMUSO3.h</FilePath>
+            </File>
+            <File>
+              <FileName>DMP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\DMP.h</FilePath>
             </File>
           </Files>
         </Group>

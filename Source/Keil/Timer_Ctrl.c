@@ -30,7 +30,7 @@ uint32_t millis(void)	//系统时间，单位毫秒
 }
 
 
-void DelayMsec(uint8_t time)
+void DelayMsec(uint16_t time)
 {
 	static uint8_t currentTime = 0;
 	currentTime = tick_counter;

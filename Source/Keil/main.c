@@ -78,7 +78,9 @@ void setup()
 	
 	//初始化SENSOR
 	#ifdef IMU_SW											//软件姿态解算
+	
 		MPU6050_initialize();
+		DelayMsec(600);			//必须加延迟，否则读取陀螺仪数据出错
 	#else
 		MPU6050_initialize();
 		MPU6050_DMP_Initialize();     //初始化DMP引擎
@@ -92,11 +94,12 @@ void setup()
 	//IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
 	
 //	printf("\n\nCPU @ %dHz\n", SystemCoreClock);
-	
+
 }
 
 void loop()
 {
+	
 		static uint32_t nextTick = 0;
 		while(millis()<nextTick){}
 		nextTick = millis()+TICK_FRAME_PERIOD;	//循环间隔FRAME
@@ -117,8 +120,6 @@ void loop()
 			#else
 			DMP_Routing();	//DMP 线程  所有的数据都在这里更新
 			#endif
-
-			
 			
 			//PID二环角速度
 			CtrlAttiRate();
@@ -150,7 +151,6 @@ void loop()
 			
 			//更新LED灯状态
 			UpdateLED();
-			//printf("\n uart test\n");
 			
 			//故障保护
 			
@@ -158,9 +158,10 @@ void loop()
 		
 		if(GetFrameCount()%1000 == 0)
 		{
+			
 			printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
 			
-			printf("\n");
+			//printf("\n");
 		}
 		
 		IncFrameCount(1);
