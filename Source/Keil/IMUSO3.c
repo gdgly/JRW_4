@@ -238,32 +238,32 @@ void IMUSO3Thread(void)
 	ReadIMUSensorHandle();
 	
 	//校准
-//	if(!imu.ready)
-//	{	
-//		 if(startTime==0)
-//				startTime=now;
-//				
-//			gyro_offsets_sum[0] += imu.gyroRaw[0];
-//			gyro_offsets_sum[1] += imu.gyroRaw[1];
-//			gyro_offsets_sum[2] += imu.gyroRaw[2];
-//			offset_count++;
-//			
-//			if(now > startTime + GYRO_CALC_TIME)
-//			{
-//					imu.gyroOffset[0] = gyro_offsets_sum[0]/offset_count;
-//					imu.gyroOffset[1] = gyro_offsets_sum[1]/offset_count;
-//					imu.gyroOffset[2] = gyro_offsets_sum[2]/offset_count;
-//					
-//					offset_count=0;
-//					gyro_offsets_sum[0]=0;gyro_offsets_sum[1]=0;gyro_offsets_sum[2]=0;
-//					
-//					imu.ready = 1;
-//					startTime=0;
-//					
-//			}
-//			return;
-//	}
-//	
+	if(!imu.ready)
+	{	
+		 if(startTime==0)
+				startTime=now;
+				
+			gyro_offsets_sum[0] += imu.gyroRaw[0];
+			gyro_offsets_sum[1] += imu.gyroRaw[1];
+			gyro_offsets_sum[2] += imu.gyroRaw[2];
+			offset_count++;
+			
+			if(now > startTime + GYRO_CALC_TIME)
+			{
+					imu.gyroOffset[0] = gyro_offsets_sum[0]/offset_count;
+					imu.gyroOffset[1] = gyro_offsets_sum[1]/offset_count;
+					imu.gyroOffset[2] = gyro_offsets_sum[2]/offset_count;
+					
+					offset_count=0;
+					gyro_offsets_sum[0]=0;gyro_offsets_sum[1]=0;gyro_offsets_sum[2]=0;
+					
+					imu.ready = 1;
+					startTime=0;
+					
+			}
+			return;
+	}
+	
 
 	gyro[0] = imu.gyro[0] - imu.gyroOffset[0];
 	gyro[1] = imu.gyro[1] - imu.gyroOffset[1];

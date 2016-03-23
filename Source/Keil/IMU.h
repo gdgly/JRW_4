@@ -5,7 +5,9 @@
 
 #define M_PI_F 3.1415926
 
-
+//校准时间
+#define ACC_CALC_TIME  3000//ms
+#define GYRO_CALC_TIME   3000	//ms
 
 typedef struct IMU_tt
 {
