@@ -27,7 +27,7 @@
 #include "MPU6050.h"
 #include "IMUSO3.h"
 #include "IMU.h"
-#include "DMP.h"
+//#include "DMP.h"
 
 void setupSystemClock(void)
 {
@@ -102,12 +102,11 @@ void loop()
 		nextTick = millis()+TICK_FRAME_PERIOD;	//循环间隔FRAME
 	
 		//处理蓝牙命令
-		CommandProcess();
+		//CommandProcess();
 			
 		//读取遥控命令
 	
-		//100Hz，每10m一次
-		if(millis()%10 == 0)
+		if(GetFrameCount()%10 == 0)
 		{
 			//读取姿态传感器数据
 			
@@ -130,8 +129,7 @@ void loop()
 			
 		}
 
-		//50HZ，每20ms一次
-		if(millis()%20 == 0)
+		if(GetFrameCount()%20 == 0)
 		{
 			//处理遥控数据
 			//PID一环角度控制
@@ -142,8 +140,8 @@ void loop()
 		//10HZ,每100ms一次
 		//if(getTickCount()%100 == 0)
 		
-		//1HZ，每1000ms一次
-		if(millis()%1000 == 0)
+		
+		if(GetFrameCount()%500 == 0)
 		{
 			//检测电池电量
 			BatteryCheck();
@@ -158,15 +156,14 @@ void loop()
 			
 		}
 		
-		//1HZ
-		if(millis()%1000 == 0)
+		if(GetFrameCount()%1000 == 0)
 		{
-			//printf("MPU6050_getAcceleration  x=%d, y=%d, z=%d \n",AccX, AccY, AccZ);
-			//printf("MPU6050_getRotation  x=%d, y=%d, z=%d \n",RotationX, RotationY, RotationZ);
-			//printf("%f,%f,%f\n", imu.yaw, imu.roll, imu.pitch);
-			//printf("\n");
+			printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
+			
+			printf("\n");
 		}
-
+		
+		IncFrameCount(1);
 }
 
 

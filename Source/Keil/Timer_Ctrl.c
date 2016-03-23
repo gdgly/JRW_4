@@ -1,6 +1,7 @@
 #include "Timer_Ctrl.h"
 
 volatile uint32_t tick_counter = 0;
+
 uint32_t frame_counter = 0;
 
 void SysTick_Handler(void)	//每1ms一次
