@@ -25,6 +25,8 @@
 
 #define SYSTEM_TICK_FREQ 1000 /*1K*/
 
-#define DATA_Flash_Start_ADD        0x3c00	//1K�ռ�
+#define DATA_Flash_Start_ADD 0x3C00 	//1K 数据空间
+	
+#define IMU_SW	//软件姿态解算
 
 #endif //DEF_H

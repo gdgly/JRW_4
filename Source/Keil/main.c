@@ -9,9 +9,9 @@
  * Copyright (C) 
 *****************************************************************************/
 #include <stdio.h>
-#ifdef M451
-	#include "Mini51Series.h"
-#endif
+
+#include "Mini51Series.h"
+
 
 #include "def.h"
 #include "ConfigTable.h"
@@ -25,8 +25,9 @@
 #include "Control.h"
 #include "I2CDev.h"
 #include "MPU6050.h"
-
-
+#include "IMUSO3.h"
+#include "IMU.h"
+#include "DMP.h"
 
 void setupSystemClock(void)
 {
@@ -50,113 +51,122 @@ void setupSystemClock(void)
 
 void setup()
 {
-	//³õÊ¼»¯ÏµÍ³Ê±ÖÓ
+	//åˆå§‹åŒ–ç³»ç»Ÿæ—¶é’Ÿ
 	setupSystemClock();
 	
-	//³õÊ¼»¯´®¿Ú
+	//åˆå§‹åŒ–ä¸²å£
 	setupUART();
 	UART_NVIC_INIT();
 
-	//³õÊ¼»¯SystemTick
+	//åˆå§‹åŒ–System_tick
 	setup_system_tick(SYSTEM_TICK_FREQ);
 	
-	//³õÊ¼»¯IIC
+	//åˆå§‹åŒ–IIC
 	I2C_Init();
 	
-	//³õÊ¼»¯FLASH
+	//åˆå§‹åŒ–FLASH
 	FlashInit();
 	LoadParamsFromFlash();
 	
-	//³õÊ¼»¯BATTERY_DETECT
+	//åˆå§‹åŒ–ä½ç”µå‹æ£€æµ‹
 	BatteryCheckInit();
 	
-	//³õÊ¼»¯Ò£¿Ø
+	//åˆå§‹åŒ–é¥æ§
 	
-	//³õÊ¼»¯LED
+	//åˆå§‹åŒ–LED
 	LED_Init();
 	
-	//³õÊ¼»¯SENSOR
-	MPU6050_initialize();
+	//åˆå§‹åŒ–SENSOR
+	#ifdef IMU_SW											//è½¯ä»¶å§¿æ€è§£ç®—
+		MPU6050_initialize();
+	#else
+		MPU6050_initialize();
+		MPU6050_DMP_Initialize();     //åˆå§‹åŒ–DMPå¼•æ“
+	#endif
 	
-	//³õÊ¼»¯×ÔÎÈ¶¨
+	//åˆå§‹åŒ–è‡ªç¨³å®š
 	
-	//³õÊ¼»¯AHRSËã·¨
+	//åˆå§‹åŒ–ç”µæœº
+	//Motor_Init();
 	
-	//³õÊ¼»¯µç»ú
-	Motor_Init();
+	//IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
 	
 //	printf("\n\nCPU @ %dHz\n", SystemCoreClock);
 	
 }
-int16_t AccX = 0, AccY = 0, AccZ = 0;
-int16_t RotationX = 0, RotationY = 0, RotationZ = 0;
+
 void loop()
 {
 		static uint32_t nextTick = 0;
-		while(millis()<nextTick){};
-		nextTick = millis()+TICK_FRAME_PERIOD;	//Ñ­»·¼ä¸ôframe£¬Ã¿¸öframeºÄÊ±1ms
+		while(millis()<nextTick){}
+		nextTick = millis()+TICK_FRAME_PERIOD;	//å¾ªç¯é—´éš”FRAME
 	
-		//¶ÁÈ¡À¶ÑÀÊı¾İ
+		//å¤„ç†è“ç‰™å‘½ä»¤
 		CommandProcess();
 			
-		//¶ÁÈ¡Ò£¿ØÊı¾İ
+		//è¯»å–é¥æ§å‘½ä»¤
 	
-		//100Hz£¬Ã¿10msÒ»´Î
+		//100Hzï¼Œæ¯10mä¸€æ¬¡
 		if(millis()%10 == 0)
 		{
-			//¶ÁÈ¡×ËÌ¬´«¸ĞÆ÷Êı¾İ
-			MPU6050_getAcceleration(&AccX, &AccY, &AccZ);
-			MPU6050_getRotation(&RotationX, &RotationY, &RotationZ);
+			//è¯»å–å§¿æ€ä¼ æ„Ÿå™¨æ•°æ®
 			
 			
-			//¶ÁÈ¡Å·À­½Ç
+			//è¯»å–æ¬§æ‹‰è§’
+			#ifdef IMU_SW											//è½¯ä»¶å§¿æ€è§£ç®—
+			IMUSO3Thread();
+			#else
+			DMP_Routing();	//DMP çº¿ç¨‹  æ‰€æœ‰çš„æ•°æ®éƒ½åœ¨è¿™é‡Œæ›´æ–°
+			#endif
+
 			
 			
-			//PID¶ş»·½ÇËÙ¶È
+			//PIDäºŒç¯è§’é€Ÿåº¦
 			CtrlAttiRate();
 			
-			//Êä³öµç»ú¿ØÖÆ
+			//è¾“å‡ºç”µæœºæ§åˆ¶
 			//MotorCtrl();
-			MotorPwmOutput(0,0,0,0);
+			//MotorPwmOutput(0,0,0,0);
 			
 		}
 
-		//Ã¿50HZ£¬Ã¿20msÒ»´Î
+		//50HZï¼Œæ¯20msä¸€æ¬¡
 		if(millis()%20 == 0)
 		{
-			//´¦ÀíÒ£¿ØÊı¾İ
-			//PIDÒ»»·½Ç¶È¿ØÖÆ
+			//å¤„ç†é¥æ§æ•°æ®
+			//PIDä¸€ç¯è§’åº¦æ§åˆ¶
 			CtrlAttiAng();
 		}
 		
   
-		//10HZ£¬Ã¿100msÒ»´Î
+		//10HZ,æ¯100msä¸€æ¬¡
 		//if(getTickCount()%100 == 0)
 		
-		//2HZ£¬Ã¿500msÒ»´Î
-		if(millis()%500 == 0)
+		//1HZï¼Œæ¯1000msä¸€æ¬¡
+		if(millis()%1000 == 0)
 		{
-			//¼ì²éµç³ØµçÁ¿
+			//æ£€æµ‹ç”µæ± ç”µé‡
 			BatteryCheck();
 			
-			//Ò£¿ØÍ¨ĞÅ¶ªÊ§´¦Àí
+			//é¥æ§é€šä¿¡ä¸¢å¤±å¤„ç†
 			
-			//¸üĞÂLEDµÆ×´Ì¬
+			//æ›´æ–°LEDç¯çŠ¶æ€
 			UpdateLED();
 			//printf("\n uart test\n");
 			
-			//¹ÊÕÏ±£»¤
+			//æ•…éšœä¿æŠ¤
+			
 		}
 		
 		//1HZ
 		if(millis()%1000 == 0)
 		{
-			printf("MPU6050_getAcceleration  x=%d, y=%d, z=%d \n",AccX, AccY, AccZ);
-			printf("MPU6050_getRotation  x=%d, y=%d, z=%d \n",RotationX, RotationY, RotationZ);
-			printf("\n");
+			//printf("MPU6050_getAcceleration  x=%d, y=%d, z=%d \n",AccX, AccY, AccZ);
+			//printf("MPU6050_getRotation  x=%d, y=%d, z=%d \n",RotationX, RotationY, RotationZ);
+			//printf("%f,%f,%f\n", imu.yaw, imu.roll, imu.pitch);
+			//printf("\n");
 		}
 
-	
 }
 
 

@@ -242,7 +242,7 @@ void I2C_Callback_Rx_Continue(uint32_t status)
     }
     else
     {
-        printf("Status 0x%x is NOT processed\n", status);
+//        printf("Status 0x%x is NOT processed\n", status);
     }           
 }
 
@@ -345,7 +345,7 @@ void I2C_Callback_Tx_Continue(uint32_t status)
     }
     else
     {
-        printf("Status 0x%x is NOT processed\n", status);
+//        printf("Status 0x%x is NOT processed\n", status);
     }       
 }
 
@@ -424,7 +424,7 @@ void NVT_I2C_Init()
     I2C_Open(I2C, 400000);
 
 //    /* Get I2C Bus Clock */
-    printf("I2C clock %d Hz\n", I2C_GetBusClockFreq(I2C));
+//    printf("I2C clock %d Hz\n", I2C_GetBusClockFreq(I2C));
 
 
     I2C_EnableInt(I2C);

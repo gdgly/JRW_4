@@ -237,6 +237,7 @@ void IMUSO3Thread(void)
 	
 	ReadIMUSensorHandle();
 	
+	//校准
 //	if(!imu.ready)
 //	{	
 //		 if(startTime==0)
@@ -301,10 +302,10 @@ void IMUSO3Thread(void)
 		euler[2] = atan2f(Rot_matrix[1], Rot_matrix[0]);	 
 		
 		//DCM . ground to body
-		for(i=0;i<9;i++)
-		{
-				*(&(imu.DCMgb[0][0]) + i)=Rot_matrix[i];
-		}
+//		for(i=0;i<9;i++)
+//		{
+//				*(&(imu.DCMgb[0][0]) + i)=Rot_matrix[i];
+//		}
 		
 		imu.rollRad=euler[0];
 		imu.pitchRad=euler[1];
@@ -313,7 +314,5 @@ void IMUSO3Thread(void)
 		imu.roll=euler[0] * 180.0f / M_PI_F;
 		imu.pitch=euler[1] * 180.0f / M_PI_F;
 		imu.yaw=euler[2] * 180.0f / M_PI_F;
-		
-		
 
 } 

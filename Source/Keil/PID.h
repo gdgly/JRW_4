@@ -2,7 +2,7 @@
 #define PID_H
 #include "stdint.h"
 
-// PID�ṹ
+// PID结构
 typedef struct
 {
     float P;
@@ -22,16 +22,16 @@ typedef struct
 
 
 
-extern PID_Typedef pitch_angle_PID;	  //pitch�ǶȻ�PID
-extern PID_Typedef pitch_rate_PID;		//pitch�����ʻ�PID
+extern PID_Typedef pitch_angle_PID;	  //pitch角度环PID
+extern PID_Typedef pitch_rate_PID;		//pitch角速率环PID
 
-extern PID_Typedef roll_angle_PID;    //roll�ǶȻ�PID
-extern PID_Typedef roll_rate_PID;     //roll�����ʻ�PID
+extern PID_Typedef roll_angle_PID;    //roll角度环PID
+extern PID_Typedef roll_rate_PID;     //roll角速率环PID
 
-extern PID_Typedef yaw_angle_PID;     //yaw�ǶȻ�PID
-extern PID_Typedef yaw_rate_PID;      //yaw�����ʻ�PID  
+extern PID_Typedef yaw_angle_PID;     //yaw角度环PID
+extern PID_Typedef yaw_rate_PID;      //yaw角速率环PID  
 
-//-----------λ��ʽPID-----------
+//-----------位置式PID-----------
 void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT);
  
 #endif

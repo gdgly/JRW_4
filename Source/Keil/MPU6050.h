@@ -45,6 +45,8 @@ THE SOFTWARE.
 #define MPU6050_ADDRESS_AD0_HIGH    0x69 // address pin high (VCC)
 #define MPU6050_DEFAULT_ADDRESS     MPU6050_ADDRESS_AD0_LOW
 
+
+
 #define MPU6880_ID 0x78
 
 #define MPU6050_RA_XG_OFFS_TC       0x00 //[7] PWR_MODE, [6:1] XG_OFFS_TC, [0] OTP_BNK_VLD
@@ -434,7 +436,7 @@ void MPU6050_getMotion6(int16_t* ax, int16_t* ay, int16_t* az, int16_t* gx, int1
     // this block of memory gets written to the MPU on start-up, and it seems
     // to be volatile memory, so it has to be done each time (it only takes ~1
     // second though)
-    const prog_uchar dmpMemory[MPU6050_DMP_CODE_SIZE] PROGMEM = {
+    const unsigned char dmpMemory[MPU6050_DMP_CODE_SIZE] PROGMEM = {
         // bank 0, 256 bytes
         0xFB, 0x00, 0x00, 0x3E, 0x00, 0x0B, 0x00, 0x36, 0x00, 0x01, 0x00, 0x02, 0x00, 0x03, 0x00, 0x00,
         0x00, 0x65, 0x00, 0x54, 0xFF, 0xEF, 0x00, 0x00, 0xFA, 0x80, 0x00, 0x0B, 0x12, 0x82, 0x00, 0x01,
@@ -808,4 +810,55 @@ int16_t MPU6050_getTemperature(void);
 bool MPU6050_initialize(void);
 void MPU6050_getAcceleration(int16_t* x, int16_t* y, int16_t* z);
 void MPU6050_getRotation(int16_t* x, int16_t* y, int16_t* z);
+		
+void MPU6050_reset(void);
+void MPU6050_setSleepEnabled(bool enabled);
+// BANK_SEL register
+void MPU6050_setMemoryBank(uint8_t bank, uint8_t prefetchEnabled, uint8_t userBank);
+// MEM_START_ADDR register
+void MPU6050_setMemoryStartAddress(uint8_t address);
+// MEM_R_W register
+uint8_t MPU6050_readMemoryByte(void);
+		
+uint8_t MPU6050_getOTPBankValid(void);
+
+int8_t MPU6050_getXGyroOffsetTC(void);
+int8_t MPU6050_getYGyroOffsetTC(void);
+int8_t MPU6050_getZGyroOffsetTC(void);
+void MPU6050_setSlaveAddress(uint8_t num, uint8_t address);
+
+void MPU6050_setI2CBypassEnabled(bool enabled);
+void MPU6050_setI2CMasterModeEnabled(bool enabled);
+void MPU6050_resetI2CMaster(void);
+
+uint8_t MPU6050_writeProgMemoryBlock(const uint8_t *data, uint16_t dataSize, 
+																		uint8_t bank, uint8_t address, uint8_t verify);
+
+uint8_t MPU6050_writeProgDMPConfigurationSet(const uint8_t *data, uint16_t dataSize);
+uint8_t MPU6050_writeMemoryBlock(const uint8_t *data, uint16_t dataSize, uint8_t bank, 
+	uint8_t address, uint8_t verify, uint8_t useProgMem);
+void MPU6050_setClockSource(uint8_t source);
+void MPU6050_setIntEnabled(uint8_t enabled);
+void MPU6050_setRate(uint8_t rate);
+void MPU6050_setExternalFrameSync(uint8_t sync);
+void MPU6050_setDLPFMode(uint8_t mode);
+void MPU6050_setFullScaleGyroRange(uint8_t range);
+void MPU6050_setDMPConfig1(uint8_t config);
+void MPU6050_setDMPConfig2(uint8_t config);
+void MPU6050_setOTPBankValid(uint8_t enabled);
+void MPU6050_setXGyroOffsetTC(int8_t offset);
+void MPU6050_setYGyroOffsetTC(int8_t offset);
+void MPU6050_setZGyroOffsetTC(int8_t offset);
+void MPU6050_resetFIFO(void);
+uint16_t MPU6050_getFIFOCount(void);
+void MPU6050_getFIFOBytes(uint8_t *data, uint8_t length);
+void MPU6050_setMotionDetectionThreshold(uint8_t threshold);
+void MPU6050_setZeroMotionDetectionThreshold(uint8_t threshold);
+void MPU6050_setMotionDetectionDuration(uint8_t duration);
+void MPU6050_setZeroMotionDetectionDuration(uint8_t duration);
+void MPU6050_setFIFOEnabled(uint8_t enabled);
+void MPU6050_setDMPEnabled(uint8_t enabled);
+void MPU6050_resetDMP(void);
+uint8_t MPU6050_getIntStatus(void);
+void MPU6050_readMemoryBlock(uint8_t *data, uint16_t dataSize, uint8_t bank, uint8_t address);
 #endif /* _MPU6050_H_ */

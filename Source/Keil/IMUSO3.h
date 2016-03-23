@@ -17,6 +17,7 @@ static float q3q3;
 
 void IMUSO3Thread(void);
 
+
 void NonlinearSO3AHRSupdate(float gx, float gy, float gz, 
 	float ax, float ay, float az, 
 		float mx, float my, float mz, 

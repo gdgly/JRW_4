@@ -126,12 +126,12 @@ void CommandProcess(void)
 				id[0] = g_u8RecData[2];
 				id[1] = g_u8RecData[3];
 				// Reply with synch message
-				printf("@HOOK");
+//				printf("@HOOK");
 				//Serial_write(id, 2);
 			}
 			else if (command == 'v') {//Check Version
 				//CheckVersion();
-				printf("version\n");
+//				printf("version\n");
 			}
 			else if (command == 'c') {// A 'c'calibration command
 				//SensorCalibration();

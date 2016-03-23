@@ -3,7 +3,6 @@
 *
 */
 
-//#include "SysConfig.h"
 #include "imu.h"
 #include "filter.h"
 
