@@ -1,10 +1,10 @@
-//#include <stdio.h>
+
 //#include "Def.h"
 #include "stdio.h"
 #include "UartCtrl.h"
 #include "mini51series.h"
 #include "uart.h"
-
+#include "motor.h"
 
 #include "PID.h"
  
@@ -65,7 +65,7 @@ void UART_HANDLE()
             }
 						if(u8InChar == '\n')
 						{
-							//标志接收完成
+							
 								getUartData = TRUE;
 								g_u32comLength = 0;
 						}
@@ -109,15 +109,17 @@ void UART_IRQHandler(void)
 
 void CommandProcess(void)
 {
+	int command;
+	char mode;
 	// Read incoming control messages
 	//if (Serial_available() >= 2)
 	if(getUartData == TRUE)
 	{
 		char start=g_u8RecData[0];//UART_READ(UART);//Serial_read();
 		if (start == '@') {// Start of new control message
-		
+			printf("@HOOK \n");
 			//int command = UART_READ(UART);//Serial_read(); // Commands
-			int command = g_u8RecData[1];
+			command = g_u8RecData[1];
 			if (command == 'h') {//Hook AHRS Stack Device
 				// Read ID
 				char id[2];
@@ -184,21 +186,29 @@ void CommandProcess(void)
 //					report_format = REPORT_FORMAT_TEXT;
 //				}
 //			}
-//			else if (command == 's') {// 's'tream output control
-//				char mode = GetChar();
-//				if (mode == 's') {// 's'tart stream
-//					stream_mode = STREAM_START;
-//				}
-//				else if (mode == 'p') {// 'p'ause stream
-//					stream_mode = STREAM_PAUSE;
-//				}
-//				else if (mode == 't') {// 't'oggle stream
-//					if(stream_mode==STREAM_START)
-//						stream_mode = STREAM_PAUSE;
-//					else
-//						stream_mode = STREAM_START;
-//				}
-//			}
+				else if (command == 's') 
+				{
+					printf("@s ok \n");
+					// 's'tream output control
+					mode = g_u8RecData[1];
+					if (mode == 's') 
+					{// 's'tart stream
+						//stream_mode = STREAM_START;
+						Motor_Start();
+					}
+					else if (mode == 'p') 
+					{// 'p'ause stream
+						//stream_mode = STREAM_PAUSE;
+						Motor_Stop();
+					}
+					else if (mode == 't') 
+					{// 't'oggle stream
+//						if(stream_mode==STREAM_START)
+//							stream_mode = STREAM_PAUSE;
+//						else
+//							stream_mode = STREAM_START;
+					}
+				}
 //		}
 //		else { 
 //			if (report_format == REPORT_FORMAT_TEXT) {
@@ -206,6 +216,6 @@ void CommandProcess(void)
 //			}
 			} // Skip character
 		
-			getUartData = FALSE;	//接收完成
+			getUartData = FALSE;	//鏍囪鎺ユ敹瀹屾垚
 	}
 }

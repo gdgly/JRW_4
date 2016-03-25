@@ -32,10 +32,8 @@ uint32_t millis(void)	//系统时间，单位毫秒
 
 void DelayMsec(uint16_t time)
 {
-	static uint8_t currentTime = 0;
-	currentTime = tick_counter;
-	while(tick_counter <= (currentTime + time));
-	
+	uint16_t currentTime = millis();
+	while(millis() < (currentTime + time));
 }
 
 void IncFrameCount(uint8_t inc)

@@ -15,7 +15,7 @@ void LED_Init(void)
 		P36 = 0;
 	#else
 		GPIO_SetMode(P2, BIT6, GPIO_PMD_OUTPUT);
-		P26 = 0;
+		P26 = 1;
 	#endif
 	
 	//P14用于MPU6880 DMP中断
@@ -50,4 +50,21 @@ void UpdateLED()
 	#else
 		P26 = ledStatus;
 	#endif
+}
+
+void LED_ON(void)
+{
+	P26 = 1;
+}
+
+void LED_Tongle(void)
+{
+	ledStatus = !ledStatus;
+	P26 = ledStatus;
+}
+
+void LED_OFF(void)
+{
+	
+	P26 = 0;
 }
