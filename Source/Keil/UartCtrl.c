@@ -120,6 +120,7 @@ void CommandProcess(void)
 			printf("@HOOK \n");
 			//int command = UART_READ(UART);//Serial_read(); // Commands
 			command = g_u8RecData[1];
+			mode = g_u8RecData[2];
 			if (command == 'h') {//Hook AHRS Stack Device
 				// Read ID
 				char id[2];
@@ -190,7 +191,7 @@ void CommandProcess(void)
 				{
 					printf("@s ok \n");
 					// 's'tream output control
-					mode = g_u8RecData[1];
+					
 					if (mode == 's') 
 					{// 's'tart stream
 						//stream_mode = STREAM_START;

@@ -175,18 +175,34 @@ void loop()
 		}
 		
 		//故障保护
-//		if(GetFrameCount() > 4000 && GetFrameCount() < 6000)	
+		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
+		{
+			Motor_Start();
+			MotorPwmOutput(20,20,20,20);
+		}
+//		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
 //		{
-//			
-//			Motor_Start();
-//			
+//			MotorPwmOutput(40,40,40,40);
 //		}
-//		else 
-//		if(GetFrameCount() >= 20000 && !falg)
+//		else if(GetFrameCount() >= 10000   && GetFrameCount() < 12000)
 //		{
-//			falg = true;
-//			Motor_Stop();
+//			MotorPwmOutput(60,60,60,60);
 //		}
+//		else if(GetFrameCount() >= 12000  && GetFrameCount() < 14000)
+//		{
+//			MotorPwmOutput(80,80,80,80);
+//		}
+		else if(GetFrameCount() >= 14000 && GetFrameCount() < 16000)
+		{
+			MotorPwmOutput(100,100,100,100);
+		}
+		else if(GetFrameCount() >= 16000 && !falg)
+		{
+			falg = true;
+			//MotorPwmOutput(0,0,0,0);
+			Motor_Stop();
+		}
+		
 		
 	
 		IncFrameCount(1);

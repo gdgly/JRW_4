@@ -24,14 +24,14 @@ void Motor_Start(void)
 	
 	PWM_EnableOutput(PWM, 0x0f);
 	PWM_Start(PWM, 0x0f);
-	MotorPwmOutput(15,15,15,15);
+	//MotorPwmOutput(15,15,15,15);
 }
 
 void Motor_Stop(void)
 {
 	PWM_DisableOutput(PWM, 0xf);
 	PWM_Stop(PWM, 0x0f);
-	printf("Motor_Stop \n")
+	printf("Motor_Stop \n");
 }
 
 void MotorPwmOutput(int16_t MOTO1_PWM,int16_t MOTO2_PWM,int16_t MOTO3_PWM,int16_t MOTO4_PWM)
