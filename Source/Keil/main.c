@@ -29,6 +29,8 @@
 #include "IMU.h"
 #include "DMP.h"
 
+bool falg = false;
+
 void setupSystemClock(void)
 {
 		SYS_UnlockReg();
@@ -51,7 +53,7 @@ void setupSystemClock(void)
 
 void setup()
 {
-	uint8_t ledStatus2 =0,i=0;
+	uint8_t i=0;
 	//初始化系统时钟
 	setupSystemClock();
 	
@@ -111,7 +113,7 @@ void setup()
 	//MotorPwmOutput(100,100,0,0);
 
 }
-bool falg = false;
+
 void loop()
 {
 	
@@ -138,20 +140,21 @@ void loop()
 			
 			//PID二环角速度
 			CtrlAttiRate();
+			//控制电机
+			CtrlMotor();
 			
 		}
 
 		if(GetFrameCount()%20 == 0)
 		{
 			//处理遥控数据
+			
 			//PID一环角度控制
 			CtrlAttiAng();
 		}
 		
-  
 		//10HZ,每100ms一次
 		//if(getTickCount()%100 == 0)
-		
 		
 		if(GetFrameCount()%1000 == 0)
 		{
@@ -161,16 +164,12 @@ void loop()
 			//遥控通信丢失处理
 			
 			//更新LED灯状态
-			UpdateLED();
-			
-			
+			UpdateLED();			
 		}
 		
 		if(GetFrameCount()%100 == 0)
 		{
-			
 			//printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
-			
 			//printf("\n");
 		}
 		
@@ -178,7 +177,7 @@ void loop()
 		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
 		{
 			Motor_Start();
-			MotorPwmOutput(20,20,20,20);
+			MotorPwmOutput(30,0,30,0);
 		}
 //		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
 //		{
@@ -192,19 +191,17 @@ void loop()
 //		{
 //			MotorPwmOutput(80,80,80,80);
 //		}
-		else if(GetFrameCount() >= 14000 && GetFrameCount() < 16000)
-		{
-			MotorPwmOutput(100,100,100,100);
-		}
-		else if(GetFrameCount() >= 16000 && !falg)
+//		else if(GetFrameCount() >= 14000 && GetFrameCount() < 16000)
+//		{
+//			MotorPwmOutput(100,100,100,100);
+//		}
+		else if(GetFrameCount() >= 20000 && !falg)
 		{
 			falg = true;
 			//MotorPwmOutput(0,0,0,0);
 			Motor_Stop();
 		}
 		
-		
-	
 		IncFrameCount(1);
 }
 

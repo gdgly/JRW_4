@@ -116,79 +116,14 @@ void CommandProcess(void)
 	if(getUartData == TRUE)
 	{
 		char start=g_u8RecData[0];//UART_READ(UART);//Serial_read();
-		if (start == '@') {// Start of new control message
+		if (start == '@') 
+		{// Start of new control message
 			printf("@HOOK \n");
 			//int command = UART_READ(UART);//Serial_read(); // Commands
 			command = g_u8RecData[1];
 			mode = g_u8RecData[2];
-			if (command == 'h') {//Hook AHRS Stack Device
-				// Read ID
-				char id[2];
-				//id[0] = UART_READ(UART);//GetChar();
-				//id[1] = UART_READ(UART);//GetChar();
-				id[0] = g_u8RecData[2];
-				id[1] = g_u8RecData[3];
-				// Reply with synch message
-//				printf("@HOOK");
-				//Serial_write(id, 2);
-			}
-			else if (command == 'v') {//Check Version
-				//CheckVersion();
-//				printf("version\n");
-			}
-			else if (command == 'c') {// A 'c'calibration command
-				//SensorCalibration();
-			}
-			else if (command == 'b') {// 'b'lock erase flash
-				//FlashControl();
-			}
-			else if (command == 'p') {// Set 'p'id command
-			//	SetPID();
-			}
-//			else if (command == 'm') {// Set report 'm'ode
-//				char mode = GetChar();
-//				if (mode == 'e') {// Report AHRS by 'e'uler angle
-//					report_mode = REPORT_AHRS_EULER;
-//				}
-//				else if (mode == 'q') {// Report // Report AHRS by 'q'quaternion
-//					report_mode = REPORT_AHRS_QUATERNION;
-//				}
-//				else if (mode == 'r') {// Report sensor 'r'aw data
-//					report_mode = REPORT_SENSORS_RAW;
-//				}
-//				else if (mode == 'c') {// Report sensor 'c'alibrated data
-//					report_mode = REPORT_SENSORS_CALIBRATED;
-//				}
-//				else if (mode == 'm') {// Report 'm'otor power distribution
-//					report_mode = REPORT_MOTOR_POWER;
-//				}
-//				else if (mode == 'v') {// Report 'v'elocity
-//					report_mode = REPORT_VELOCITY;
-//				}
-//				else if (mode == 's') {// Report 's'tatus
-//					report_status();
-//				}
-//				else if (mode == 'p') {// Report controller 'p'id
-//					char type = GetChar();
-//					if (type == 'p') // 'p'id
-//						report_mode = REPORT_PID;
-//					else if (type == 'r') //'r'ate pid
-//						report_mode = REPORT_RATE_PID;
-//					else if (type == 'a') //'a'ltitude hold pid
-//						report_mode = REPORT_ALTHOLD_PID;
-//				}
-//			}
-//			else if (command == 'f') {// Set report 'f'ormat
-//				char format = GetChar();
-//				if (format == 'b') {// Report 'b'inary format
-//					report_format = REPORT_FORMAT_BINARY;
-//				}
-//				else if (format == 't') {// Report 't'ext format
-//					report_format = REPORT_FORMAT_TEXT;
-//				}
-//			}
-				else if (command == 's') 
-				{
+			if (command == 's')
+			{
 					printf("@s ok \n");
 					// 's'tream output control
 					
@@ -202,21 +137,14 @@ void CommandProcess(void)
 						//stream_mode = STREAM_PAUSE;
 						Motor_Stop();
 					}
-					else if (mode == 't') 
-					{// 't'oggle stream
-//						if(stream_mode==STREAM_START)
-//							stream_mode = STREAM_PAUSE;
-//						else
-//							stream_mode = STREAM_START;
-					}
-				}
-//		}
-//		else { 
+			}
+//		else 
+//		{ 
 //			if (report_format == REPORT_FORMAT_TEXT) {
 //			printf("Unknown command.\n");
-//			}
-			} // Skip character
+//		}
+		} // Skip character
 		
-			getUartData = FALSE;	//标记接收完成
+		getUartData = FALSE;	//标记接收完成
 	}
 }

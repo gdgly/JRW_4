@@ -2,10 +2,13 @@
 #include "mini51series.h"
 #include "Timer_Ctrl.h"
 
+//飞机正方向，左下角为电机1，逆时钟以此类推，电机2，电机3，电机4
 #define MOTOR_1 0
-#define MOTOR_2 1
-#define MOTOR_3 3
+#define MOTOR_2 3
+#define MOTOR_3 1
 #define MOTOR_4 2
+
+int16_t motor1PWM, motor2PWM, motor3PWM, motor4PWM; 
 
 void Motor_Init(void)
 {
@@ -43,5 +46,22 @@ void MotorPwmOutput(int16_t MOTO1_PWM,int16_t MOTO2_PWM,int16_t MOTO3_PWM,int16_
 	PWM_ConfigOutputChannel(PWM, MOTOR_3, 400, MOTO3_PWM);
 
 	PWM_ConfigOutputChannel(PWM, MOTOR_4, 400, MOTO4_PWM);
+	
+	motor1PWM = MOTO1_PWM;
+	motor2PWM = MOTO2_PWM;
+	motor3PWM = MOTO3_PWM;
+	motor4PWM = MOTO4_PWM;
 
 }
+
+//void MotorPwmOutput2(void)
+//{
+//	PWM_ConfigOutputChannel(PWM, MOTOR_1, 400, motor1PWM);
+//	
+//	PWM_ConfigOutputChannel(PWM, MOTOR_2, 400, motor2PWM);
+
+//	PWM_ConfigOutputChannel(PWM, MOTOR_3, 400, motor3PWM);
+
+//	PWM_ConfigOutputChannel(PWM, MOTOR_4, 400, motor4PWM);
+
+//}

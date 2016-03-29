@@ -2,10 +2,11 @@
 #include "mini51series.h"
 #include "Timer_Ctrl.h"
 #include "RC.h"
-
+#include "motor.h"
+#include "IMU.h"
 
 float Thro=0,Roll=0,Pitch=0,Yaw=0;
-
+int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 
 
 
@@ -22,22 +23,9 @@ void CtrlAttiAng(void)
 		dt=(tPrev>0)?(t-tPrev):0;
 		tPrev=t;
 		
-//		if(altCtrlMode==MANUAL)
-//		{
-//			angTarget[ROLL]=(float)(RC_DATA.ROOL);
-//			angTarget[PITCH]=(float)(RC_DATA.PITCH);
-//		}
-//		else
-//		{
-//			angTarget[ROLL]=rollSp;
-//			angTarget[PITCH]=pitchSp;
-//		}
 		angTarget[ROLL]=(float)(RC_DATA.ROOL);
 		angTarget[PITCH]=(float)(RC_DATA.PITCH);
 		
-//		angTarget[YAW]=(float)(RC_DATA.YAW);		//?????
-//		yawRateTarget=
-//		angTarget[YAW]= (angTarget[YAW] + yawRateTarget * dt);
 
 //		if(headFreeMode)
 //		{
@@ -53,8 +41,8 @@ void CtrlAttiAng(void)
 //        angTarget[PITCH] = tarPitFree;
 //		}
  
-//		PID_Postion_Cal(&pitch_angle_PID,angTarget[PITCH],imu.pitch,dt);
-//		PID_Postion_Cal(&roll_angle_PID,angTarget[ROLL],imu.roll,dt);	 
+		PID_Postion_Cal(&pitch_angle_PID,angTarget[PITCH],imu.pitch,dt);
+		PID_Postion_Cal(&roll_angle_PID,angTarget[ROLL],imu.roll,dt);	 
 }
 
 void CtrlAttiRate(void)
@@ -65,22 +53,28 @@ void CtrlAttiRate(void)
 	float dt=0,t=0;
 //	t=micros();
 	//t = getTickCount();
+	t=millis();
 	dt=(tPrev>0)?(t-tPrev):0;
 	tPrev=t;
 		
 		yawRateTarget=-(float)RC_DATA.YAW;
 
-	//	PID_Postion_Cal(&pitch_rate_PID,pitch_angle_PID.Output,imu.gyro[PITCH]*180.0f/M_PI_F,dt);	
-	//	PID_Postion_Cal(&roll_rate_PID,roll_angle_PID.Output,imu.gyro[ROLL]*180.0f/M_PI_F,dt);//gyroxGloble
-//		PID_Postion_Cal(&yaw_rate_PID,yawRateTarget,imu.gyro[YAW]*180.0f/M_PI_F,dt);//DMP_DATA.GYROz
+		PID_Postion_Cal(&pitch_rate_PID,pitch_angle_PID.Output,imu.gyro[PITCH]*180.0f/M_PI_F,dt);	
+		PID_Postion_Cal(&roll_rate_PID,roll_angle_PID.Output,imu.gyro[ROLL]*180.0f/M_PI_F,dt);//gyroxGloble
+		PID_Postion_Cal(&yaw_rate_PID,yawRateTarget,imu.gyro[YAW]*180.0f/M_PI_F,dt);//DMP_DATA.GYROz
 
-		
-//		Pitch = pitch_rate_PID.Output;
-//    Roll  = roll_rate_PID.Output;
-//    Yaw   = yaw_rate_PID.Output; 
+		Pitch = pitch_rate_PID.Output;
+    Roll  = roll_rate_PID.Output;
+    Yaw   = yaw_rate_PID.Output; 
 }
 
 void CtrlMotor(void)
 {
-
+	//将输出值融合到四个电机 
+		Motor[2] = (int16_t)(Thro - Pitch - Roll - Yaw );    //M3  
+		Motor[0] = (int16_t)(Thro + Pitch + Roll - Yaw );    //M1
+		Motor[3] = (int16_t)(Thro - Pitch + Roll + Yaw );    //M4 
+		Motor[1] = (int16_t)(Thro + Pitch - Roll + Yaw );    //M2
+	
+		MotorPwmOutput(Motor[0],Motor[1],Motor[2],Motor[3]);   
 }

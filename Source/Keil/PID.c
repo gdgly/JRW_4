@@ -3,43 +3,42 @@
 #include "UartCtrl.h"
 
 
-PID_Typedef pitch_angle_PID;	  //pitch½Ç¶È»·PID
-PID_Typedef pitch_rate_PID;		//pitch½ÇËÙÂÊ»·PID
+PID_Typedef pitch_angle_PID;	//pitchè§’åº¦çŽ¯çš„PID
+PID_Typedef pitch_rate_PID;		//pitchè§’é€ŸçŽ‡çŽ¯çš„PID
 
-PID_Typedef roll_angle_PID;    //roll½Ç¶È»·PID
-PID_Typedef roll_rate_PID;     //roll½ÇËÙÂÊ»·PID
+PID_Typedef roll_angle_PID;   //rollè§’åº¦çŽ¯çš„PID
+PID_Typedef roll_rate_PID;    //rollè§’é€ŸçŽ‡çŽ¯çš„PID
 
-    
-PID_Typedef yaw_rate_PID;      //yaw½ÇËÙÂÊ»·PID 
-PID_Typedef yaw_angle_PID;     //yaw½Ç¶È»·PID
+PID_Typedef yaw_angle_PID;    //yawè§’åº¦çŽ¯çš„PID 
+PID_Typedef yaw_rate_PID;     //yawè§’é€ŸçŽ‡çŽ¯çš„PID
 
-//-----------Î»ÖÃÊ½PID-----------
+//-----------ä½ç½®å¼PID-----------
 void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
 {
  float termI=0;
  float dt= dertT/1000000.0;
-	//-----------Î»ÖÃÊ½PID-----------
-	//Îó²î=ÆÚÍûÖµ-²âÁ¿Öµ
+	//-----------ä½ç½®å¼PID-----------
+	//è¯¯å·®=æœŸæœ›å€¼-æµ‹é‡å€¼
 	PID->Error=target-measure;
 	
 	PID->Deriv= (PID->Error-PID->PreError)/dt;
 	
-	PID->Output=(PID->P * PID->Error) + (PID->I * PID->Integ) + (PID->D * PID->Deriv);    //PID:????+????+????
+	PID->Output=(PID->P * PID->Error) + (PID->I * PID->Integ) + (PID->D * PID->Deriv);    //PID:æ¯”ä¾‹çŽ¯èŠ‚+ç§¯åˆ†çŽ¯èŠ‚+å¾®åˆ†çŽ¯èŠ‚
 	
 	PID->PreError=PID->Error;
-	//½öÓÃÓÚ½Ç¶È»·ºÍ½ÇËÙ¶È»·µÄ
+	//ä»…ç”¨äºŽè§’åº¦çŽ¯å’Œè§’é€Ÿåº¦çŽ¯çš„
 
 	//if(FLY_ENABLE && offLandFlag)
 	{
-			//if(fabs(PID->Output) < Thro )		              //±ÈÓÍÃÅ»¹´óÊ±²»»ý·Ö
+			//if(fabs(PID->Output) < Thro )		              //æ¯”æ²¹é—¨è¿˜å¤§æ—¶ä¸ç§¯åˆ†
 			{
-				termI=(PID->Integ) + (PID->Error) * dt;     //»ý·Ö»·½Ú
-				if(termI > - PID->iLimit && termI < PID->iLimit && PID->Output > - PID->iLimit && PID->Output < PID->iLimit)       //?-300~300????????
+				termI=(PID->Integ) + (PID->Error) * dt;     //ç§¯åˆ†çŽ¯èŠ‚
+				if(termI > - PID->iLimit && termI < PID->iLimit && PID->Output > - PID->iLimit && PID->Output < PID->iLimit)       //åœ¨-300~300æ—¶æ‰è¿›è¡Œç§¯åˆ†çŽ¯èŠ‚
 						PID->Integ=termI;
 			}
 	}
-	//else
-	//		PID->Integ= 0;
+//	else
+//			PID->Integ= 0;
 }
 
 //void SetPID()
