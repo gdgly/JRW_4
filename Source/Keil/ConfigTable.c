@@ -8,7 +8,8 @@
 #define TABLE_ADDRESS 	DATA_Flash_Start_ADD
 //用来存放Flash列表上的存放的参数变量的信息
 config_table_t table;	
-
+//请求保存参数到EEPROM的信号量
+uint8_t gParamsSaveEEPROMRequset=0;
 
 #define Flash_DEFAULT_VERSION 2
 

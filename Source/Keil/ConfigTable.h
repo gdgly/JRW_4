@@ -20,6 +20,7 @@ float pidYawRate[3];
 }config_table_t;
 
 extern config_table_t table;	
+extern uint8_t gParamsSaveEEPROMRequset;
 
 void LoadParamsFromFlash(void);
 void ParamSetDefault(void);

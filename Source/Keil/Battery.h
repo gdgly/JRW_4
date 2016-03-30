@@ -1,11 +1,11 @@
 #ifndef BATTERY_H
 #define BATTERY_H
-
+#include "stdint.h"
 
 void BatteryCheckInit(void);
-//¼ì²âµç³ØµçÑ¹
+//æ£€æŸ¥ç”µæ± ç”µå‹
 void BatteryCheck(void);
-//·µ»Øµç³ØADÖµ
-int GetBatteryAD(void);
+//è·å–ç”µæ± ç”µå‹
+uint32_t GetBatteryAD(void);
  
 #endif

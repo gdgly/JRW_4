@@ -9,6 +9,7 @@
 #define ACC_CALC_TIME  3000//ms
 #define GYRO_CALC_TIME   3000	//ms
 
+#define CONSTANTS_ONE_G					9.80665f		/* m/s^2		*/
 
 
 typedef struct IMU_tt
@@ -37,9 +38,10 @@ float 	yawRad;
 }imu_t;
 
 extern imu_t imu;
+extern uint8_t imuCaliFlag;
 
 void ReadIMUSensorHandle(void);
-
+uint8_t IMU_Calibrate(void);
 
  
 #endif

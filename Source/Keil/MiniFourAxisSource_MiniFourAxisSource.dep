@@ -231,7 +231,7 @@ I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
 I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\main.c)(0x56F9FCE7)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (.\main.c)(0x56FB8F93)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
@@ -252,11 +252,11 @@ I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (def.h)(0x56F262BB)
-I (ConfigTable.h)(0x56ED029B)
+I (ConfigTable.h)(0x56FB3145)
 I (led.h)(0x56F4A4DD)
 I (Timer_Ctrl.h)(0x56F25B05)
 I (Motor.h)(0x56F9EA1F)
-I (Battery.h)(0x56DFC9F3)
+I (Battery.h)(0x56FB7A38)
 I (UartCtrl.h)(0x56EA6FE2)
 I (FlashCtrl.h)(0x56ED013C)
 I (RC.h)(0x56DFDCFB)
@@ -266,7 +266,7 @@ I (I2CDev.h)(0x56EA70A4)
 I (MPU6050.h)(0x56F1FAD9)
 I (d:\Keil5\ARM\ARMCC\include\stdbool.h)(0x52FDD27E)
 I (IMUSO3.h)(0x56F0C0CF)
-I (IMU.h)(0x56F9F7AB)
+I (IMU.h)(0x56FB3118)
 I (DMP.h)(0x56F20023)
 F (.\LED.c)(0x56F4A4D3)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\led.o --omf_browse .\obj\led.crf --depend .\obj\led.d)
 I (LED.h)(0x56F4A4DD)
@@ -311,7 +311,7 @@ I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
 I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
-F (.\Motor.c)(0x56F9EA1D)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\motor.o --omf_browse .\obj\motor.crf --depend .\obj\motor.d)
+F (.\Motor.c)(0x56FB7DCE)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\motor.o --omf_browse .\obj\motor.crf --depend .\obj\motor.d)
 I (Motor.h)(0x56F9EA1F)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
@@ -333,8 +333,8 @@ I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (Timer_Ctrl.h)(0x56F25B05)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
-F (.\Battery.c)(0x56DF9F72)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\battery.o --omf_browse .\obj\battery.crf --depend .\obj\battery.d)
-I (Motor.h)(0x56F9EA1F)
+F (.\Battery.c)(0x56FB8F11)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\battery.o --omf_browse .\obj\battery.crf --depend .\obj\battery.d)
+I (Battery.h)(0x56FB7A38)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
@@ -353,6 +353,7 @@ I (..\Library\StdDriver\inc\spi.h)(0x561BA007)
 I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
+I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 F (.\UartCtrl.c)(0x56F9EAB2)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\uartctrl.o --omf_browse .\obj\uartctrl.crf --depend .\obj\uartctrl.d)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (UartCtrl.h)(0x56EA6FE2)
@@ -398,7 +399,7 @@ I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (def.h)(0x56F262BB)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
-F (.\RC.c)(0x56DFDE2F)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\rc.o --omf_browse .\obj\rc.crf --depend .\obj\rc.d)
+F (.\RC.c)(0x56FB4564)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\rc.o --omf_browse .\obj\rc.crf --depend .\obj\rc.d)
 I (RC.h)(0x56DFDCFB)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
@@ -420,7 +421,7 @@ I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 F (.\FailSafe.c)(0x56DFD1C2)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\failsafe.o --omf_browse .\obj\failsafe.crf --depend .\obj\failsafe.d)
 I (FailSafe.h)(0x55B35EBD)
-F (.\PID.c)(0x56F9F892)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\pid.o --omf_browse .\obj\pid.crf --depend .\obj\pid.d)
+F (.\PID.c)(0x56FA3A45)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\pid.o --omf_browse .\obj\pid.crf --depend .\obj\pid.d)
 I (PID.h)(0x56F9F8A3)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
@@ -441,9 +442,9 @@ I (..\Library\StdDriver\inc\timer.h)(0x561BA008)
 I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (UartCtrl.h)(0x56EA6FE2)
-F (.\Control.c)(0x56F9F811)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\control.o --omf_browse .\obj\control.crf --depend .\obj\control.d)
+F (.\Control.c)(0x56FA4429)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\control.o --omf_browse .\obj\control.crf --depend .\obj\control.d)
 I (Control.h)(0x56E61983)
-I (ConfigTable.h)(0x56ED029B)
+I (ConfigTable.h)(0x56FB3145)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -467,11 +468,11 @@ I (Timer_Ctrl.h)(0x56F25B05)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (RC.h)(0x56DFDCFB)
 I (motor.h)(0x56F9EA1F)
-I (IMU.h)(0x56F9F7AB)
-F (.\ConfigTable.c)(0x56F227EF)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\configtable.o --omf_browse .\obj\configtable.crf --depend .\obj\configtable.d)
+I (IMU.h)(0x56FB3118)
+F (.\ConfigTable.c)(0x56FB3137)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\configtable.o --omf_browse .\obj\configtable.crf --depend .\obj\configtable.d)
 I (def.h)(0x56F262BB)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
-I (ConfigTable.h)(0x56ED029B)
+I (ConfigTable.h)(0x56FB3145)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\Mini51Series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
 I (..\Library\CMSIS\Include\core_cmInstr.h)(0x561BA005)
@@ -515,7 +516,7 @@ I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (Def.h)(0x56F262BB)
 I (NVT_I2C.h)(0x56EA70A4)
 F (.\filter.c)(0x56EF5A0F)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\filter.o --omf_browse .\obj\filter.crf --depend .\obj\filter.d)
-I (imu.h)(0x56F9F7AB)
+I (imu.h)(0x56FB3118)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (filter.h)(0x56EF59FF)
 I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
@@ -541,10 +542,10 @@ I (..\Library\StdDriver\inc\uart.h)(0x561BA008)
 I (..\Library\StdDriver\inc\wdt.h)(0x561BA008)
 I (Timer_Ctrl.h)(0x56F25B05)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
-I (IMU.h)(0x56F9F7AB)
+I (IMU.h)(0x56FB3118)
 I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
-F (.\IMU.c)(0x56F25F47)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\imu.o --omf_browse .\obj\imu.crf --depend .\obj\imu.d)
-I (IMU.h)(0x56F9F7AB)
+F (.\IMU.c)(0x56FB3110)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\Device\Nuvoton\Mini51Series\Include -I..\Library\StdDriver\inc-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-o .\obj\imu.o --omf_browse .\obj\imu.crf --depend .\obj\imu.d)
+I (IMU.h)(0x56FB3118)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (..\Library\Device\Nuvoton\Mini51Series\Include\mini51series.h)(0x56DE904A)
 I (..\Library\CMSIS\Include\core_cm0.h)(0x561BA005)
@@ -649,18 +650,18 @@ F (.\def.h)(0x56F262BB)()
 F (.\led.h)(0x56F4A4DD)()
 F (.\Timer_Ctrl.h)(0x56F25B05)()
 F (.\Motor.h)(0x56F9EA1F)()
-F (.\Battery.h)(0x56DFC9F3)()
+F (.\Battery.h)(0x56FB7A38)()
 F (.\UartCtrl.h)(0x56EA6FE2)()
 F (.\FlashCtrl.h)(0x56ED013C)()
 F (.\RC.h)(0x56DFDCFB)()
 F (.\FailSafe.h)(0x55B35EBD)()
 F (.\PID.h)(0x56F9F8A3)()
 F (.\Control.h)(0x56E61983)()
-F (.\ConfigTable.h)(0x56ED029B)()
+F (.\ConfigTable.h)(0x56FB3145)()
 F (.\MPU6050.h)(0x56F1FAD9)()
 F (.\NVT_I2C.h)(0x56EA70A4)()
 F (.\I2CDev.h)(0x56EA70A4)()
 F (.\filter.h)(0x56EF59FF)()
-F (.\IMU.h)(0x56F9F7AB)()
+F (.\IMU.h)(0x56FB3118)()
 F (.\IMUSO3.h)(0x56F0C0CF)()
 F (.\DMP.h)(0x56F20023)()

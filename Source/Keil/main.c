@@ -72,7 +72,7 @@ void setup()
 	LoadParamsFromFlash();
 	
 	//初始化低电压检测
-	BatteryCheckInit();
+	//BatteryCheckInit();
 	
 	//初始化遥控
 	
@@ -82,8 +82,8 @@ void setup()
 	//初始化SENSOR
 	#ifdef IMU_SW											//软件姿态解算
 	
-		MPU6050_initialize();
-		DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
+		//MPU6050_initialize();
+		//DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
 	#else
 		MPU6050_initialize();
 		DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
@@ -104,7 +104,7 @@ void setup()
 	
 	//初始化电机
 	Motor_Init();
-	//Motor_Start();
+	
 	//printf("Motor_Init(); \n");
 	
 	//IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
@@ -138,10 +138,21 @@ void loop()
 			DMP_Routing();	//DMP 线程  所有的数据都在这里更新
 			#endif
 			
+			//imu校准
+//			if(imuCaliFlag)
+//			{
+//					if(IMU_Calibrate())
+//					{
+//						imuCaliFlag=0;
+//						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
+//						imu.caliPass=1;
+//					}
+//			}
+				
 			//PID二环角速度
-			CtrlAttiRate();
+			//CtrlAttiRate();
 			//控制电机
-			CtrlMotor();
+			//CtrlMotor();
 			
 		}
 
@@ -150,7 +161,7 @@ void loop()
 			//处理遥控数据
 			
 			//PID一环角度控制
-			CtrlAttiAng();
+			//CtrlAttiAng();
 		}
 		
 		//10HZ,每100ms一次
@@ -159,8 +170,8 @@ void loop()
 		if(GetFrameCount()%1000 == 0)
 		{
 			//检测电池电量
-			BatteryCheck();
-			
+			//BatteryCheck();
+			//printf("Convert result is %d\n", GetBatteryAD());
 			//遥控通信丢失处理
 			
 			//更新LED灯状态
@@ -169,6 +180,7 @@ void loop()
 		
 		if(GetFrameCount()%100 == 0)
 		{
+			
 			//printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
 			//printf("\n");
 		}
@@ -176,8 +188,9 @@ void loop()
 		//故障保护
 		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
 		{
-			Motor_Start();
-			MotorPwmOutput(30,0,30,0);
+			//Motor_Start();
+		//	MotorPwmOutput(100,100,100,100);
+			
 		}
 //		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
 //		{
@@ -195,12 +208,12 @@ void loop()
 //		{
 //			MotorPwmOutput(100,100,100,100);
 //		}
-		else if(GetFrameCount() >= 20000 && !falg)
-		{
-			falg = true;
-			//MotorPwmOutput(0,0,0,0);
-			Motor_Stop();
-		}
+//		else if(GetFrameCount() >= 20000 && !falg)
+//		{
+//			falg = true;
+//			//MotorPwmOutput(0,0,0,0);
+//			Motor_Stop();
+//		}
 		
 		IncFrameCount(1);
 }

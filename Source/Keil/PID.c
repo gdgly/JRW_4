@@ -16,7 +16,7 @@ PID_Typedef yaw_rate_PID;     //yaw角速率环的PID
 void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
 {
  float termI=0;
- float dt= dertT/1000000.0;
+ float dt= dertT/1000.0;
 	//-----------位置式PID-----------
 	//误差=期望值-测量值
 	PID->Error=target-measure;

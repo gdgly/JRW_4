@@ -8,7 +8,16 @@
 float Thro=0,Roll=0,Pitch=0,Yaw=0;
 int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 
+//IMU
+typedef struct float_xyz
+{
+    float X;
+    float Y;
+    float Z;
+    
+}S_FLOAT_XYZ;
 
+S_FLOAT_XYZ DIF_ACC;		//实际去期望相差的加速度
 
 
 void CtrlAttiAng(void)
@@ -19,7 +28,7 @@ void CtrlAttiAng(void)
 		float angTarget[3]={0};
 		float dt=0,t=0;
 //		t=micros();
-		//t = millis();
+		t = millis();
 		dt=(tPrev>0)?(t-tPrev):0;
 		tPrev=t;
 		
@@ -52,7 +61,6 @@ void CtrlAttiRate(void)
 
 	float dt=0,t=0;
 //	t=micros();
-	//t = getTickCount();
 	t=millis();
 	dt=(tPrev>0)?(t-tPrev):0;
 	tPrev=t;
@@ -70,6 +78,10 @@ void CtrlAttiRate(void)
 
 void CtrlMotor(void)
 {
+	//负反馈
+	//DIF_ACC.Z =  imu.accb[2] - CONSTANTS_ONE_G;
+	//Thro -= 150*DIF_ACC.Z;
+	
 	//将输出值融合到四个电机 
 		Motor[2] = (int16_t)(Thro - Pitch - Roll - Yaw );    //M3  
 		Motor[0] = (int16_t)(Thro + Pitch + Roll - Yaw );    //M1

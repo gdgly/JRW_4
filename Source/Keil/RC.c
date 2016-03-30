@@ -1,4 +1,4 @@
 #include "RC.h"
 #include "mini51series.h"
 
-RC_GETDATA  RC_DATA;	// RC_DATAÊÇ´¦ÀíºóµÄÆÚÍûËÄÍ¨
+RC_GETDATA  RC_DATA;	 // RC_DATAæ˜¯å¤„ç†åŽçš„æœŸæœ›å››é€š

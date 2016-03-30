@@ -5,7 +5,7 @@
 #include "Timer_Ctrl.h"
 
 
-#define CONSTANTS_ONE_G					9.80665f		/* m/s^2		*/
+
 
 #define SENSOR_MAX_G 8.0f		//constant g		// tobe fixed to 8g. but IMU need to  correct at the same time
 #define SENSOR_MAX_W 2000.0f	//deg/s
@@ -13,6 +13,7 @@
 #define GYRO_SCALE  (SENSOR_MAX_W/32768.0f)
 
 imu_t imu={0};
+uint8_t imuCaliFlag=0;
 
 void ReadIMUSensorHandle(void)
 {
@@ -54,3 +55,106 @@ void ReadIMUSensorHandle(void)
 		*/
 		
 } 
+
+//should place to a level surface and keep it stop for 1~2 second
+//return 1 when finish
+uint8_t IMU_Calibrate(void)
+{
+	//3s 
+	static float accSum[3]={0,0,0};
+	static float gyroSum[3]={0,0,0};
+	static uint16_t cnt=0;
+	static uint16_t tPrev=0,startTime=0;
+	static uint8_t calibrating=0;
+	uint8_t ret=0;
+	uint8_t i=0;
+	uint16_t dt=0,now=0,caliTime=0;;
+
+
+	now=millis();
+
+
+#if (1)
+		dt=now-tPrev;	
+
+	if(calibrating==0)
+	{
+			calibrating=1;
+			for(i=0;i<3;i++)
+			{
+					accSum[i]=0;
+					gyroSum[i]=0;
+					cnt=0;
+					imu.ready=0;
+			}
+			
+	}
+	if(dt>=10)		//10ms 
+	{
+			if(cnt<300)
+			{
+				for(i=0;i<3;i++)
+				{
+					accSum[i]+=imu.accRaw[i];		
+					gyroSum[i]+=imu.gyroRaw[i];
+				}
+				cnt++;
+				tPrev=now;
+			}
+			else
+			{
+					for(i=0;i<3;i++)
+					{
+						imu.accOffset[i]=accSum[i]/(float)cnt;
+						imu.gyroOffset[i]=gyroSum[i]/(float)cnt;
+					} 
+					
+					imu.accOffset[2]=imu.accOffset[2] - CONSTANTS_ONE_G;
+					
+					calibrating=0;
+					#ifndef IMU_SW
+					imu.ready=1;
+					#endif
+					ret=1;
+					//tobe added: write to eeprom !!
+			}
+	}
+#else
+	
+	
+	if(startTime==0)
+	{
+		startTime=now;
+		imu.ready=0;
+	}
+
+	if(now>startTime)
+		caliTime=now-startTime;
+	else
+		caliTime=65536-startTime + now;
+	
+
+		for(i=0;i<3;i++)
+		{
+			accSum[i]+=imu.accRaw[i];			//tobe 
+		}
+		cnt++;
+		if(caliTime > ACC_CALC_TIME)
+		{
+				for(i=0;i<3;i++)
+				{
+					imu.accOffset[i]=accSum[i]/cnt;
+					accSum[i]=0;
+				} 
+				imu.accOffset[2]=imu.accOffset[2] - CONSTANTS_ONE_G;
+				
+				startTime=0;
+				cnt=0;
+				ret=1;
+		}
+	
+#endif
+	
+	return ret;
+	
+}
