@@ -8,7 +8,7 @@ extern volatile uint32_t tick_counter;
 void setup_system_tick(uint32_t sampleRate);
 
 
-uint32_t millis(void);	//返回系统时间，单位 ：毫秒
+uint32_t millis(void);	//绯荤粺鏃堕棿锛屽崟浣峬s
 
 uint32_t GetFrameCount(void);
 

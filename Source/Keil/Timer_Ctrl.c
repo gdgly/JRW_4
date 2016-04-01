@@ -24,7 +24,7 @@ void setup_system_tick(uint32_t sampleRate)
 
 }
 
-uint32_t millis(void)	//系统时间，单位毫秒
+uint32_t millis(void)						//系统时间，单位ms
 {
 	return tick_counter;
 }

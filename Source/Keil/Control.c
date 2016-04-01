@@ -5,7 +5,7 @@
 #include "motor.h"
 #include "IMU.h"
 
-float Thro=0,Roll=0,Pitch=0,Yaw=0;
+float Thro=0, Roll=0, Pitch=0, Yaw=0;
 int16_t Motor[4]={0};   //定义电机PWM数组，分别对应M1-M4
 
 //IMU

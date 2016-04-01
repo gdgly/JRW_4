@@ -116,7 +116,6 @@ void setup()
 
 void loop()
 {
-	
 		static uint32_t nextTick = 0;
 		while(millis()<nextTick){}
 		nextTick = millis()+TICK_FRAME_PERIOD;	//循环间隔FRAME
@@ -129,13 +128,12 @@ void loop()
 		if(GetFrameCount()%10 == 0)
 		{
 			//读取姿态传感器数据
-			
-			
+
 			//读取欧拉角
-			#ifdef IMU_SW											//软件姿态解算
-			//IMUSO3Thread();
+			#ifdef IMU_SW												//软件姿态解算
+				//IMUSO3Thread();
 			#else
-			DMP_Routing();	//DMP 线程  所有的数据都在这里更新
+				DMP_Routing();	//DMP 线程  所有的数据都在这里更新
 			#endif
 			
 			//imu校准
@@ -153,7 +151,6 @@ void loop()
 			//CtrlAttiRate();
 			//控制电机
 			//CtrlMotor();
-			
 		}
 
 		if(GetFrameCount()%20 == 0)
@@ -175,12 +172,11 @@ void loop()
 			//遥控通信丢失处理
 			
 			//更新LED灯状态
-			UpdateLED();			
+			UpdateLED();
 		}
 		
 		if(GetFrameCount()%100 == 0)
 		{
-			
 			//printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
 			//printf("\n");
 		}
@@ -190,7 +186,6 @@ void loop()
 		{
 			//Motor_Start();
 		//	MotorPwmOutput(100,100,100,100);
-			
 		}
 //		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
 //		{
