@@ -10,6 +10,7 @@
 #ifndef   _RF_API_H_
 #define   _RF_API_H_
 #include "RF.h"
+#include "def.h"
 typedef union 
 {
     uint8_t ucPayload[PAYLOAD_WIDTH];

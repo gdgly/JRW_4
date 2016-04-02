@@ -377,7 +377,7 @@ void RF_TxData( uint8_t *ucPayload,  uint8_t length)
 		//keep ce high at least 600us
 		do
 		{
-			DelayMs(1);
+			DelayMsec(1);
 			Status = ucRF_GetStatus()&TX_DS_FLAG;
 		}while(Status == 0);
 		CE_LOW;                                                                                     //rf entery stb3    
@@ -427,7 +427,7 @@ void RF_Init(void)
 {
 	SPI_init();
 
-	DelayMs(2);
+	DelayMsec(2);
 	RF_WriteReg(SPI_COMMAND_RST_FSPI, 0x5A);								//Software Reset    			
 	RF_WriteReg(SPI_COMMAND_RST_FSPI, 0XA5);    
 	//RF_WriteReg(FEATURE, 0x20);                                                    // enable Software control ce 

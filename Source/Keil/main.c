@@ -28,6 +28,7 @@
 #include "IMUSO3.h"
 #include "IMU.h"
 #include "DMP.h"
+#include "Comm.h"
 
 bool falg = false;
 
@@ -75,6 +76,7 @@ void setup()
 	//BatteryCheckInit();
 	
 	//初始化遥控
+	Comm_Init();
 	
 	//初始化LED
 	LED_Init();
@@ -124,6 +126,7 @@ void loop()
 		CommandProcess();
 			
 		//读取遥控命令
+		Comm_Process();
 	
 		if(GetFrameCount()%10 == 0)
 		{
@@ -184,8 +187,8 @@ void loop()
 		//故障保护
 		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
 		{
-			//Motor_Start();
-		//	MotorPwmOutput(100,100,100,100);
+			Motor_Start();
+			MotorPwmOutput(0,0,85,0);
 		}
 //		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
 //		{
@@ -203,12 +206,12 @@ void loop()
 //		{
 //			MotorPwmOutput(100,100,100,100);
 //		}
-//		else if(GetFrameCount() >= 20000 && !falg)
-//		{
-//			falg = true;
-//			//MotorPwmOutput(0,0,0,0);
-//			Motor_Stop();
-//		}
+		else if(GetFrameCount() >= 40000 && !falg)
+		{
+			falg = true;
+			//MotorPwmOutput(0,0,0,0);
+			Motor_Stop();
+		}
 		
 		IncFrameCount(1);
 }
