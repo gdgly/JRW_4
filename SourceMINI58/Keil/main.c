@@ -102,11 +102,11 @@ void setup()
 	//初始化电机
 	Motor_Init();
 	
-	//printf("Motor_Init(); \n");
+	printf("Motor_Init(); \n");
 	
 	//IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
 	
-//	printf("\n\nCPU @ %dHz\n", SystemCoreClock);
+	printf("\n\nCPU @ %dHz\n", SystemCoreClock);
 	//MotorPwmOutput(100,100,0,0);
 
 }
@@ -129,7 +129,7 @@ void loop()
 
 			//读取欧拉角
 			#ifdef IMU_SW												//软件姿态解算
-				//IMUSO3Thread();
+				IMUSO3Thread();
 			#else
 				DMP_Routing();	//DMP 线程  所有的数据都在这里更新
 			#endif
@@ -175,7 +175,7 @@ void loop()
 		
 		if(GetFrameCount()%100 == 0)
 		{
-			//printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
+			printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
 			//printf("\n");
 		}
 		

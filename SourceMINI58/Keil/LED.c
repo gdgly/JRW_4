@@ -20,7 +20,7 @@ void LED_Init(void)
 		GPIO_SetMode(P1, BIT4, GPIO_MODE_OUTPUT);
 		P14 = 1;
 	#endif
-	
+
 	//P14用于MPU6880 DMP中断
 //	GPIO_SetMode(P1, BIT4, GPIO_PMD_INPUT);
 //    GPIO_EnableInt(P1, 4, GPIO_INT_HIGH);

@@ -1,5 +1,5 @@
 
-//#include "Def.h"
+#include "Def.h"
 #include "stdio.h"
 #include "UartCtrl.h"
 #include "def.h"
@@ -26,8 +26,8 @@ void setupUART()
 	/* Peripheral clock source */
 	CLK_SetModuleClock(UART0_MODULE, CLK_CLKSEL1_UARTSEL_HIRC, CLK_CLKDIV_UART(1));
 	/* Set PD multi-function pins for UART0 RXD, TXD */
-	SYS->P1_MFP &= ~(SYS_MFP_P51_Msk | SYS_MFP_P50_Msk);
-  SYS->P1_MFP |= (SYS_MFP_P51_UART0_RXD | SYS_MFP_P50_UART0_TXD);
+	SYS->P5_MFP &= ~(SYS_MFP_P51_Msk | SYS_MFP_P50_Msk);
+  SYS->P5_MFP |= (SYS_MFP_P51_UART0_RXD | SYS_MFP_P50_UART0_TXD);
 	
 	//SYS->P0_MFP = SYS_MFP_P00_TXD | SYS_MFP_P01_RXD;
 	
@@ -48,7 +48,7 @@ void UART_HANDLE()
     uint32_t u32IntSts= UART0->INTSTS;
 
     if(u32IntSts & UART_INTSTS_RDAINT_Msk) {
-
+				
         /* Get all the input characters */
         while(UART_IS_RX_READY(UART)) {
             /* Get the character from UART Buffer */
@@ -73,14 +73,15 @@ void UART_HANDLE()
     }
 		
 //		if(u32IntSts & UART_ISR_THRE_INT_Msk) {
-//        uint16_t tmp;
-//        tmp = g_u32comRtail;
-//        if(g_u32comRhead != tmp) {
-//            u8InChar = g_u8RecData[g_u32comRhead];
-//            UART_WRITE(UART,u8InChar);
-//            g_u32comRhead = (g_u32comRhead == (RXBUFSIZE-1)) ? 0 : (g_u32comRhead+1);
-//            g_u32comRbytes--;
-//        }
+//			printf("\nInput:");
+////        uint16_t tmp;
+////        tmp = g_u32comRtail;
+////        if(g_u32comRhead != tmp) {
+////            u8InChar = g_u8RecData[g_u32comRhead];
+////            UART_WRITE(UART,u8InChar);
+////            g_u32comRhead = (g_u32comRhead == (RXBUFSIZE-1)) ? 0 : (g_u32comRhead+1);
+////            g_u32comRbytes--;
+////        }
 //    }
 		
 		
@@ -94,15 +95,16 @@ void UART_NVIC_INIT()
 {
     
     /* Enable Interrupt and install the call back function */
-   // UART_ENABLE_INT(UART, (UART_IER_RDA_IEN_Msk | UART_IER_THRE_IEN_Msk | UART_IER_RTO_IEN_Msk));
-	  UART_ENABLE_INT(UART, UART_INTEN_RDAIEN_Msk);
+    UART_ENABLE_INT(UART, UART_INTEN_RDAIEN_Msk);
+	//UART_ENABLE_INT(UART0, (UART_INTEN_RDAIEN_Msk | UART_INTEN_THREIEN_Msk | UART_INTEN_RXTOIEN_Msk));
+    
     NVIC_EnableIRQ(UART0_IRQn);
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* ISR to handle UART Channel 0 interrupt event                                                            */
 /*---------------------------------------------------------------------------------------------------------*/
-void UART_IRQHandler(void)
+void UART0_IRQHandler(void)
 {
     UART_HANDLE();
 }
