@@ -13,6 +13,7 @@
 #include "Mini51Series.h"
 
 
+
 #include "def.h"
 #include "ConfigTable.h"
 #include "led.h"
@@ -73,7 +74,7 @@ void setup()
 	LoadParamsFromFlash();
 	
 	//初始化低电压检测
-	//BatteryCheckInit();
+	BatteryCheckInit();
 	
 	//初始化遥控
 	Comm_Init();
@@ -83,9 +84,8 @@ void setup()
 	
 	//初始化SENSOR
 	#ifdef IMU_SW											//软件姿态解算
-	
-		//MPU6050_initialize();
-		//DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
+	//	MPU6050_initialize();
+	//	DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
 	#else
 		MPU6050_initialize();
 		DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
@@ -94,14 +94,13 @@ void setup()
 	
 	//初始化自稳定
 	
-	LED_ON();
-	//测试用，延迟启动时间
-	for(i=0;i<6;i++)
-	{
-		
-		DelayMsec(1000);
-		LED_OFF();
-	}
+//	LED_ON();
+//	//测试用，延迟启动时间
+//	for(i=0;i<6;i++)
+//	{
+//		DelayMsec(1000);
+//		LED_OFF();
+//	}
 		
 	
 	//初始化电机
@@ -170,7 +169,7 @@ void loop()
 		if(GetFrameCount()%1000 == 0)
 		{
 			//检测电池电量
-			//BatteryCheck();
+			BatteryCheck();
 			//printf("Convert result is %d\n", GetBatteryAD());
 			//遥控通信丢失处理
 			

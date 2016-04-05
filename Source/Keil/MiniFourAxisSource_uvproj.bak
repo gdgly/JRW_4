@@ -220,13 +220,13 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <RoSelD>3</RoSelD>
             <RwSelD>3</RwSelD>
             <CodeSel>0</CodeSel>
-            <OptFeed>1</OptFeed>
+            <OptFeed>0</OptFeed>
             <NoZi1>0</NoZi1>
             <NoZi2>0</NoZi2>
             <NoZi3>0</NoZi3>
@@ -361,7 +361,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Library\CMSIS\Include;..\Library\Device\Nuvoton\Mini51Series\Include;..\Library\StdDriver\inc</IncludePath>
+              <IncludePath>..\Library\CMSIS\Include;..\Library\Device\Nuvoton\Mini51Series\Include;..\Library\StdDriver\inc;.\XN297L\inc;..\Keil</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -574,6 +574,16 @@
               <FileType>1</FileType>
               <FilePath>.\DMP.c</FilePath>
             </File>
+            <File>
+              <FileName>Comm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Comm.c</FilePath>
+            </File>
+            <File>
+              <FileName>RF.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\XN297L\src\RF.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -673,6 +683,16 @@
               <FileName>DMP.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\DMP.h</FilePath>
+            </File>
+            <File>
+              <FileName>Comm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Comm.h</FilePath>
+            </File>
+            <File>
+              <FileName>RF.H</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\XN297L\inc\RF.H</FilePath>
             </File>
           </Files>
         </Group>
