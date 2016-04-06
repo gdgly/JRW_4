@@ -12,13 +12,13 @@ void LED_Init(void)
 {
 	#ifdef NuTiny
 		GPIO_SetMode(P3, BIT6, GPIO_MODE_OUTPUT);        // For NuTiny-SDK-Mini51L
-		P36 = 0;
+		//P36 = 0;
 	#elif defined MINI51
 		GPIO_SetMode(P2, BIT6, GPIO_MODE_OUTPUT);
-		P26 = 1;
+		//P26 = 1;
 	#elif defined MINI58
 		GPIO_SetMode(P1, BIT4, GPIO_MODE_OUTPUT);
-		P14 = 1;
+		//P14 = 1;
 	#endif
 
 	//P14用于MPU6880 DMP中断

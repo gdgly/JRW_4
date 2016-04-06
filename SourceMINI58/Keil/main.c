@@ -27,7 +27,7 @@
 #include "DMP.h"
 #include "Comm.h"
 
-bool falg = false;
+
 
 void setupSystemClock(void)
 {
@@ -48,10 +48,43 @@ void setupSystemClock(void)
 		SYS_LockReg();
 }
 
+void MotorTest(void)
+{
+	static bool falg = false;
+	//		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
+//		{
+//			Motor_Start();
+//			MotorPwmOutput(20,20,20,20);
+//		}
+//		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
+//		{
+//			MotorPwmOutput(40,40,40,40);
+//		}
+//		else if(GetFrameCount() >= 10000   && GetFrameCount() < 12000)
+//		{
+//			MotorPwmOutput(60,60,60,60);
+//		}
+//		else if(GetFrameCount() >= 12000  && GetFrameCount() < 14000)
+//		{
+//			MotorPwmOutput(80,80,80,80);
+//		}
+//		else if(GetFrameCount() >= 14000 && GetFrameCount() < 16000)
+//		{
+//			MotorPwmOutput(100,100,100,100);
+//		}
+//		else 
+//		if(GetFrameCount() >= 40000 && !falg)
+//		{
+//			falg = true;
+//			MotorPwmOutput(0,0,0,0);
+//			Motor_Stop();
+//		}
+}
 
 void setup()
 {
 	uint8_t i=0;
+	bool bMPU6050Status = TRUE;
 	//初始化系统时钟
 	setupSystemClock();
 	
@@ -64,6 +97,28 @@ void setup()
 	
 	//初始化IIC
 	I2C_Init();
+	DelayMsec(200);		//延迟下，再去读传感器
+	
+	//初始化SENSOR
+	#ifdef IMU_SW											//软件姿态解算
+		bMPU6050Status = MPU6050_initialize();
+		//陀螺仪初始化失败，灯循环闪烁
+		if(bMPU6050Status != TRUE)
+		{
+			while(1) 
+			{
+				printf("MPU6050 initial faile\n");
+				DelayMsec(100);
+				LED_ON();
+				DelayMsec(100);
+				LED_OFF();
+			}
+		}
+	#else
+		MPU6050_initialize();
+		DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
+		MPU6050_DMP_Initialize();     //初始化DMP引擎
+	#endif
 	
 	//初始化FLASH
 	FlashInit();
@@ -73,43 +128,38 @@ void setup()
 	//BatteryCheckInit();
 	
 	//初始化遥控
-	Comm_Init();
+	//Comm_Init();
 	
 	//初始化LED
 	LED_Init();
 	
-	//初始化SENSOR
-	#ifdef IMU_SW											//软件姿态解算
-		MPU6050_initialize();
-		DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
-	#else
-		MPU6050_initialize();
-		DelayMsec(1000);			//必须加延迟，否则读取陀螺仪数据出错
-		MPU6050_DMP_Initialize();     //初始化DMP引擎
-	#endif
+	
 	
 	//初始化自稳定
 	
-//	LED_ON();
-//	//测试用，延迟启动时间
-//	for(i=0;i<6;i++)
-//	{
-//		DelayMsec(1000);
-//		LED_OFF();
-//	}
-		
-	
+	//测试用，延迟启动时间
+	for(i=0;i<6;i++)
+	{
+		LED_ON();
+		DelayMsec(1000);
+		LED_OFF();
+	}
+
 	//初始化电机
 	Motor_Init();
-	
-	printf("Motor_Init(); \n");
+	Motor_Start();
+	//电机怠转
+	MotorPwmOutput(20,20,20,20);	
+		
+
 	
 	//IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
 	
-	printf("\n\nCPU @ %dHz\n", SystemCoreClock);
-	//MotorPwmOutput(100,100,0,0);
+	//printf("\n\nCPU @ %dHz\n", SystemCoreClock);
 
 }
+
+
 
 void loop()
 {
@@ -121,13 +171,12 @@ void loop()
 		CommandProcess();
 			
 		//读取遥控命令
-		Comm_Process();
+		//Comm_Process();
 	
 		if(GetFrameCount()%10 == 0)
 		{
+			
 			//读取姿态传感器数据
-
-			//读取欧拉角
 			#ifdef IMU_SW												//软件姿态解算
 				IMUSO3Thread();
 			#else
@@ -146,9 +195,9 @@ void loop()
 //			}
 				
 			//PID二环角速度
-			//CtrlAttiRate();
+			CtrlAttiRate();
 			//控制电机
-			//CtrlMotor();
+			CtrlMotor();
 		}
 
 		if(GetFrameCount()%20 == 0)
@@ -156,7 +205,7 @@ void loop()
 			//处理遥控数据
 			
 			//PID一环角度控制
-			//CtrlAttiAng();
+			CtrlAttiAng();
 		}
 		
 		//10HZ,每100ms一次
@@ -176,37 +225,14 @@ void loop()
 		if(GetFrameCount()%100 == 0)
 		{
 			printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
-			//printf("\n");
 		}
 		
 		//故障保护
-		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
+		if(GetFrameCount()%1000 == 0)
 		{
-			Motor_Start();
-			MotorPwmOutput(0,0,85,0);
+			 
 		}
-//		else if(GetFrameCount() >= 8000  && GetFrameCount() < 10000)
-//		{
-//			MotorPwmOutput(40,40,40,40);
-//		}
-//		else if(GetFrameCount() >= 10000   && GetFrameCount() < 12000)
-//		{
-//			MotorPwmOutput(60,60,60,60);
-//		}
-//		else if(GetFrameCount() >= 12000  && GetFrameCount() < 14000)
-//		{
-//			MotorPwmOutput(80,80,80,80);
-//		}
-//		else if(GetFrameCount() >= 14000 && GetFrameCount() < 16000)
-//		{
-//			MotorPwmOutput(100,100,100,100);
-//		}
-		else if(GetFrameCount() >= 40000 && !falg)
-		{
-			falg = true;
-			//MotorPwmOutput(0,0,0,0);
-			Motor_Stop();
-		}
+		//MotorTest();
 		
 		IncFrameCount(1);
 }

@@ -29,7 +29,7 @@ int  set_data_flash_base(uint32_t u32DFBA)
     if (FMC_WriteConfig(au32Config, 2) < 0)
         return -1;
 
-    printf("\nSet Data Flash base as 0x%x.\n", DATA_Flash_Start_ADD);
+    //printf("\nSet Data Flash base as 0x%x.\n", DATA_Flash_Start_ADD);
 
     // Perform chip reset to make new User Config take effect
     //SYS->IPRSTC1 = SYS_IPRSTC1_CHIP_RST_Msk;
@@ -44,7 +44,7 @@ void FlashInit()
 	FMC_Open();
 	set_data_flash_base(DATA_Flash_Start_ADD);
 	data_flash_Start_address = FMC_ReadDataFlashBaseAddr();
-	printf("\nDATA_Flash_Start_ADD 0x%x.\n", data_flash_Start_address);
+	printf("DATA_Flash_Start_ADD 0x%x.\n", data_flash_Start_address);
 	FMC_Close();
 	SYS_LockReg();
 
