@@ -244,7 +244,7 @@ I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
-F (.\main.c)(0x5705F0C8)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (.\main.c)(0x5706228F)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (def.h)(0x57034BC2)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -284,6 +284,7 @@ I (IMU.h)(0x5705C1CC)
 I (DMP.h)(0x56F20023)
 I (Comm.h)(0x56FF7FE0)
 I (.\XN297L\inc\RF.h)(0x57034F07)
+I (FailSafe.h)(0x55B35EBD)
 F (.\LED.c)(0x5704C042)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\led.o --omf_browse .\obj\led.crf --depend .\obj\led.d)
 I (LED.h)(0x56F4A4DD)
 I (def.h)(0x57034BC2)
@@ -448,8 +449,12 @@ I (..\Library\StdDriver\inc\timer.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
-F (.\FailSafe.c)(0x56DFD1C2)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\failsafe.o --omf_browse .\obj\failsafe.crf --depend .\obj\failsafe.d)
+F (.\FailSafe.c)(0x570612F5)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\failsafe.o --omf_browse .\obj\failsafe.crf --depend .\obj\failsafe.d)
 I (FailSafe.h)(0x55B35EBD)
+I (IMU.h)(0x5705C1CC)
+I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (d:\Keil5\ARM\ARMCC\include\math.h)(0x52FDD27E)
+I (motor.h)(0x5705C861)
 F (.\PID.c)(0x57034EF5)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\pid.o --omf_browse .\obj\pid.crf --depend .\obj\pid.d)
 I (PID.h)(0x56F9F8A3)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -473,7 +478,7 @@ I (..\Library\StdDriver\inc\uart.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\wdt.h)(0x55712E1E)
 I (..\Library\StdDriver\inc\wwdt.h)(0x55712E1E)
 I (UartCtrl.h)(0x56EA6FE2)
-F (.\Control.c)(0x5705EFCE)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\control.o --omf_browse .\obj\control.crf --depend .\obj\control.d)
+F (.\Control.c)(0x57061319)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\control.o --omf_browse .\obj\control.crf --depend .\obj\control.d)
 I (Control.h)(0x56E61983)
 I (ConfigTable.h)(0x57034C7C)
 I (def.h)(0x57034BC2)
@@ -502,7 +507,7 @@ I (d:\Keil5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (RC.h)(0x56DFDCFB)
 I (motor.h)(0x5705C861)
 I (IMU.h)(0x5705C1CC)
-F (.\ConfigTable.c)(0x56FB3137)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\configtable.o --omf_browse .\obj\configtable.crf --depend .\obj\configtable.d)
+F (.\ConfigTable.c)(0x570625C9)(-c --cpu Cortex-M0 -g -O2 --apcs=interwork -I..\Library\CMSIS\Include -I..\Library\StdDriver\inc -I.\XN297L\inc -I..\Keil -I..\Library\Device\Nuvoton\Mini58Series\Include-I d:\Keil5\ARM\RV31\INC-I d:\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-DMINI58 -o .\obj\configtable.o --omf_browse .\obj\configtable.crf --depend .\obj\configtable.d)
 I (def.h)(0x57034BC2)
 I (d:\Keil5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (..\Library\Device\Nuvoton\Mini58Series\Include\Mini58Series.h)(0x557149C0)

@@ -11,13 +11,14 @@ config_table_t table;
 //请求保存参数到EEPROM的信号量
 uint8_t gParamsSaveEEPROMRequset=0;
 
-#define Flash_DEFAULT_VERSION 2
+#define Flash_DEFAULT_VERSION 4
 
 //all default value 
  void ParamSetDefault(void)
 {
 		 
      pitch_angle_PID.P = 3.5;
+		 
      pitch_angle_PID.I = 0;//1.0;		//0
      pitch_angle_PID.D = 0;
 		 
@@ -34,7 +35,7 @@ uint8_t gParamsSaveEEPROMRequset=0;
      roll_angle_PID.D = 0;
 		 roll_angle_PID.iLimit = 300;	//or 1000
 
-     roll_rate_PID.P  = 0.7;
+     roll_rate_PID.P  = 1;//0.7;
      roll_rate_PID.I  = 0.5; 	//0.5
      roll_rate_PID.D  = 0.03; 
 		 roll_rate_PID.iLimit = 300;
@@ -203,7 +204,7 @@ void LoadParamsFromFlash(void)
 			ParamToTable();
 			table.version = Flash_DEFAULT_VERSION;
 		
-			//printf("table.version = %f\n",table.version);
+			printf("table.version = %d\n",(int)table.version);
 			FlashErase(TABLE_ADDRESS);	//必须先擦除，才能成功写入
 			TableWriteFlash();
 			//WriteVersionToFlash();

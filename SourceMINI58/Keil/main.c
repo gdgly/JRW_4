@@ -26,7 +26,7 @@
 #include "IMU.h"
 #include "DMP.h"
 #include "Comm.h"
-
+#include "FailSafe.h"
 
 
 void setupSystemClock(void)
@@ -224,16 +224,18 @@ void loop()
 		
 		if(GetFrameCount()%100 == 0)
 		{
-			//printf("%d,%d,%d\n", (int)imu.pitch, (int)imu.roll, (int)imu.yaw);
-			printf("%d,%d,%d,%d\n",motor1PWM, motor2PWM, motor3PWM, motor4PWM);
+			printf("%d,%d,%d\n", (int)imu.pitch, (int)imu.roll, (int)imu.yaw);
+			//printf("%d,%d,%d,%d\n",motor1PWM, motor2PWM, motor3PWM, motor4PWM);
 		}
+		// Motor_Stop();
 		
 		//故障保护
-		if(GetFrameCount()%40000 > 0)
+		if(GetFrameCount()%100 == 0)
 		{
-			 Motor_Stop();
+			//飞控翻覆时，停止电机
+			 FailSafeCrash();
 		}
-		//MotorTest();
+		
 		
 		IncFrameCount(1);
 }
