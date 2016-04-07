@@ -58,10 +58,10 @@ void MotorPwmOutput(int16_t MOTO1_PWM,int16_t MOTO2_PWM,int16_t MOTO3_PWM,int16_
 
 	PWM_ConfigOutputChannel(PWM, MOTOR_4, 400, MOTO4_PWM);
 	
-//	motor1PWM = MOTO1_PWM;
-//	motor2PWM = MOTO2_PWM;
-//	motor3PWM = MOTO3_PWM;
-//	motor4PWM = MOTO4_PWM;
+	motor1PWM = MOTO1_PWM;
+	motor2PWM = MOTO2_PWM;
+	motor3PWM = MOTO3_PWM;
+	motor4PWM = MOTO4_PWM;
 
 }
 

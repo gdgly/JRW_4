@@ -2,7 +2,7 @@
 #define MOTOR_H
 #include "stdint.h"
 
-//extern int16_t motor1PWM, motor2PWM, motor3PWM, motor4PWM; 
+extern int16_t motor1PWM, motor2PWM, motor3PWM, motor4PWM; 
 
 void Motor_Init(void);
 void Motor_Start(void);

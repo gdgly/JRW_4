@@ -81,19 +81,25 @@ void CtrlMotor(void)
 	//负反馈
 	//DIF_ACC.Z =  imu.accb[2] - CONSTANTS_ONE_G;
 	//Thro -= 150*DIF_ACC.Z;
-	Thro = 20.0f;
-	
+	Thro = 200.0f;
 	//将输出值融合到四个电机 
-		Motor[0] = (int16_t)(Thro + Pitch + Roll);// - Yaw );    //M1
-		Motor[2] = (int16_t)(Thro - Pitch - Roll);// - Yaw );    //M3  
-		
-		Motor[1] = (int16_t)(Thro + Pitch - Roll);// + Yaw );    //M2
-		Motor[3] = (int16_t)(Thro - Pitch + Roll);// + Yaw );    //M4 
-		
+//		Motor[0] = (int16_t)(Thro + Pitch + Roll - Yaw );    //M1
+//		Motor[2] = (int16_t)(Thro - Pitch - Roll - Yaw );    //M3  
+//		
+//		Motor[1] = (int16_t)(Thro + Pitch - Roll + Yaw );    //M2
+//		Motor[3] = (int16_t)(Thro - Pitch + Roll + Yaw );    //M4 
 	
+		Motor[0] = (int16_t)(Thro + Pitch + Roll);    //M1
+		Motor[2] = (int16_t)(Thro - Pitch - Roll);    //M3  
+		
+		Motor[1] = (int16_t)(Thro + Pitch - Roll);    //M2
+		Motor[3] = (int16_t)(Thro - Pitch + Roll);    //M4 
+		
 //		Motor[0] = 0;
 //		Motor[1] = 0;
 //		Motor[2] = 0;
 //		Motor[3] = 0;
-		MotorPwmOutput(Motor[0],Motor[1],Motor[2],Motor[3]);   
+		MotorPwmOutput(Motor[0]/10,Motor[1]/10,Motor[2]/10,Motor[3]/10);
+		//MotorPwmOutput(Motor[0],Motor[1],Motor[2],Motor[3]);
+//MotorPwmOutput(0,0,0,0);
 }

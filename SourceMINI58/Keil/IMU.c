@@ -6,7 +6,8 @@
 #include "Timer_Ctrl.h"
 
 
-
+#define IMU_SAMPLE_RATE 			100.0f//	1000.0f/(float)DMP_CALC_PRD //
+#define IMU_FILTER_CUTOFF_FREQ	30.0f
 
 #define SENSOR_MAX_G 8.0f		//constant g		// tobe fixed to 8g. but IMU need to  correct at the same time
 #define SENSOR_MAX_W 2000.0f	//deg/s
@@ -15,6 +16,23 @@
 
 imu_t imu={0};
 uint8_t imuCaliFlag=0;
+
+void IMU_Init(void)
+{
+#ifdef IMU_SW		//软件解算前需先校准陀螺
+		imu.ready=0;
+#else
+			imu.ready=1;
+#endif
+		imu.caliPass=1;
+		//filter rate
+		LPF2pSetCutoffFreq_1(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);		//30Hz
+		LPF2pSetCutoffFreq_2(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+		LPF2pSetCutoffFreq_3(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+		LPF2pSetCutoffFreq_4(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+		LPF2pSetCutoffFreq_5(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+		LPF2pSetCutoffFreq_6(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+}
 
 void ReadIMUSensorHandle(void)
 {

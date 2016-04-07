@@ -40,6 +40,7 @@ float 	yawRad;
 extern imu_t imu;
 extern uint8_t imuCaliFlag;
 
+void IMU_Init(void);
 void ReadIMUSensorHandle(void);
 uint8_t IMU_Calibrate(void);
 

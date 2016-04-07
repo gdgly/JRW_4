@@ -149,11 +149,11 @@ void setup()
 	Motor_Init();
 	Motor_Start();
 	//电机怠转
-	MotorPwmOutput(20,20,20,20);	
+	//MotorPwmOutput(20,20,20,20);	
 		
 
 	
-	//IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
+	IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
 	
 	//printf("\n\nCPU @ %dHz\n", SystemCoreClock);
 
@@ -184,15 +184,15 @@ void loop()
 			#endif
 			
 			//imu校准
-//			if(imuCaliFlag)
-//			{
-//					if(IMU_Calibrate())
-//					{
-//						imuCaliFlag=0;
-//						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
-//						imu.caliPass=1;
-//					}
-//			}
+			if(imuCaliFlag)
+			{
+					if(IMU_Calibrate())
+					{
+						imuCaliFlag=0;
+						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
+						imu.caliPass=1;
+					}
+			}
 				
 			//PID二环角速度
 			CtrlAttiRate();
@@ -224,13 +224,14 @@ void loop()
 		
 		if(GetFrameCount()%100 == 0)
 		{
-			printf("yaw=%d, roll=%d, pitch=%d \n",(int)imu.yaw, (int)imu.roll, (int)imu.pitch);
+			//printf("%d,%d,%d\n", (int)imu.pitch, (int)imu.roll, (int)imu.yaw);
+			printf("%d,%d,%d,%d\n",motor1PWM, motor2PWM, motor3PWM, motor4PWM);
 		}
 		
 		//故障保护
-		if(GetFrameCount()%1000 == 0)
+		if(GetFrameCount()%40000 > 0)
 		{
-			 
+			 Motor_Stop();
 		}
 		//MotorTest();
 		
