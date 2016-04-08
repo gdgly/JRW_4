@@ -6,7 +6,7 @@
 #include "PID.h"
 
 
-enum{ROLL,PITCH,YAW,THROTTLE};
+enum{PITCH,ROLL,YAW,THROTTLE};
 
 void CtrlAttiAng(void);
 void CtrlAttiRate(void); 

@@ -3,7 +3,7 @@
 #include "math.h"
 #include "motor.h"
 
-#define FAIL_SAFE_ANGLE 30
+#define FAIL_SAFE_ANGLE 90
 
 void FailSafeCrash(void)
 {

@@ -213,7 +213,9 @@ void LoadParamsFromFlash(void)
 
 void SaveParamsToFlash(void)
 {
+	printf("SaveParamsToFlash \n");
 		ParamToTable();
+	FlashErase(TABLE_ADDRESS);	//必须先擦除，才能成功写入
 		TableWriteFlash();
 }
 

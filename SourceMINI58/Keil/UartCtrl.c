@@ -9,7 +9,7 @@
 #include "PID.h"
 
 #include "Report.h"
-
+#include "ConfigTable.h"
 
 uint8_t getUartData = FALSE;
 
@@ -137,7 +137,7 @@ void CommandProcess(void)
 			printf("@HOOK \n");
 			//int command = UART_READ(UART);//Serial_read(); // Commands
 			command = GetUartChar();
-			if (command == 's')
+			if (command == 'm')
 			{
 					//printf("@s ok \n");
 					// 's'tream output control
@@ -170,6 +170,15 @@ void CommandProcess(void)
 					else if (type == 'r') //'r'ate pid
 						report_mode = REPORT_RATE_PID;
 				}
+				if (mode == 'm') //'m'otor power
+						report_mode = REPORT_MOTOR_POWER;
+				if (mode == 'e') //"e"uler
+						report_mode = REPORT_AHRS_EULER;
+				if (mode == 'r') //"r"aw sensor data
+						report_mode = REPORT_SENSORS_RAW;
+			}
+			else if (command == 's') {// Set 'p'id command
+				SaveParamsToFlash();
 			}
 //		else 
 //		{ 

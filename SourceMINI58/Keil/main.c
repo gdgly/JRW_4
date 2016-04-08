@@ -143,7 +143,7 @@ void setup()
 
 	//初始化电机
 	Motor_Init();
-	Motor_Start();
+	//Motor_Start();
 	//电机怠转
 	//MotorPwmOutput(20,20,20,20);	
 	
@@ -225,8 +225,6 @@ void loop()
 		if(GetFrameCount()%1000 == 0)
 		{
 			ReportMessage();
-			//printf("%d,%d,%d\n", (int)imu.pitch, (int)imu.roll, (int)imu.yaw);
-			//printf("%d,%d,%d,%d\n",motor1PWM, motor2PWM, motor3PWM, motor4PWM);
 		}
 		
 		
