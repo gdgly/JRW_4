@@ -97,7 +97,7 @@ void setup()
 	
 	//初始化IIC
 	I2C_Init();
-	DelayMsec(200);		//延迟下，再去读传感器
+	DelayMsec(200);		//延迟下，再去读传感器，不延迟下，读取传感器会失败
 	
 	//初始化SENSOR
 	#ifdef IMU_SW											//软件姿态解算
@@ -133,10 +133,6 @@ void setup()
 	//初始化LED
 	LED_Init();
 	
-	
-	
-	//初始化自稳定
-	
 	//测试用，延迟启动时间
 	for(i=0;i<6;i++)
 	{
@@ -150,9 +146,8 @@ void setup()
 	Motor_Start();
 	//电机怠转
 	//MotorPwmOutput(20,20,20,20);	
-		
-
 	
+	//初始化自稳定
 	IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
 	
 	//printf("\n\nCPU @ %dHz\n", SystemCoreClock);
@@ -207,10 +202,7 @@ void loop()
 			//PID一环角度控制
 			CtrlAttiAng();
 		}
-		
-		//10HZ,每100ms一次
-		//if(getTickCount()%100 == 0)
-		
+
 		if(GetFrameCount()%1000 == 0)
 		{
 			//检测电池电量
@@ -222,18 +214,18 @@ void loop()
 			UpdateLED();
 		}
 		
-		if(GetFrameCount()%100 == 0)
-		{
-			printf("%d,%d,%d\n", (int)imu.pitch, (int)imu.roll, (int)imu.yaw);
-			//printf("%d,%d,%d,%d\n",motor1PWM, motor2PWM, motor3PWM, motor4PWM);
-		}
-		// Motor_Stop();
-		
 		//故障保护
 		if(GetFrameCount()%100 == 0)
 		{
 			//飞控翻覆时，停止电机
 			 FailSafeCrash();
+		}
+		
+		//打印调试信息
+		if(GetFrameCount()%100 == 0)
+		{
+			//printf("%d,%d,%d\n", (int)imu.pitch, (int)imu.roll, (int)imu.yaw);
+			//printf("%d,%d,%d,%d\n",motor1PWM, motor2PWM, motor3PWM, motor4PWM);
 		}
 		
 		

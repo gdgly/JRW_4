@@ -10,4 +10,6 @@ void setupUART(void);
 void UART_NVIC_INIT(void);
 void CommandProcess(void);
 
+uint8_t GetUartChar(void);
+
 #endif

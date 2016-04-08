@@ -7,7 +7,8 @@
 #include "motor.h"
 
 #include "PID.h"
- 
+
+#include "Report.h"
 
 
 uint8_t getUartData = FALSE;
@@ -17,7 +18,8 @@ uint8_t g_u8RecData[RXBUFSIZE]  = {0};
 //volatile uint32_t g_u32comRbytes = 0;
 //volatile uint32_t g_u32comRhead  = 0;
 //volatile uint32_t g_u32comRtail  = 0;
-volatile uint32_t g_u32comLength = 0;
+volatile uint8_t g_UartDataTotalLength = 0;
+uint8_t g_UartDataIndex = 0;
 
 void setupUART()
 {
@@ -38,6 +40,17 @@ void setupUART()
 	UART_Open(UART0, 115200);
 }
 
+uint8_t GetUartChar(void)
+{
+	uint8_t c;
+	if(g_UartDataIndex < g_UartDataTotalLength)
+	{
+		c = g_u8RecData[g_UartDataIndex];
+		g_UartDataIndex ++;
+	}
+	return c;
+}
+
 
 /*---------------------------------------------------------------------------------------------------------*/
 /* UART Callback function                                                                                  */
@@ -56,10 +69,10 @@ void UART_HANDLE()
 
 						//printf("%c", u8InChar);
             /* Check if buffer full */
-            if(g_u32comLength < RXBUFSIZE) {
+            if(g_UartDataTotalLength < RXBUFSIZE) {
                 /* Enqueue the character */
-                g_u8RecData[g_u32comLength] = u8InChar;
-								g_u32comLength++;
+                g_u8RecData[g_UartDataTotalLength] = u8InChar;
+								g_UartDataTotalLength++;
                 //g_u32comRtail = (g_u32comRtail == (RXBUFSIZE-1)) ? 0 : (g_u32comRtail+1);
                 //g_u32comRbytes++;
             }
@@ -67,7 +80,8 @@ void UART_HANDLE()
 						{
 							
 								getUartData = TRUE;
-								g_u32comLength = 0;
+								g_UartDataIndex = 0;
+								//g_UartDataTotalLength = 0;
 						}
         }
     }
@@ -115,20 +129,19 @@ void CommandProcess(void)
 	char mode;
 	// Read incoming control messages
 	//if (Serial_available() >= 2)
-	if(getUartData == TRUE)
+	if(getUartData == TRUE && (g_UartDataTotalLength >= 2) )
 	{
-		char start=g_u8RecData[0];//UART_READ(UART);//Serial_read();
-		if (start == '@') 
+		char start = GetUartChar();//UART_READ(UART);//Serial_read();
+		if (start == '@')
 		{// Start of new control message
 			printf("@HOOK \n");
 			//int command = UART_READ(UART);//Serial_read(); // Commands
-			command = g_u8RecData[1];
-			mode = g_u8RecData[2];
+			command = GetUartChar();
 			if (command == 's')
 			{
-					printf("@s ok \n");
+					//printf("@s ok \n");
 					// 's'tream output control
-					
+					mode = GetUartChar();
 					if (mode == 's') 
 					{// 's'tart stream
 						//stream_mode = STREAM_START;
@@ -140,6 +153,10 @@ void CommandProcess(void)
 						Motor_Stop();
 					}
 			}
+			else if(command == 'v')
+			{
+				CheckVersion();
+			}
 //		else 
 //		{ 
 //			if (report_format == REPORT_FORMAT_TEXT) {
@@ -148,5 +165,6 @@ void CommandProcess(void)
 		} // Skip character
 		
 		getUartData = FALSE;	//标记接收完成
+		g_UartDataTotalLength = 0;
 	}
 }
