@@ -27,7 +27,7 @@
 #include "DMP.h"
 #include "Comm.h"
 #include "FailSafe.h"
-
+#include "Report.h"
 
 void setupSystemClock(void)
 {
@@ -222,8 +222,9 @@ void loop()
 		}
 		
 		//打印调试信息
-		if(GetFrameCount()%100 == 0)
+		if(GetFrameCount()%1000 == 0)
 		{
+			ReportMessage();
 			//printf("%d,%d,%d\n", (int)imu.pitch, (int)imu.roll, (int)imu.yaw);
 			//printf("%d,%d,%d,%d\n",motor1PWM, motor2PWM, motor3PWM, motor4PWM);
 		}

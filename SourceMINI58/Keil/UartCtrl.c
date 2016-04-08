@@ -76,7 +76,7 @@ void UART_HANDLE()
                 //g_u32comRtail = (g_u32comRtail == (RXBUFSIZE-1)) ? 0 : (g_u32comRtail+1);
                 //g_u32comRbytes++;
             }
-						if(u8InChar == '\n')
+						if(u8InChar == '\n' || u8InChar == '\0')
 						{
 							
 								getUartData = TRUE;
@@ -153,9 +153,23 @@ void CommandProcess(void)
 						Motor_Stop();
 					}
 			}
-			else if(command == 'v')
+			else if(command == 'v')	//Check 'v'ersion
 			{
 				CheckVersion();
+			}
+			else if (command == 'p') {// Set 'p'id command
+				SetPID();
+			}
+			else if(command == 'r')	 //Set 'r'eport mode
+			{
+				mode = GetUartChar();
+				if (mode == 'p') {// Report controller 'p'id
+					char type = GetUartChar();
+					if (type == 'p') // 'p'id
+						report_mode = REPORT_ANGLE_PID;
+					else if (type == 'r') //'r'ate pid
+						report_mode = REPORT_RATE_PID;
+				}
 			}
 //		else 
 //		{ 

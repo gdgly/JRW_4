@@ -20,6 +20,8 @@ typedef struct float_xyz
 S_FLOAT_XYZ DIF_ACC;		//实际去期望相差的加速度
 
 
+
+
 void CtrlAttiAng(void)
 {
 	static float yawHold=0;

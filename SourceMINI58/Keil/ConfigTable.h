@@ -14,8 +14,8 @@ float pidRoll[3];
 float pidRollRate[3];
 float pidYaw[3];
 float pidYawRate[3];
-//float accOffset[3];
-//float gyroOffset[3];
+float accOffset[3];
+float gyroOffset[3];
 
 }config_table_t;
 

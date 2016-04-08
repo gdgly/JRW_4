@@ -33,5 +33,12 @@ extern PID_Typedef yaw_rate_PID;      //yaw角速率环PID
 
 //-----------位置式PID-----------
 void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT);
- 
+void GetRollAnglePID(float* pid);
+void GetPitchAnglePID(float* pid);
+void GetYawAnglePID(float* pid);
+
+void GetPitchRatePID(float* pid);
+void GetRollRatePID(float* pid);
+void GetYawRatePID(float* pid);
+void SetPID(void);
 #endif
