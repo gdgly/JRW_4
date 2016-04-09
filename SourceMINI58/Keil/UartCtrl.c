@@ -10,6 +10,7 @@
 
 #include "Report.h"
 #include "ConfigTable.h"
+#include "Control.h"
 
 uint8_t getUartData = FALSE;
 
@@ -159,6 +160,9 @@ void CommandProcess(void)
 			}
 			else if (command == 'p') {// Set 'p'id command
 				SetPID();
+			}
+			else if (command == 't') {// Set 'Thro'id command
+				SetThro();
 			}
 			else if(command == 'r')	 //Set 'r'eport mode
 			{

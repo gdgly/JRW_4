@@ -134,12 +134,12 @@ void setup()
 	LED_Init();
 	
 	//测试用，延迟启动时间
-	for(i=0;i<6;i++)
-	{
-		LED_ON();
-		DelayMsec(1000);
-		LED_OFF();
-	}
+//	for(i=0;i<6;i++)
+//	{
+//		LED_ON();
+//		DelayMsec(1000);
+//		LED_OFF();
+//	}
 
 	//初始化电机
 	Motor_Init();
@@ -222,7 +222,7 @@ void loop()
 		}
 		
 		//打印调试信息
-		if(GetFrameCount()%1000 == 0)
+		if(GetFrameCount()%100 == 0)
 		{
 			ReportMessage();
 		}

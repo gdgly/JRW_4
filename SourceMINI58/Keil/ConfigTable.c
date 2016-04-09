@@ -30,14 +30,14 @@ uint8_t gParamsSaveEEPROMRequset=0;
 
 		 pitch_rate_PID.iLimit = 300;
 //////////////////////////////////////////////
-     roll_angle_PID.P = 3.5;
+     roll_angle_PID.P = 4;
      roll_angle_PID.I = 0;//1.0;
      roll_angle_PID.D = 0;
 		 roll_angle_PID.iLimit = 300;	//or 1000
 
-     roll_rate_PID.P  = 1;//0.7;
-     roll_rate_PID.I  = 0.5; 	//0.5
-     roll_rate_PID.D  = 0.03; 
+     roll_rate_PID.P  = 0.09;//0.7;
+     roll_rate_PID.I  = 9.5; 	//0.5
+     roll_rate_PID.D  = 0; 
 		 roll_rate_PID.iLimit = 300;
   
      yaw_rate_PID.P  = 20;
