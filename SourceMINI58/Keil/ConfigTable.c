@@ -17,23 +17,23 @@ uint8_t gParamsSaveEEPROMRequset=0;
  void ParamSetDefault(void)
 {
 		 
-     pitch_angle_PID.P = 2.8;
-     pitch_angle_PID.I = 0;//1.0;		//0
+     pitch_angle_PID.P = 2.8;		//4
+     pitch_angle_PID.I = 0;
      pitch_angle_PID.D = 0;
-	   pitch_angle_PID.iLimit = 30;	//or 1000
+	   pitch_angle_PID.iLimit = 30;	
 		 
-     pitch_rate_PID.P  = 0.15; 
-     pitch_rate_PID.I  = 0.05; 		//0.5
+     pitch_rate_PID.P  = 0.15; //0.09
+     pitch_rate_PID.I  = 0.05; 		//9.5/8.9
      pitch_rate_PID.D  = 0.0;
 		 pitch_rate_PID.iLimit = 30;
 //////////////////////////////////////////////
-     roll_angle_PID.P = 2.8;
-     roll_angle_PID.I = 0;//1.0;
+     roll_angle_PID.P = 2.8;		//4
+     roll_angle_PID.I = 0;
      roll_angle_PID.D = 0;
 		 roll_angle_PID.iLimit = 30;	//or 1000
 
-     roll_rate_PID.P  = 0.15;//0.7;
-     roll_rate_PID.I  = 0.05; 	//0.5
+     roll_rate_PID.P  = 0.15;	//0.09
+     roll_rate_PID.I  = 0.05; 		//9.5/8.9
      roll_rate_PID.D  = 0; 
 		 roll_rate_PID.iLimit = 30;
 
