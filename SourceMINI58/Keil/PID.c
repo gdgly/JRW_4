@@ -75,8 +75,8 @@ void PID_Postion_Cal(PID_Typedef * PID,float target,float measure,int32_t dertT)
 			//if(fabs(PID->Output) < Thro )		              //比油门还大时不积分
 			{
 				termI=(PID->Integ) + (PID->Error) * dt;     //积分环节
-				if(termI > - PID->iLimit && termI < PID->iLimit && PID->Output > - PID->iLimit && PID->Output < PID->iLimit)       //在-300~300时才进行积分环节
-						PID->Integ=termI;
+				if(termI > - PID->iLimit && termI < PID->iLimit && PID->Output > - PID->iLimit && PID->Output < PID->iLimit)       //在-30~30时才进行积分环节
+					PID->Integ=termI;
 			}
 	}
 //	else

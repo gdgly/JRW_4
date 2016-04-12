@@ -77,7 +77,7 @@ void UART_HANDLE()
                 //g_u32comRtail = (g_u32comRtail == (RXBUFSIZE-1)) ? 0 : (g_u32comRtail+1);
                 //g_u32comRbytes++;
             }
-						if(u8InChar == '\n' || u8InChar == '\0')
+						if(u8InChar == '\n' || u8InChar == '\0' || u8InChar == '$')
 						{
 							
 								getUartData = TRUE;

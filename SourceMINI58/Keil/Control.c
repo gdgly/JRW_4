@@ -54,7 +54,7 @@ void CtrlAttiAng(void)
 //        angTarget[PITCH] = tarPitFree;
 //		}
  
-		PID_Postion_Cal(&pitch_angle_PID,angTarget[PITCH],-imu.pitch,dt);
+		PID_Postion_Cal(&pitch_angle_PID,angTarget[PITCH],imu.pitch,dt);
 		PID_Postion_Cal(&roll_angle_PID,angTarget[ROLL],imu.roll,dt);	 
 }
 

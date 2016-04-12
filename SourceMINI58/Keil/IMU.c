@@ -15,7 +15,7 @@
 #define GYRO_SCALE  (SENSOR_MAX_W/32768.0f)
 
 imu_t imu={0};
-uint8_t imuCaliFlag=0;
+uint8_t imuCaliFlag=1;
 
 void IMU_Init(void)
 {

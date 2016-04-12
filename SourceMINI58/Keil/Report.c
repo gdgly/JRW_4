@@ -28,10 +28,9 @@ void report_rate_pid(void)
 	GetPitchRatePID(&PID[0]);
 	GetRollRatePID(&PID[3]);
 	GetYawRatePID(&PID[6]);
-	
 
 	{
-		printf("@RatePID:%1.2f,%1.2f,%1.2f;  %1.2f,%1.2f,%1.2f; %1.2f,%1.2f,%1.2f\n",
+		printf("@RatePID:%1.4f,%1.4f,%1.4f;  %1.4f,%1.4f,%1.4f; %1.4f,%1.4f,%1.4f\n",
 			PID[0],PID[1],PID[2],PID[3],PID[4],PID[5],PID[6],PID[7],PID[8]);
 	}
 }

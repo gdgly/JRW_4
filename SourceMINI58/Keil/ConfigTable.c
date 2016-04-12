@@ -17,33 +17,30 @@ uint8_t gParamsSaveEEPROMRequset=0;
  void ParamSetDefault(void)
 {
 		 
-     pitch_angle_PID.P = 3.5;
-		 
+     pitch_angle_PID.P = 2.8;
      pitch_angle_PID.I = 0;//1.0;		//0
      pitch_angle_PID.D = 0;
+	   pitch_angle_PID.iLimit = 30;	//or 1000
 		 
-	   pitch_angle_PID.iLimit = 300;	//or 1000
-		 
-     pitch_rate_PID.P  = 0.7; 
-     pitch_rate_PID.I  = 0.5; 		//0.5
-     pitch_rate_PID.D  = 0.03; 		 
-
-		 pitch_rate_PID.iLimit = 300;
+     pitch_rate_PID.P  = 0.15; 
+     pitch_rate_PID.I  = 0.05; 		//0.5
+     pitch_rate_PID.D  = 0.0;
+		 pitch_rate_PID.iLimit = 30;
 //////////////////////////////////////////////
-     roll_angle_PID.P = 4;
+     roll_angle_PID.P = 2.8;
      roll_angle_PID.I = 0;//1.0;
      roll_angle_PID.D = 0;
-		 roll_angle_PID.iLimit = 300;	//or 1000
+		 roll_angle_PID.iLimit = 30;	//or 1000
 
-     roll_rate_PID.P  = 0.09;//0.7;
-     roll_rate_PID.I  = 9.5; 	//0.5
+     roll_rate_PID.P  = 0.15;//0.7;
+     roll_rate_PID.I  = 0.05; 	//0.5
      roll_rate_PID.D  = 0; 
-		 roll_rate_PID.iLimit = 300;
-  
+		 roll_rate_PID.iLimit = 30;
+
      yaw_rate_PID.P  = 20;
      yaw_rate_PID.I  = 0; 
      yaw_rate_PID.D  = 0; 
-		 
+
 		 yaw_angle_PID.P = 1.0;
      yaw_angle_PID.I = 0.2;
      yaw_angle_PID.D = 0;

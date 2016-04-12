@@ -95,6 +95,10 @@ void setup()
 	//初始化System_tick
 	setup_system_tick(SYSTEM_TICK_FREQ);
 	
+	//初始化LED
+	LED_Init();
+	LED_ON();
+	
 	//初始化IIC
 	I2C_Init();
 	DelayMsec(200);		//延迟下，再去读传感器，不延迟下，读取传感器会失败
@@ -130,8 +134,7 @@ void setup()
 	//初始化遥控
 	//Comm_Init();
 	
-	//初始化LED
-	LED_Init();
+	
 	
 	//测试用，延迟启动时间
 //	for(i=0;i<6;i++)
@@ -145,7 +148,7 @@ void setup()
 	Motor_Init();
 	//Motor_Start();
 	//电机怠转
-	//MotorPwmOutput(20,20,20,20);	
+	//MotorPwmOutput(20,20,20,20);
 	
 	//初始化自稳定
 	IMU_Init();			// sample rate and cutoff freq.  sample rate is too low now due to using dmp.
@@ -186,6 +189,7 @@ void loop()
 						imuCaliFlag=0;
 						gParamsSaveEEPROMRequset=1;	//请求记录到EEPROM
 						imu.caliPass=1;
+						LED_OFF();
 					}
 			}
 				
@@ -211,7 +215,7 @@ void loop()
 			//遥控通信丢失处理
 			
 			//更新LED灯状态
-			UpdateLED();
+			//UpdateLED();
 		}
 		
 		//故障保护
