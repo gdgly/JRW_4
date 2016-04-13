@@ -37,12 +37,12 @@ uint8_t gParamsSaveEEPROMRequset=0;
      roll_rate_PID.D  = 0; 
 		 roll_rate_PID.iLimit = 30;
 
-     yaw_rate_PID.P  = 20;
-     yaw_rate_PID.I  = 0; 
+     yaw_rate_PID.P  = 0.04;
+     yaw_rate_PID.I  = 0.01; 
      yaw_rate_PID.D  = 0; 
 
-		 yaw_angle_PID.P = 1.0;
-     yaw_angle_PID.I = 0.2;
+		 yaw_angle_PID.P = 0;
+     yaw_angle_PID.I = 0;
      yaw_angle_PID.D = 0;
 
 //

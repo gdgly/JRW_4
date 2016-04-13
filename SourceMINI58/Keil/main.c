@@ -50,7 +50,7 @@ void setupSystemClock(void)
 
 void MotorTest(void)
 {
-	static bool falg = false;
+//	static bool falg = false;
 	//		if(GetFrameCount() > 6000 && GetFrameCount() < 8000)
 //		{
 //			Motor_Start();
@@ -83,7 +83,7 @@ void MotorTest(void)
 
 void setup()
 {
-	uint8_t i=0;
+//	uint8_t i=0;
 	bool bMPU6050Status = TRUE;
 	//初始化系统时钟
 	setupSystemClock();
@@ -101,7 +101,7 @@ void setup()
 	
 	//初始化IIC
 	I2C_Init();
-	DelayMsec(200);		//延迟下，再去读传感器，不延迟下，读取传感器会失败
+	DelayMsec(300);		//延迟下，再去读传感器，不延迟下，读取传感器会失败
 	
 	//初始化SENSOR
 	#ifdef IMU_SW											//软件姿态解算
