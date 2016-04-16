@@ -90,7 +90,7 @@ uint8_t IMU_Calibrate(void)
 	uint16_t dt=0,now=0,caliTime=0;;
 
 
-	now=millis();
+	now=getSystemTime();
 
 
 #if (1)

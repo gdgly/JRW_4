@@ -132,7 +132,7 @@ void setup()
 	//BatteryCheckInit();
 	
 	//初始化遥控
-	//Comm_Init();
+	Comm_Init();
 	
 	
 	
@@ -162,14 +162,14 @@ void setup()
 void loop()
 {
 		static uint32_t nextTick = 0;
-		while(millis()<nextTick){}
-		nextTick = millis()+TICK_FRAME_PERIOD;	//循环间隔FRAME
+		while(getSystemTime()<nextTick){}
+		nextTick = getSystemTime()+TICK_FRAME_PERIOD;	//循环间隔FRAME
 	
 		//处理蓝牙命令
 		CommandProcess();
 			
 		//读取遥控命令
-		//Comm_Process();
+		Comm_Process();
 	
 		if(GetFrameCount()%10 == 0)
 		{
@@ -209,13 +209,14 @@ void loop()
 
 		if(GetFrameCount()%1000 == 0)
 		{
-			//检测电池电量
+			//电池电池检测
 			//BatteryCheck();
-			//printf("Convert result is %d\n", GetBatteryAD());
+			
+			
 			//遥控通信丢失处理
 			
 			//更新LED灯状态
-			//UpdateLED();
+			UpdateLED();
 		}
 		
 		//故障保护
@@ -223,6 +224,11 @@ void loop()
 		{
 			//飞控翻覆时，停止电机
 			 FailSafeCrash();
+			
+			//电池低电压处理
+			//printf("Convert result is %d\n", GetBatteryAD());
+			
+			
 		}
 		
 		//打印调试信息

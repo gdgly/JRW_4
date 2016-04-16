@@ -24,7 +24,7 @@ void setup_system_tick(uint32_t sampleRate)
 
 }
 
-uint32_t millis(void)						//系统时间，单位ms
+uint32_t getSystemTime(void)						//系统时间，单位ms
 {
 	return tick_counter;
 }
@@ -32,8 +32,8 @@ uint32_t millis(void)						//系统时间，单位ms
 
 void DelayMsec(uint16_t time)
 {
-	uint16_t currentTime = millis();
-	while(millis() < (currentTime + time));
+	uint16_t currentTime = getSystemTime();
+	while(getSystemTime() < (currentTime + time));
 }
 
 void IncFrameCount(uint8_t inc)

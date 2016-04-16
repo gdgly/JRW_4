@@ -186,19 +186,19 @@ void Comm_CheckDataReceived(void)
 void Comm_TimerProcess(void)
 {
 	uint8_t temp = 0;
-	if(Comm_TimerTick != tick_counter)
+	if(Comm_TimerTick != getSystemTime())
 	{
-		if(Comm_TimerTick < tick_counter)
+		if(Comm_TimerTick < getSystemTime())
 		{
-			temp = tick_counter - Comm_TimerTick;
-			Comm_TimerTick = tick_counter;
+			temp = getSystemTime() - Comm_TimerTick;
+			Comm_TimerTick = getSystemTime();
 		}
-		else if(Comm_TimerTick > tick_counter)
+		else if(Comm_TimerTick > getSystemTime())
 		{
 			Comm_TimerTick = ~Comm_TimerTick+1;//Comm_TimerTick = 0xFFFFFFFF - Comm_TimerTick;
 			temp = Comm_TimerTick;
-			temp += tick_counter;
-			Comm_TimerTick = tick_counter;
+			temp += getSystemTime();
+			Comm_TimerTick = getSystemTime();
 		}
 
 		if(Comm_Flag&Comm_TimeoutEnBit_Mask)
@@ -321,7 +321,7 @@ void Comm_Process(void)
 								Comm_SendDataBuf[12] = 0;
 								Comm_CurrentAddr = BIND_ADDR;
 								Comm_CurrentChannel = BIND_CHANNEL;
-								DelayMsec(millis()&0xF);//延时一个随机数，在多从机单主机环境下减少冲突
+								DelayMsec(getSystemTime()&0xF);//延时一个随机数，在多从机单主机环境下减少冲突
 								Comm_SendPacket();
 								//回应主机后重新进入接收状态，准备接收配对阶段3的数据
 								Comm_CurrentAddr = BIND_ADDR;

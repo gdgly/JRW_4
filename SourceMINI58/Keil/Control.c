@@ -32,7 +32,7 @@ void CtrlAttiAng(void)
 		float angTarget[3]={0};
 		float dt=0,t=0;
 //		t=micros();
-		t = millis();
+		t = getSystemTime();
 		dt=(tPrev>0)?(t-tPrev):0;
 		tPrev=t;
 		
@@ -65,7 +65,7 @@ void CtrlAttiRate(void)
 
 	float dt=0,t=0;
 //	t=micros();
-	t=millis();
+	t=getSystemTime();
 	dt=(tPrev>0)?(t-tPrev):0;
 	tPrev=t;
 		

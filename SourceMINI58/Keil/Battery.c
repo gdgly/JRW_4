@@ -1,11 +1,10 @@
 
 #include "Battery.h"
-#include "def.h"
 #include "adc.h"
 #include "stdio.h"
 
-uint32_t u32Flag;
-uint32_t u32Result;
+
+uint32_t u32BatteryAD;
 
 void BatteryCheckInit(void)
 {
@@ -32,12 +31,13 @@ void BatteryCheckInit(void)
 
 void ADC_IRQHandler(void)
 {
+		uint32_t u32Flag;
     // Get ADC comparator interrupt flag
     u32Flag = ADC_GET_INT_FLAG(ADC, ADC_ADIF_INT);
 
     // Get ADC convert result
     //printf("Convert result is %x\n", (uint32_t)ADC_GET_CONVERSION_DATA(ADC, 0));
-		u32Result = (uint32_t)ADC_GET_CONVERSION_DATA(ADC, 0);
+		u32BatteryAD = (uint32_t)ADC_GET_CONVERSION_DATA(ADC, 0);
 	
     ADC_CLR_INT_FLAG(ADC, u32Flag);
 }
@@ -52,8 +52,22 @@ void BatteryCheck(void)
 	}
 }
 
-//获取电池电压
+//判断是否低电压
+bool isLowBattery()
+{
+	float battery = u32BatteryAD/1024*AD_REFERENCE;
+	if(battery < LOW_BATTERY)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+//获取电池电压AD
 uint32_t GetBatteryAD(void)
 {
-	return u32Result;
+	return u32BatteryAD;
 }

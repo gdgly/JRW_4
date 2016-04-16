@@ -20,6 +20,10 @@
 #ifndef false
 	#define false        0
 #endif
+	
+#ifndef true
+	#define true        1
+#endif
 
 #define TICK_FRAME_PERIOD 1
 

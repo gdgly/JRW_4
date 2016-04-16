@@ -231,7 +231,7 @@ void IMUSO3Thread(void)
 //	static uint8_t gyroInitialized=0;
 	
 
-	now = millis();
+	now = getSystemTime();
 	dt=(tPrev>0)?(now-tPrev)/1000.0f:0;
 	tPrev=now;
 	
