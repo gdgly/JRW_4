@@ -41,8 +41,8 @@ uint32_t Comm_HostAddr;					//主机地址
 uint32_t Comm_DevAddr;					//从机地址
 uint8_t Comm_SendDataBuf[PKT_LENG];		//RF发射数据缓冲区
 uint8_t Comm_RecDataBuf[PKT_LENG];		//RF接收数据缓冲区
-uint8_t Comm_Timeout;					//超时计数器
-uint8_t Comm_Data[3];					//给上层访问的接收到的数据
+uint16_t Comm_Timeout;					//超时计数器
+uint8_t Comm_Data[5];					//给上层访问的接收到的数据
 
 uint32_t Comm_TimerTick;
 /********************************************************************
@@ -75,6 +75,8 @@ void Comm_Init(void)
 	Comm_Data[0] = 0;
 	Comm_Data[1] = 0;
 	Comm_Data[2] = 0;
+	Comm_Data[3] = 0;
+	Comm_Data[4] = 0;
 	
 	Comm_CurrentAddr = BIND_ADDR;
 	Comm_CurrentChannel = BIND_CHANNEL;
@@ -110,7 +112,7 @@ void Comm_SendPacket(void)
 	{
 		CRC += Comm_SendDataBuf[i];
 	}
-	Comm_SendDataBuf[13] = CRC;
+	Comm_SendDataBuf[i] = CRC;
 	////////////////////
 	
 	RF_SetTxAddr((uint8_t *)&Comm_CurrentAddr,CURRENT_ADDR_LENG);
@@ -162,7 +164,7 @@ void Comm_CheckDataReceived(void)
 			{
 				CRC += Comm_RecDataBuf[i];
 			}
-			if(Comm_RecDataBuf[13] == CRC)
+			if(Comm_RecDataBuf[i] == CRC)
 			{
 				Comm_Flag |= Comm_DataReceived_Mask;
 			}
@@ -253,6 +255,8 @@ void Comm_Process(void)
 								//快速链接包数据域第二个字节表示建立连接后使用的频率
 								Comm_SendDataBuf[11] = Comm_RecDataBuf[11];
 								Comm_SendDataBuf[12] = 0;
+								Comm_SendDataBuf[13] = 0;
+								Comm_SendDataBuf[14] = 0;
 								Comm_CurrentChannel = BIND_CHANNEL;
 								Comm_CurrentAddr = BIND_ADDR;
 								Comm_SendPacket();
@@ -319,6 +323,8 @@ void Comm_Process(void)
 								Comm_SendDataBuf[10] = 2;
 								Comm_SendDataBuf[11] = 0;
 								Comm_SendDataBuf[12] = 0;
+								Comm_SendDataBuf[13] = 0;
+								Comm_SendDataBuf[14] = 0;
 								Comm_CurrentAddr = BIND_ADDR;
 								Comm_CurrentChannel = BIND_CHANNEL;
 								DelayMsec(getSystemTime()&0xF);//延时一个随机数，在多从机单主机环境下减少冲突
@@ -365,6 +371,8 @@ void Comm_Process(void)
 									Comm_SendDataBuf[10] = 5;
 									Comm_SendDataBuf[11] = 0;
 									Comm_SendDataBuf[12] = 0;
+									Comm_SendDataBuf[13] = 0;
+									Comm_SendDataBuf[14] = 0;
 									//保存主机地址
 									Comm_HostAddr = ((uint32_t)Comm_RecDataBuf[4] << 24) | \
 																	((uint32_t)Comm_RecDataBuf[3] << 16) | \
@@ -439,6 +447,8 @@ void Comm_Process(void)
 					Comm_SendDataBuf[10] = 0;
 					Comm_SendDataBuf[11] = 0;
 					Comm_SendDataBuf[12] = 0;
+					Comm_SendDataBuf[13] = 0;
+					Comm_SendDataBuf[14] = 0;
 					Comm_CurrentAddr = Comm_HostAddr;
 					Comm_SendPacket();
 
@@ -448,6 +458,8 @@ void Comm_Process(void)
 						Comm_Data[0] = Comm_RecDataBuf[10];
 						Comm_Data[1] = Comm_RecDataBuf[11];
 						Comm_Data[2] = Comm_RecDataBuf[12];
+						Comm_Data[3] = Comm_RecDataBuf[13];
+						Comm_Data[4] = Comm_RecDataBuf[14];
 						Comm_Flag |= Comm_NewData_Mask;
 					}
 					Comm_CurrentAddr = Comm_DevAddr;
@@ -509,6 +521,8 @@ void Comm_Process(void)
 								//快速链接包数据域第二个字节表示建立连接后使用的频率
 								Comm_SendDataBuf[11] = Comm_RecDataBuf[11];
 								Comm_SendDataBuf[12] = 0;
+								Comm_SendDataBuf[13] = 0;
+								Comm_SendDataBuf[14] = 0;
 								Comm_CurrentChannel = BIND_CHANNEL;
 								Comm_CurrentAddr = BIND_ADDR;
 								Comm_SendPacket();

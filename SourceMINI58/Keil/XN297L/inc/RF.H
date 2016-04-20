@@ -158,7 +158,7 @@ void			RF_Carrier								(uint8_t ucChannel_Set);
         
 
 #define         DEFAULT_CHANNEL                0				//初始化时的频率： 2478 MHz           
-#define         PAYLOAD_WIDTH                  14				//Payload宽度：     14bytes				
+#define         PAYLOAD_WIDTH                  16				//Payload宽度：     16bytes				
 #define         TRANSMIT_TYPE                  TRANS_BURST_MODE 		//使用普通型模式           TRANS_BURST_MODE    TRANS_ENHANCE_MODE
 #define         DATA_RATE                      DR_1M                           //通信速率1Mbps            DR_2M    DR_1M  DR_250K
 #define         RF_POWER                      (RF8dBm |DATA_RATE)		//发射功率13dBm 

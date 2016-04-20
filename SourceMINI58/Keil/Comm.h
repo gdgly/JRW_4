@@ -1,8 +1,8 @@
 #ifndef _COMM_H_
 #define _COMM_H_
 
-#include <stdint.h>
 #include "def.h"
+#include <stdint.h>
 #include "RF.h"
 
 //数据包长度PKT_LENG为14Byte
@@ -37,11 +37,11 @@
 #define STATUS_SLEEP						0x03
 #define STATUS_LOST							0x04
 
-#define COMM_TIMEOUT_BIND					20			//配对阶段超时时间，单位Ms
+#define COMM_TIMEOUT_BIND					100			//配对阶段超时时间，单位Ms
 #define COMM_TIMEOUT_BIND_LOADVAL						((COMM_TIMEOUT_BIND*SYSTEM_TICK_FREQ)/1000)
-#define COMM_TIMEOUT_LOST					200			//正常通讯过程超时时间，单位Ms
+#define COMM_TIMEOUT_LOST					400			//正常通讯过程超时时间，单位Ms
 #define COMM_TIMEOUT_SENDDATA_LOST					((COMM_TIMEOUT_LOST*SYSTEM_TICK_FREQ)/1000)
-#define COMM_TIMEOUT_FAST_LINK		150			//上电检测快速链接包超时时间，单位Ms
+#define COMM_TIMEOUT_FAST_LINK		1000			//上电检测快速链接包超时时间，单位Ms
 #define COMM_TIMEOUT_FAST_LINK_LOADVAL			((COMM_TIMEOUT_FAST_LINK*SYSTEM_TICK_FREQ)/1000)
 
 
@@ -78,8 +78,8 @@
 
 
 extern uint8_t	Comm_Flag;				
-extern uint8_t Comm_Data[3];
-extern uint8_t Comm_Timeout;
+extern uint8_t Comm_Data[5];
+extern uint16_t Comm_Timeout;
 extern uint8_t Comm_CurrentStatus;
 
 void Comm_Init							(void);
