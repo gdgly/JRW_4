@@ -2,7 +2,7 @@
 #include "adc.h"
 
 uint8_t ADC_Channel;
-uint8_t ADC_Resoult;
+uint16_t ADC_Result;
 
 void ADC_Init(void)
 {
@@ -21,10 +21,11 @@ void ADC_GetValue(void)
 	}
 	ADCC &= ~0x3C;	//清除ADC通道
 	ADCC |= (ADC_Channel << 2);//设置ADC通道
+//	$ ADCC	Enable,PA3			//使能ADC模块
 	set1	adcc.6	//启动ADC转换
 	nop;
 	wait1	adcc.6	//等待转换完成
-	ADC_Resoult = ADCRH;
+	ADC_Result = (ADCRH<<8)|ADCRL;
 }
 
 

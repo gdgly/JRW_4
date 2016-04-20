@@ -5,7 +5,7 @@
 #include	"Timer.h"
 #include	"adc.h"
 #include	"Key.h"
-
+#include 	"Led.h"
 
 void IO_Init(void)
 {
@@ -58,11 +58,10 @@ void	FPPA0 (void)
 	FPPEN.1 = 1;	//使能FPPA1
  	while (1)
 	{
-//		...
-		wdreset;
-		if(FlashLedTime == 0)
+		wdreset;					//复位看门狗
+		if(FlashLedTime <= 0)
 		{
-			switch(Comm_CurrentStatus)
+			switch(Comm_CurrentStatus)		//根据2.4G连接状态，更改灯的状态
 			{
 				case STATUS_CONNECTED:
 				{
@@ -78,8 +77,8 @@ void	FPPA0 (void)
 					break;
 				}
 			}
-			if(PA.7) PA.7 = 0;
-			else PA.7 = 1;
+
+			TongleLed();	//切换LED状态
 		}
 
 	}
